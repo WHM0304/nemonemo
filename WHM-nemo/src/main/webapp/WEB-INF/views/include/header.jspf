@@ -4,6 +4,17 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <header class="HM-main_header">
 	<h1>이미지 넣을 곳</h1>
+	<div class="HM-main_sketch">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 </header>
 
 

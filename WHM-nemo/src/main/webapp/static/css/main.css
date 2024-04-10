@@ -21,6 +21,7 @@ body.HM-main_container {
   flex: 1;
 }
 .HM-main_header {
+  /* background-image: url("/webapp/static/images/sketch.jpg"); */
   background-color: black;
   padding: 2rem;
   h1 {
@@ -28,18 +29,29 @@ body.HM-main_container {
   }
 }
 
+/* 스케치 */
+.HM-main_sketch {
+  display: flex;
+  div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin-left: auto;
+  }
+}
+
 .HM-main_hover_box {
   margin-left: auto;
-  height: 40px;
-  width: 40px;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-top-right-radius: 30%;
-  border-bottom-left-radius: 30%;
-  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-bottom: 40px solid gray;
+  border-right: 60px solid rgba(0, 0, 0, 0);
+  transition: 2s;
 }
 .HM-main_hover_box:hover {
-  background-color: black;
+  border-bottom: 80px solid black;
+  border-right: 120px solid rgba(0, 0, 0, 0);
   cursor: pointer;
 }
 .HM-main_nav {
