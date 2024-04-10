@@ -8,28 +8,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>네모네모 드로잉</title>
-<style>
-	*{
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-	html{
-		height: 100vh;
-	}
-	body{
-		height: 100%;
-		display : flex;
-		flex-direction: column;
-	}
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
-</style>
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-05-001">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-05-015">
+<script src="${rootPath}/static/js/main.js?2024-04-10-00156"></script>
 <script>
 	const rootPath = "${rootPath}"
 </script>
-
 </head>

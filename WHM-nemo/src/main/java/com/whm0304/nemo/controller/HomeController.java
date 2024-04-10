@@ -21,8 +21,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		GameLevel1VO vo = gameLevel1Dao.selectAll();
-		log.debug("정보 {}" ,vo);
+//		GameLevel1VO vo = gameLevel1Dao.selectAll();
+//		log.debug("정보 {}" ,vo);
 		model.addAttribute("BODY","GAME_MAIN");
 		
 		
