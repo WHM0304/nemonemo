@@ -3,3 +3,9 @@
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
+<div class="HM-home_container">
+<div class="HM-home_picture">
+
+</div>
+	<div class="HM-home_diary"></div>
+</div>

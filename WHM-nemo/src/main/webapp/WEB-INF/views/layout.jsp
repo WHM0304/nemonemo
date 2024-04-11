@@ -7,13 +7,13 @@
 	<div class="HM-main_body">
 		<%@ include file="/WEB-INF/views/include/header.jspf"%>
 
-		<c:if test="${BODY eq 'GAME_MAIN' }">
+		<c:if test="${BODY eq 'HOME' }">
 			<%@ include file="/WEB-INF/views/game/main.jsp"%>
 		</c:if>
 
 	</div>
-	<div class="HM-main_hover_box">
-	</div>
+
+	<div class="HM-main_hover_box"></div>
 	<nav class="HM-main_nav">
 		<ul>
 			<li>홈</li>

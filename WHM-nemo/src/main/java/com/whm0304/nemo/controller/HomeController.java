@@ -23,7 +23,7 @@ public class HomeController {
 	public String home(Model model) {
 //		GameLevel1VO vo = gameLevel1Dao.selectAll();
 //		log.debug("정보 {}" ,vo);
-		model.addAttribute("BODY","GAME_MAIN");
+		model.addAttribute("BODY","HOME");
 		
 		
 		
