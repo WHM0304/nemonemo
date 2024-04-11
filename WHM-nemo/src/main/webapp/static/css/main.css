@@ -20,16 +20,8 @@ body.HM-main_container {
 .HM-main_body {
   flex: 1;
 }
-.HM-main_header {
-  /* background-image: url("/webapp/static/images/sketch.jpg"); */
-  background-color: black;
-  padding: 2rem;
-  h1 {
-    color: white;
-  }
-}
 
-/* 스케치 */
+/* 스케치
 .HM-main_sketch {
   display: flex;
   div {
@@ -39,21 +31,25 @@ body.HM-main_container {
     border: 1px solid white;
     margin-left: auto;
   }
-}
+} */
 
 .HM-main_hover_box {
   margin-left: auto;
   width: 30px;
   height: 30px;
-  border-bottom: 40px solid gray;
+  border-top: 40px solid #ddd;
   border-right: 60px solid rgba(0, 0, 0, 0);
   transition: 2s;
 }
 .HM-main_hover_box:hover {
-  border-bottom: 80px solid black;
+  border-top: 80px solid gray;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-bottom-left-radius: 10%;
   border-right: 120px solid rgba(0, 0, 0, 0);
   cursor: pointer;
 }
+
 .HM-main_nav {
   display: none;
   /* visibility: visible; */
@@ -76,4 +72,31 @@ body.HM-main_container {
   background-color: white;
   color: black;
   cursor: pointer;
+}
+
+/* 
+이미지 파일
+*/
+.HM-image_header {
+}
+.HM-main_header {
+  padding: 2rem;
+  background-image: url("../img/sketch.jpg");
+}
+
+/* 
+홈화면
+*/
+
+.HM-home_container {
+  display: flex;
+  flex-direction: column;
+}
+.HM-home_picture {
+  border: 1px solid #ddd;
+  flex: 2;
+}
+.HM-home_diary {
+  border: 1px solid red;
+  flex: 1;
 }
