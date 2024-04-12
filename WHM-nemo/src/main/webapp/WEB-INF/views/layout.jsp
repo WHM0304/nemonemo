@@ -10,6 +10,10 @@
 		<c:if test="${BODY eq 'HOME' }">
 			<%@ include file="/WEB-INF/views/game/main.jsp"%>
 		</c:if>
+		<c:if test="${BODY eq 'GAME' }">
+			<%@ include file="/WEB-INF/views/game/game.jsp" %>
+		
+		</c:if> 
 
 	</div>
 

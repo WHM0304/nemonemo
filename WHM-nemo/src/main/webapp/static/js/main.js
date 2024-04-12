@@ -14,6 +14,7 @@ document?.addEventListener("DOMContentLoaded", () => {
       document.location.href = `${rootPath}`;
     }
     if (target === "게임") {
+      document.location.href = `${rootPath}/game`;
     }
   });
 });
