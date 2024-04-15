@@ -12,7 +12,7 @@
 <link rel="stylesheet"
 	href="${rootPath}/static/css/main.css?2024-04-05-006">
 <script src="${rootPath}/static/js/main.js?2024-04-10-001"></script>
-<script src="${rootPath}/static/js/game.js?2024-04-12-021"></script>
+<script src="${rootPath}/static/js/game.js?2024-04-12-027"></script>
 <script>
 	const rootPath = "${rootPath}"
 </script>

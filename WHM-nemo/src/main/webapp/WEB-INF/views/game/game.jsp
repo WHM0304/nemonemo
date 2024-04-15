@@ -13,8 +13,8 @@ input {
 
 
 <form class="HM-game_board">
-	<div>
-		<input type="button" /> <input type="button" /> <input type="button" />
+	<div >
+		<input type="button" name="n_block1" /> <input type="button" /> <input type="button" />
 		<input type="button" /> <input type="button" />
 	</div>
 	<div>
@@ -48,6 +48,8 @@ input {
 	</div>
 
 </c:forEach>
+
+
 
 
 

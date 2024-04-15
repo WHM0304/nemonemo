@@ -8,6 +8,8 @@ document?.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < LEVEL1.length; i++) {
       dataString += LEVEL1[i];
     }
+    // alert(dataString);
+
     // 문자열을 JavaScript 객체로 변환하는 함수
     function parseDataString(dataString) {
       var regex = /GameLevel1VO\([^)]+\)/g;
@@ -34,11 +36,8 @@ document?.addEventListener("DOMContentLoaded", () => {
     // 문자열을 JavaScript 객체로 파싱
     var dataObjects = parseDataString(dataString);
 
-    // JavaScript 객체를 JSON 문자열로 변환
-    var jsonData = JSON.stringify(dataObjects);
-
-    console.log(jsonData);
-    alert(jsonData[n_num]);
+    console.log(dataObjects[0].n_num);
+    console.log(dataObjects);
 
     // alert(target.tagName);
     if (target.tagName === "INPUT") {
