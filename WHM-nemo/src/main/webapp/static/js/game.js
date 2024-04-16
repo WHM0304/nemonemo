@@ -1,4 +1,15 @@
 document?.addEventListener("DOMContentLoaded", () => {
+  const getArray = (ROW, COLUMN) => {
+    const result = [];
+    for (let i = 0; i < ROW; i++) {
+      const _arr = [];
+      for (let j = 0; j < COLUMN; j++) {
+        _arr.push(0);
+      }
+      result.push(_arr);
+    }
+    return result;
+  };
   const form_box = document.querySelector(".HM-game_board");
   form_box?.addEventListener("click", (e) => {
     const target = e.target;
@@ -36,17 +47,32 @@ document?.addEventListener("DOMContentLoaded", () => {
     // 문자열을 JavaScript 객체로 파싱
     var dataObjects = parseDataString(dataString);
 
-    console.log(dataObjects[0].n_num);
-    console.log(dataObjects);
+    // console.log(dataObjects[0].n_num);
+    // console.log(dataObjects);
 
-    // alert(target.tagName);
     if (target.tagName === "INPUT") {
-      if (input_value === "" || input_value === "O") {
-        target.value = "X";
+      if (input_value === "" || input_value === "0") {
+        target.value = "1";
+        target.style.backgroundColor = "black";
+        target.style.color = "white";
       }
-      if (input_value === "X") {
-        target.value = "O";
+      if (input_value === "1") {
+        target.value = "0";
+        target.style.backgroundColor = "#ddd";
       }
     }
+    // console.log(target.name);
+    // console.log(target.value);
+    // const n_num = target.closest("DIV").className;
+    // console.log(n_num);
+
+    const array = getArray(5, 5);
+    let row = target.closest("DIV").className;
+    const cut = "n_block";
+    let column = target.name.substring(7);
+
+    console.log(column);
+    console.log(row);
+    // console.log(array);
   });
 });

@@ -11,29 +11,44 @@ input {
 	const LEVEL1 = "${LEVEL1}"
 </script>
 
-
+	<div id="row-hint"></div>
+	<div id="column-hint"></div>
 <form class="HM-game_board">
-	<div >
-		<input type="button" name="n_block1" /> <input type="button" /> <input type="button" />
-		<input type="button" /> <input type="button" />
+	<div class="0">
+		<input type="button" name="n_block1" />
+		<input type="button" name="n_block2" />
+		<input type="button" name="n_block3" />
+		<input type="button" name="n_block4" />
+		<input type="button" name="n_block5" />
 	</div>
-	<div>
-		<input type="button" /> <input type="button" /> <input type="button" />
-		<input type="button" /> <input type="button" />
+	<div class="1">
+		<input type="button" name="n_block1" />
+		<input type="button" name="n_block2" />
+		<input type="button" name="n_block3" />
+		<input type="button" name="n_block4" />
+		<input type="button" name="n_block5" />
 	</div>
-	<div>
-		<input type="button" /> <input type="button" /> <input type="button" />
-		<input type="button" /> <input type="button" />
+	<div class="2">
+		<input type="button" name="n_block1" />
+		<input type="button" name="n_block2" />
+		<input type="button" name="n_block3" />
+		<input type="button" name="n_block4" />
+		<input type="button" name="n_block5" />
 	</div>
-	<div>
-		<input type="button" /> <input type="button" /> <input type="button" />
-		<input type="button" /> <input type="button" />
+	<div class="3">
+		<input type="button" name="n_block1" />
+		<input type="button" name="n_block2" />
+		<input type="button" name="n_block3" />
+		<input type="button" name="n_block4" />
+		<input type="button" name="n_block5" />
 	</div>
-	<div>
-		<input type="button" /> <input type="button" /> <input type="button" />
-		<input type="button" /> <input type="button" />
+	<div class="4">
+		<input type="button" name="n_block1" />
+		<input type="button" name="n_block2" />
+		<input type="button" name="n_block3" />
+		<input type="button" name="n_block4" />
+		<input type="button" name="n_block5" />
 	</div>
-
 </form>
 <c:forEach items="${LEVEL1}" var="ROW" varStatus="INDEX">
 
