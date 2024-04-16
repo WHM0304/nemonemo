@@ -5,11 +5,9 @@
 
 <mapper namespace="com.whm0304.nemo.persistance.GameLevel1PlayerDao">
 	<select id="selectAll">
-		<if test="p_id != null and p_id != ''">
 		SELECT *
-		FROM tbl_nemo
-		WHERE p_id = #{p_id} AND n_num = '1'
-		</if>
+		FROM tbl_nemo_play
+		WHERE p_id = 1 AND p_num = 1
 	</select>
 
 </mapper>

@@ -7,6 +7,8 @@ import com.whm0304.nemo.models.GameLevel1PlayerVO;
 public interface GameLevel1PlayerDao {
 	
 	
-	public List<GameLevel1PlayerVO> selectAll();
+	public List<GameLevel1PlayerVO> selectAll(String p_id, String p_num);
+	
+
 
 }

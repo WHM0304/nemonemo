@@ -15,13 +15,14 @@ import lombok.ToString;
 @Builder
 public class GameLevel1PlayerVO {
 	
-	private int n_num;
-	private int n_row_num;
-	private Integer n_block1;
-	private Integer n_block2;
-	private Integer n_block3;
-	private Integer n_block4;
-	private Integer n_block5;
+	private String p_id;
+	private int p_num;
+	private int p_row_num;
+	private Integer p_block1;
+	private Integer p_block2;
+	private Integer p_block3;
+	private Integer p_block4;
+	private Integer p_block5;
 	
 
 }

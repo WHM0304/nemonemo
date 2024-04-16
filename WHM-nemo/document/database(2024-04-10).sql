@@ -8,6 +8,10 @@ m_id	VARCHAR(20)		PRIMARY KEY,
 m_pw	VARCHAR(125)	NOT NULL	,
 m_nick	VARCHAR(20)		
 );
+SELECT * FROM tbl_members;
+INSERT INTO tbl_members
+(m_id,m_pw,m_nick)
+VALUE ('1','1','1번님');
 
 -- 5x5 정답테이블
 CREATE TABLE tbl_nemo (
@@ -33,6 +37,7 @@ PRIMARY KEY (n_num, n_row_num)
 
 SELECT *FROM tbl_nemo;
 
+
 -- 5x5 유저의 플레이정보 (+ 회원아이디)
 CREATE TABLE tbl_nemo_play (
 
@@ -57,6 +62,11 @@ p_block15 INT,
 PRIMARY KEY (p_id, p_num, p_row_num)
 );
 
+INSERT INTO tbl_nemo_play
+(p_id,p_num,p_row_num,p_block1,p_block2,p_block3,p_block4,p_block5)
+VALUE('1','1','5','0','0','0','0','0');
+
+SELECT * FROM tbl_nemo_play;
 
 -- 클리어정보
 CREATE TABLE tbl_clear (
