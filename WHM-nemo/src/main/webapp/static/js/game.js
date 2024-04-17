@@ -59,21 +59,40 @@ document?.addEventListener("DOMContentLoaded", () => {
   //
   let count = 0;
 
-  console.log(LEVEL1_CLEAR[1][1]);
+  // // console.log(LEVEL1_CLEAR[1][1]);
+  // for (let i = 0; i < LEVEL1_CLEAR.length; i++) {
+  //   for (let j = 0; j < LEVEL1_CLEAR.length; j++) {
+  //     if (LEVEL1_CLEAR[i][j] === 1) {
+  //       count++;
+  //       console.log(count);
+  //       row_hint.innerHTML += count;
+  //     }
+  //     if (i === LEVEL1_CLEAR.length && count !== 0) {
+  //       row_hint.innerHTML += count;
+  //     }
+  //     if (LEVEL1_CLEAR[i][j] === 0) {
+  //       // row_hint.innerHTML += count;
+  //       count = 0;
+  //     }
+  //   }
+  //   // if (count === 0) {
+  //   //   row_hint.innerHTML += count;
+  //   // }
+  //   row_hint.innerHTML += "<br>";
+  // }
   for (let i = 0; i < LEVEL1_CLEAR.length; i++) {
-    for (let j = 0; j < LEVEL1_CLEAR.length; j++) {
-      if (LEVEL1_CLEAR[i][j] === 0) {
-        // row_hint.innerHTML += count;
+    if (LEVEL1_CLEAR[1][i] !== 0) {
+      count++;
+    }
+    if (LEVEL1_CLEAR[1][i] === 0) {
+      if (count !== 0) {
+        row_hint.innerHTML = count;
         count = 0;
       }
-      if (LEVEL1_CLEAR[i][j] === 1) {
-        count++;
-        console.log(count);
-      }
+    }
+    if (count !== 0) {
       row_hint.innerHTML += count;
     }
-
-    row_hint.innerHTML += "<br>";
   }
 
   //
