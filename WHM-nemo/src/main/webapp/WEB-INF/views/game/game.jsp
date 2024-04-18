@@ -12,45 +12,60 @@ input {
 		
 </script>
 
-	<div id="row-hint"></div>
-	<div id="column-hint"></div>
+	
+	<div class="main-column-hint">
+		<div id="column1-hint"></div>
+		<div id="column2-hint"></div>
+		<div id="column3-hint"></div>
+		<div id="column4-hint"></div>
+		<div id="column5-hint"></div>
+	</div>
 <form class="HM-game_board" >
-	<div class="p_num="></div>
-	<div class="p_row_num=1">
-		<input type="button" name="p_block1" />
-		<input type="button" name="p_block2" />
-		<input type="button" name="p_block3" />
-		<input type="button" name="p_block4" />
-		<input type="button" name="p_block5" />
+	<div class="main-row-hint">
+		<div id="row1-hint"></div>
+		<div id="row2-hint"></div>
+		<div id="row3-hint"></div>
+		<div id="row4-hint"></div>
+		<div id="row5-hint"></div>
 	</div>
-
-	<div class="p_row_num=2">
-		<input type="button" name="p_block1" />
-		<input type="button" name="p_block2" />
-		<input type="button" name="p_block3" />
-		<input type="button" name="p_block4" />
-		<input type="button" name="p_block5" />
-	</div>
-	<div class="p_row_num=3">
-		<input type="button" name="p_block1" />
-		<input type="button" name="p_block2" />
-		<input type="button" name="p_block3" />
-		<input type="button" name="p_block4" />
-		<input type="button" name="p_block5" />
-	</div>
-	<div class="p_row_num=4">
-		<input type="button" name="p_block1" />
-		<input type="button" name="p_block2" />
-		<input type="button" name="p_block3" />
-		<input type="button" name="p_block4" />
-		<input type="button" name="p_block5" />
-	</div>
-	<div class="p_row_num=5">
-		<input type="button" name="p_block1" />
-		<input type="button" name="p_block2" />
-		<input type="button" name="p_block3" />
-		<input type="button" name="p_block4" />
-		<input type="button" name="p_block5" />
+	<div class="HM-game-input_box">
+		<div class="p_num="></div>
+		<div class="p_row_num=1">
+			<input type="button" name="p_block1" />
+			<input type="button" name="p_block2" />
+			<input type="button" name="p_block3" />
+			<input type="button" name="p_block4" />
+			<input type="button" name="p_block5" />
+		</div>
+	
+		<div class="p_row_num=2">
+			<input type="button" name="p_block1" />
+			<input type="button" name="p_block2" />
+			<input type="button" name="p_block3" />
+			<input type="button" name="p_block4" />
+			<input type="button" name="p_block5" />
+		</div>
+		<div class="p_row_num=3">
+			<input type="button" name="p_block1" />
+			<input type="button" name="p_block2" />
+			<input type="button" name="p_block3" />
+			<input type="button" name="p_block4" />
+			<input type="button" name="p_block5" />
+		</div>
+		<div class="p_row_num=4">
+			<input type="button" name="p_block1" />
+			<input type="button" name="p_block2" />
+			<input type="button" name="p_block3" />
+			<input type="button" name="p_block4" />
+			<input type="button" name="p_block5" />
+		</div>
+		<div class="p_row_num=5">
+			<input type="button" name="p_block1" />
+			<input type="button" name="p_block2" />
+			<input type="button" name="p_block3" />
+			<input type="button" name="p_block4" />
+			<input type="button" name="p_block5" />
+		</div>
 	</div>
 </form>
 <!-- </form> -->
