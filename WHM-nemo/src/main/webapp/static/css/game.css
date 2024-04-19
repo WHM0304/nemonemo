@@ -4,8 +4,8 @@
   display: flex;
   margin-left: 10%;
   justify-content: center;
-  width: 50%;
-  gap: 3rem;
+  width: 90%;
+  gap: 1.5rem;
 }
 
 form.HM-game_board {
@@ -13,7 +13,12 @@ form.HM-game_board {
 }
 .HM-game-input_box {
   text-align: center;
-  width: 50%;
+  width: 90%;
+  input {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+  }
 }
 .main-row-hint {
   text-align: right;
