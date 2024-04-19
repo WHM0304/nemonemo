@@ -14,7 +14,6 @@ input {
 		
 </script>
 
-	
 	<div class="main-column-hint">
 		<div id="column1-hint"></div>
 		<div id="column2-hint"></div>
