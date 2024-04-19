@@ -2,8 +2,10 @@ package com.whm0304.nemo.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,8 +50,8 @@ public class GameController {
 
 
 
-	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String game(Model model) {
+	@RequestMapping(value =  "/{LEVEL}", method = RequestMethod.GET)
+	public String game(Model model,@PathVariable(name="LEVEL",required = false ,value="")  String LEVEL) {
 //		List<GameLevel1VO> row1 = gameLevel1Dao.selectAll();
 //		List<GameLevel2VO> row2 = gameLevel2Dao.selectAll();
 		List<GameLevel5VO> row5 = gameLevel5Dao.selectAll();
@@ -57,6 +59,8 @@ public class GameController {
 //		String p_num = "1";
 //		String p_num = "2";
 		String p_num = "5";
+		log.debug("레벨 정보 :: :{}",LEVEL);
+		
 		List<GameLevel5PlayerVO> player = gameLevel5PlayerDao.selectAll(p_id, p_num);
 //		model.addAttribute("LEVEL1", row1);
 //		model.addAttribute("PLAYERLEVEL1", player);
