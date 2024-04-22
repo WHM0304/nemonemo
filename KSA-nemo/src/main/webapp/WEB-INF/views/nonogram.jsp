@@ -20,6 +20,9 @@
             cursor: pointer;
             background-color: white; /* 초기에는 모든 셀을 흰색으로 설정합니다. */
         }
+        div.row {
+        	margin-left: 30px 
+        }
         .black {
             background-color: black;
         }
@@ -35,21 +38,36 @@
         .hidden {
             display: none;
         }
+        /* 테이블의 셀과 동일한 크기로 설정하기 위한 스타일 */
+        .cell span {
+		    display: inline-block;
+		    width: 30px; /* 테이블 셀의 너비에 맞춤 */
+		    height: 30px; /* 테이블 셀의 높이에 맞춤 */
+		    line-height: 30px; /* 수직 가운데 정렬 */
+		    text-align: center; /* 수평 가운데 정렬 */
+		    writing-mode: vertical-rl; /* 세로로 글을 쓰는 방향으로 설정 */
+		    transform: rotate(180deg); /* 180도 회전 */
+		}
     </style>
 </head>
 <body>
+    <!-- 각 행의 숫자 힌트를 표시하는 부분 -->
+    <div class="row">
+        <c:forEach var="row" items="${rows}">
+            <span class="cell"><span>${row.hints}</span></span> <!-- 각 행의 숫자 힌트를 표시 -->
+        </c:forEach>
+    </div>
+
     <table>
         <!-- 게임 보드를 표시하는 부분 -->
         <c:forEach var="row" items="${rows}">
             <tr>
-                <td>${row.hints}</td> <!-- 각 행의 숫자 힌트를 표시 -->
+            	<td>${row.hints}</td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block1}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block2}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block3}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block4}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block5}"></td>
-                <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block6}"></td>
-                <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block7}"></td>
             </tr>
         </c:forEach>
     </table>
