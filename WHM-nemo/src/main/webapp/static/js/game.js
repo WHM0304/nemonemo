@@ -178,6 +178,7 @@ document?.addEventListener("DOMContentLoaded", () => {
   form_box?.addEventListener("click", (e) => {
     const target = e.target;
     const input_value = target.value;
+    alert(target.closest("DIV").previousSibling.className);
     const clear_div = document.querySelector("#clear");
     clear_div.innerHTML = "";
     if (target.tagName === "INPUT") {

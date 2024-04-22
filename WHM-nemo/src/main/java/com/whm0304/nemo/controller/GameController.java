@@ -2,7 +2,6 @@ package com.whm0304.nemo.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +53,9 @@ public class GameController {
 	public String game(Model model,@PathVariable(name="LEVEL",required = false ,value="")  String LEVEL) {
 //		List<GameLevel1VO> row1 = gameLevel1Dao.selectAll();
 //		List<GameLevel2VO> row2 = gameLevel2Dao.selectAll();
+		
 		List<GameLevel5VO> row5 = gameLevel5Dao.selectAll();
+		
 		String p_id = "1";
 //		String p_num = "1";
 //		String p_num = "2";
@@ -68,6 +69,7 @@ public class GameController {
 //		model.addAttribute("PLAYERLEVEL2", player);
 		model.addAttribute("LEVEL5", row5);
 		model.addAttribute("PLAYERLEVEL5", player);
+		model.addAttribute("p_num",p_num);
 		model.addAttribute("BODY", "GAME");
 
 		return "layout";
