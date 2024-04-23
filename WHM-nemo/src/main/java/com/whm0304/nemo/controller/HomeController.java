@@ -5,18 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.whm0304.nemo.models.GameLevel1VO;
-import com.whm0304.nemo.persistance.GameLevel1Dao;
+import com.whm0304.nemo.persistance.GameLevelDao;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 public class HomeController {
-	private final GameLevel1Dao gameLevel1Dao;
+	private final GameLevelDao gameLevelDao;
 	
-	public HomeController(GameLevel1Dao gameLevel1Dao) {
-		this.gameLevel1Dao=gameLevel1Dao;
+	public HomeController(GameLevelDao gameLevelDao) {
+		this.gameLevelDao=gameLevelDao;
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)

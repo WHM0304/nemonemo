@@ -66,7 +66,8 @@ INSERT INTO tbl_nemo_play
 (p_id,p_num,p_row_num,p_block1,p_block2,p_block3,p_block4,p_block5)
 VALUE('1','1','5','0','0','0','0','0');
 
-SELECT * FROM tbl_nemo_play;
+SELECT * FROM tbl_nemo_play
+WHERE p_id = 1 AND p_num = 5;
 
 -- 클리어정보
 CREATE TABLE tbl_clear (
@@ -135,4 +136,6 @@ VALUES('1','5','1','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'),
 ('1','5','15','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0');
 
 
+SELECT * FROM tbl_nemo WHERE n_num = '2';
+SELECT * FROM tbl_nemo_play WHERE p_num = '2' AND p_id = '1';
 
