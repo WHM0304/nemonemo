@@ -2,6 +2,7 @@ document?.addEventListener("DOMContentLoaded", () => {
   const nav_hover = document.querySelector(".HM-main_hover_box");
   const nav_box = document.querySelector(".HM-main_nav");
   const select_box = document.querySelector(".HM-home_picture");
+  // console?.log(CLEAR);
 
   nav_hover?.addEventListener("click", (e) => {
     const qq = e.target;

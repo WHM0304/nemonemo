@@ -3,11 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 
+
+<script>
+	const CLEAR = "${CLEAR}"
+</script>
+
 <div class="HM-home_container">
 	<div class="HM-home_top">
 		<div class="HM-home_first_menu">
 			<div class="HM-home_weather">
-				<label > <span>날씨</span></label>
+				<label> <span>날씨</span></label>
 			</div>
 
 			<div class="HM-home_img">
@@ -26,6 +31,7 @@
 		</div>
 	</div>
 	<div class="HM-home_picture">
+
 		<div>
 			<div id="LEVEL3"></div>
 			<div id="LEVEL1"></div>
@@ -34,6 +40,7 @@
 			<div id="LEVEL4"></div>
 			<div id="LEVEL2"></div>
 		</div>
+
 	</div>
 	<div class="HM-home_diary"></div>
 </div>

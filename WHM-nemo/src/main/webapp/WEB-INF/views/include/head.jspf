@@ -13,8 +13,8 @@
 	href="${rootPath}/static/css/main.css?2024-04-05-006">
 <link rel="stylesheet"
 	href="${rootPath}/static/css/game.css?2024-04-18-222">
-<script src="${rootPath}/static/js/main.js?2024-04-10-222"></script>
-<script src="${rootPath}/static/js/game.js?2024-04-12-111"></script>
+<script src="${rootPath}/static/js/main.js?2024-04-10-005"></script>
+<script src="${rootPath}/static/js/game.js?2024-04-12-012"></script>
 <script>
 	const rootPath = "${rootPath}"
 </script>
