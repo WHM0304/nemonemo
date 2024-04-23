@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whm0304.nemo.persistance.GameLevelPlayerDao">
+	
+	
+	<update id="update">
+		UPDATE tbl_nemo_play
+		SET ${p_block_name} = #{p_block_value}
+		WHERE p_id = #{p_id} AND p_num = #{p_num}
+		 AND p_row_num = #{p_row_num}
+	</update>
+
+</mapper>

@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class GameLevel1VO {
+public class GameLevelVO {
 	
 	private int n_num;
 	private int n_row_num;
@@ -22,6 +22,16 @@ public class GameLevel1VO {
 	private Integer n_block3;
 	private Integer n_block4;
 	private Integer n_block5;
+	private Integer n_block6;
+	private Integer n_block7;
+	private Integer n_block8;
+	private Integer n_block9;
+	private Integer n_block10;
+	private Integer n_block11;
+	private Integer n_block12;
+	private Integer n_block13;
+	private Integer n_block14;
+	private Integer n_block15;
 	
 	
 	

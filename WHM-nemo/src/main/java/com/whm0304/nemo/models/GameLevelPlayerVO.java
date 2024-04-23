@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class GameLevel5PlayerVO {
+public class GameLevelPlayerVO {
 	
 	private String p_id;
 	private int p_num;
