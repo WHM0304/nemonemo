@@ -11,6 +11,7 @@ input {
 	const LEVEL1 = "${LEVEL1}"
 	const LEVEL2 = "${LEVEL2}"
 	const LEVEL5 = "${LEVEL5}"
+	const p_num = "${p_num}"
 	
 		
 </script>
@@ -53,8 +54,8 @@ input {
 	</div>
 	<div class="HM-game-input_box">
 		<div class="p_num=${p_num }"></div>
-		<div class="p_row_num=1">
-			<input type="button" name="p_block1" />
+		<div class="p_row_num=1" id= "_ww">
+			<input type="button" name="p_block1"/>
 			<input type="button" name="p_block2" />
 			<input type="button" name="p_block3" />
 			<input type="button" name="p_block4" />

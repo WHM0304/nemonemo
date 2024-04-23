@@ -74,6 +74,15 @@ public class GameController {
 
 		return "layout";
 	}
+	
+	@RequestMapping(value="/{LEVEL}" , method=RequestMethod.POST)
+	public String game(GameLevel5PlayerVO vo , Model model,
+			@PathVariable(name="LEVEL",required = false,value="") String LEVEL) {
+		
+		log.debug("빚다ㅣㅂㅈ다ㅣㅂㅈ다ㅣㅂㅈ다{}",vo);
+		
+		return "layout";
+	}
 
 	
 

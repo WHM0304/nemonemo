@@ -178,7 +178,12 @@ document?.addEventListener("DOMContentLoaded", () => {
   form_box?.addEventListener("click", (e) => {
     const target = e.target;
     const input_value = target.value;
-    alert(target.closest("DIV").previousSibling.className);
+    const _p_row_num = target.closest("DIV").className;
+    const p_row_num = _p_row_num.split("p_row_num=")[1];
+    const input_p_row_num = target.closest("DIV");
+
+    alert(_p_row_num);
+    // alert(p_num);
     const clear_div = document.querySelector("#clear");
     clear_div.innerHTML = "";
     if (target.tagName === "INPUT") {
@@ -251,5 +256,30 @@ document?.addEventListener("DOMContentLoaded", () => {
     // console.log(USERLEVEL1[0].length);
     // console.log(USERLEVEL1.length);
     // console.log(_data);
+    const div_input_box = document.querySelector(
+      ".HM-game-input_box"
+    );
+    const div_inputs = div_input_box.childNodes[3];
+
+    // const div_inputs = div_input_box.querySelector("#_ww");
+
+    const input_p_blocks = input_p_row_num.querySelectorAll("INPUT");
+    console.log(input_p_blocks[0].className);
+    // const input_p_blocks = document.querySelector(".1");
+    const submit_form = document.createElement("form");
+    submit_form.method = "POST";
+    const input_row_num = document.createElement("input");
+    input_row_num.name = "p_row_num";
+    const input_p_num = document.createElement("input");
+    input_p_num.name = "p_num";
+
+    input_p_num.value = p_num;
+    input_row_num.value = p_row_num;
+    submit_form.appendChild(input_row_num);
+    submit_form.appendChild(input_p_num);
+    submit_form.append(input_p_blocks);
+    form_box.appendChild(submit_form);
+    // console.log(input_p_blocks);
+    submit_form.submit();
   });
 });
