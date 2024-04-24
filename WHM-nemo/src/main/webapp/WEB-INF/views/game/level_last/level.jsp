@@ -8,10 +8,9 @@ input {
 }
 </style>
 <script >
-	const LEVEL1 = "${LEVEL1}"
-	const LEVEL2 = "${LEVEL2}"
-	const LEVEL5 = "${LEVEL5}"
+	const STEP = "${STEP}"
 	const p_num = "${p_num}"
+	const PLAY = "${PLAY}"
 	
 		
 </script>
@@ -313,31 +312,13 @@ input {
 	</div>
 </form>
 <!-- </form> -->
-<%-- <c:forEach items="${LEVEL1}" var="row">
 
-<div class="p_num=${row.n_num}">
-		${row.n_num}	${row.n_row_num}
-</div>
-</c:forEach> --%>
 
 
 <div id="clear"></div>
 
 
 
-<%-- <c:forEach items="${PLAYERLEVEL1}" var="ROW" varStatus="INDEX">
-
-	<span>그림번호 ${ROW.p_num}</span> <span>행번호 ${ROW.p_row_num}</span>
-	<div>
-		<span>${ROW.p_block1}</span>
-		<span>${ROW.p_block2}</span>
-		<span>${ROW.p_block3}</span>
-		<span>${ROW.p_block4}</span>
-		<span>${ROW.p_block5}</span>
-		
-	</div>
-
-</c:forEach> --%> 
 
 <div id="play">
 
