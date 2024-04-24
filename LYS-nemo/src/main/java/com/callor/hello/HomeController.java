@@ -17,7 +17,7 @@ import com.callor.hello.model.NemoVO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @Controller
 public class HomeController {
 
@@ -46,7 +46,7 @@ public class HomeController {
 		String userid = "USER1";
 		nemoVO.setP_id(userid); // 임시적용 아이디
 		nemoVO.setP_num(1); // 나중에 그림번호 변수 만들어서 1자리에 집어넣기
-		nemoVO.setP_row_num(1);
+		nemoVO.setP_row_num(1); // 이건 row 범위만 해당하면 상관x
 
 		// 그림번호로 조회하는거니 이게 있으면.. 플레이를 한적있는거
 		Integer numcheck = nemoDao.findByRow_num(nemoVO);
@@ -62,12 +62,30 @@ public class HomeController {
 			nemoVO.setP_block4(0);
 			nemoVO.setP_block5(0); // 모든 스테이지를 다 만들게 아니면 반복문으로...해야할듯
 
-			for (int i = 0; i < row; i++) {
-				nemoVO.setP_row_num(i + 1); // 현재는 총5개
+			for (int i = 1; i <= row; i++) {
+				nemoVO.setP_row_num(i); // 현재는 총5개
 				nemoDao.insert(nemoVO);
 			}
 			// 다시 생성안되게
 		} // 자동생성 if문 end -------------------------------------------
+
+		// =================================================================
+		// ====== 화면에 데이터정보에따라 체크된 화면 불러오기 ============
+		// 자동생성 끝나면 이제 화면에 플레이 정보 불러와서 체크되게끔
+		// 5개의 행을 전부다 추가
+		
+		// 조회한 데이터가 1이면 class 를 추가해서 똑같이 검게 칠하고 체크되어
+		// 보이는 것처럼!!!
+	
+		// id랑 그림번호는 고정이니까 두고 row만 바꿔서
+		// 5줄의 플레이어 정보를 jsp에 보내서 화면에보여주기
+		for (int i = 1; i <= row; i++) {
+		    nemoVO.setP_row_num(i); 
+		    NemoVO rowData = nemoDao.findByRow(nemoVO);
+		    model.addAttribute("row" + i + "Data", rowData);
+		}
+
+		 // ================================================================= 
 
 
 		return "home";
@@ -177,26 +195,14 @@ public class HomeController {
 
 		// 입력한 데이터 바로바로 불러와지기 (칸 칠해져있게)
 
-		/*
-		 * 행 데이터를 전부 불러오고, 마찬가지로 플레이어 게임정보 데이터도 전부 불러와서 findByRow로 한줄씩 다 가져와서 비교 각각의
-		 * 행데이터(block 의 값)을 비교해서 .. 점수변수를 하나 선언하고.. 다른게 있으면 ++ 해서 스테이지 점수 별같은거 조정
-		 * 
-		 * 다 맞췄으면 클리어 테이블에 데이터 생성 c_id, c_level, c_clear (유저아이디,그림번호,클리어(1))
-		 * 
-		 * 
-		 */
-
 		// 나중에 메인화면(스테이지 선택창)에서 이 클리어테이블 정보를 불러와서 없으면 ?같은 그림으로 보이게하고
 		// 클리어를 한 스테이지 이면 완성된 도트 이미지 보여주기
 
-//		log.debug(nemoVO.toString());
-//		log.debug("{}",rowcheck);
-//		log.debug("block1: {}, block2: {}, block3: {}, block4: {}, block5: {}", block1, block2, block3, block4, block5);
-
+		
 		return "redirect:/";
 	}
 	
-	// 정답비교 
+	// 정답비교 다그렸다 주소
 	// 그림번호/행번호 row는 게임하는곳에서 행 개수 변수
 	@RequestMapping(value="/correct_check/{p_num}/{row}", method=RequestMethod.GET)
 	public String correct_check (Model model, NemoVO nemoVO, ANemoVO anemoVO, ClearVO clearVO,
@@ -243,16 +249,45 @@ public class HomeController {
 	        model.addAttribute("wrongMessage", wrong_count + "개 틀렸어요!");
 	    } else {
 	        model.addAttribute("clearMessage", "완성했어!!");
-	        // 클리어정보 테이블에 데이터 생성 
+	        // 클리어정보 테이블에 클리어기록 추가
 	        clearVO.setC_id(userid);
 	        clearVO.setC_level(picture_num);
-	        clearVO.setC_clear(1);
+	        clearVO.setC_clear(1); // 이거 빼도 될듯
 	        clearDao.insert(clearVO);
 	    }
 		
 		
 		
-		return "home"; // 검사하고 다시게임화면으로
+		return "home"; // 검사하고 다시게임화면으로 : 이래야 메시지보임
+	}
+	
+	
+	// 지우개버튼 : 지우는 주소
+	@RequestMapping(value="/reset/{p_num}/{row}", method=RequestMethod.GET)
+	public String reset (Model model, NemoVO nemoVO,
+			@RequestParam(value = "p_num", required = false) Integer picture_num,
+			@RequestParam(value = "row", required = false) Integer row_num
+			) { 
+		String userid = "USER1";
+		nemoVO.setP_id(userid);
+		nemoVO.setP_num(picture_num);
+		
+		// 초기화해야하니까 block 전부 0으로 저장
+		
+		nemoVO.setP_block1(0);
+		nemoVO.setP_block2(0);
+		nemoVO.setP_block3(0);
+		nemoVO.setP_block4(0);
+		nemoVO.setP_block5(0); 
+
+		for (int i = 1; i <= row_num; i++) {
+			nemoVO.setP_row_num(i); 
+			nemoDao.update(nemoVO);
+		}
+		
+		
+		return "home"; // 지우고 다시 보내기
+		
 	}
 	
 }

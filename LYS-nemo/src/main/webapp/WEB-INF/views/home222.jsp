@@ -29,6 +29,22 @@ div.row {
 background-color: black;
 }
 
+/* 선택한 색상을 변수로 지정 */
+:root {
+    --selected-color: black; /* 기본값은 검은색으로 지정 */
+}
+
+/* 체크된 상태의 체크박스에 대한 스타일 */
+.nemo:checked {
+    background-color: var(--selected-color);
+}
+
+/* 기본 배경색이 지정된 체크박스에 대한 스타일 */
+.nemo.p_data_1 {
+    background-color: var(--selected-color);
+}
+
+
 /* 체크 박스가 체크되었을 때의 스타일 */
 /* .nemo:checked {
     background-color: black;
@@ -147,7 +163,11 @@ cursor: pointer;
 			</form>
 		</div>
 		<section class="game_menu">
-			<a href="${rootPath}/reset/1/5?p_num=1&row=5"><img class="eraser" src="${rootPath}/static/images/eraser.png" width="100px"/></a>
+		    <div class="color_picker">
+		        <input type="color" id="colorPicker" />
+		        <label for="colorPicker">색상 선택</label>
+		    </div>
+		    <a href="${rootPath}/reset/1/5?p_num=1&row=5"><img class="eraser" src="${rootPath}/static/images/eraser.png" width="100px"/></a>
 		</section>
 	</div>
 	<a class="complete" href="${rootPath}/correct_check/1/5?p_num=1&row=5">다그렸다!</a>
@@ -160,34 +180,34 @@ cursor: pointer;
         <div>${clearMessage}</div>
     </c:if>
 	<script>
-		document.addEventListener('DOMContentLoaded',() => {
-
-		  const inputs = document.querySelectorAll('input.nemo');
+		document.addEventListener('DOMContentLoaded', () => {
+		    const inputs = document.querySelectorAll('input.nemo');
+		    const colorPicker = document.getElementById('colorPicker');
 	
-
-		  inputs.forEach((input) => {
-		    input.addEventListener('click', ()=> {
-
-		    	const form = input.closest('form');
-		      
-
-		    	const button = form.querySelector('button[type="submit"]');
-		      
-
-		      button.click();
+		    colorPicker.addEventListener('change', () => {
+		        const color = colorPicker.value;
+		        document.documentElement.style.setProperty('--selected-color', color);
 		    });
-		  });
-		  
-		 /*  const complete_btn = document.querySelector("button.complete")
-		  
-		  complete_btn.addEventListener('click', ()=> {
-			  
-		  } */
-		  
-		  
-		  
+	
+		    inputs.forEach((input) => {
+		        input.addEventListener('click', (event) => {
+		            const isChecked = input.checked;
+		            const form = input.closest('form');
+		            const color = colorPicker.value;
+	
+		            if (isChecked) {
+		                input.classList.add('p_data_1');
+		                input.style.backgroundColor = color;
+		            } else {
+		                input.classList.remove('p_data_1');
+		                input.style.backgroundColor = '';
+		            }
+	
+		            // 폼 제출 이벤트 다시 시작
+		            form.submit();
+		        });
+		    });
 		});
-
 	</script>
 </body>
 </html> 
