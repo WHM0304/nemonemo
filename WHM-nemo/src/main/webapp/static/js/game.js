@@ -1,7 +1,7 @@
 // 게임을 시작했을때부터
 document?.addEventListener("DOMContentLoaded", () => {
-  const _hint_div = document.querySelector(".main-column-hint");
-  const hint_div = _hint_div.querySelectorAll("div");
+  const _hint_div = document?.querySelector(".main-column-hint");
+  const hint_div = _hint_div?.querySelectorAll("div");
   const row_hint = [];
   const column_hint = [];
   for (let i = 0; i < hint_div.length; i++) {
@@ -174,12 +174,28 @@ document?.addEventListener("DOMContentLoaded", () => {
   // clear 여부 확인
   const clear_div = document.querySelector("#clear");
   let clear = areArrayEqual(LEVEL_CLEAR, PLAYER);
+
+  // 클리어 패치 함수
+  const clear_fetch = async (c_id, c_level) => {
+    try {
+      const res = await fetch(
+        `${rootPath}/game/clear/${c_id},${c_level}`
+      );
+      const result = await res.json();
+      return result.toString();
+    } catch (error) {}
+  };
   // console.log(USERLEVEL1);
   // console.log(LEVEL1_CLEAR);
   // console.log(clear);
   if (clear === true) {
-    // alert("clear");
-    clear_div.innerHTML = "성공!";
+    clear_div.innerHTML = "클리어";
+    clear_fetch("1", p_num);
+    if (!confirm("클리어했습니다. 이대로있겠습니까?")) {
+      document.location.replace(`${rootPath}`);
+    } else {
+      return false;
+    }
   }
 
   console.log(clear);
@@ -285,13 +301,19 @@ document?.addEventListener("DOMContentLoaded", () => {
     //  input_p_blocks[i].type = "";
     //}
     const update_name = document.createElement("input");
+    const _export = document.createElement("input");
+    _export.name = "p_block_value";
+    _export.value = target.value;
+    _export.type = "";
     update_name.name = "p_block_name";
     update_name.value = target.name;
-    target.type = "";
-    target.name = "p_block_value";
-    submit_form.appendChild(target);
+    submit_form.appendChild(_export);
     submit_form.appendChild(update_name);
-    form_box.appendChild(submit_form);
+    submit_form.style.display = "none";
+
+    const play = document.querySelector("#play");
+    play.style.display = "none";
+    play.appendChild(submit_form);
     // console.log(submit_form); ////
     // console.log(input_p_blocks[2].value);
 
