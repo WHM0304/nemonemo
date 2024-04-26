@@ -41,7 +41,7 @@
 				<div id="row5-hint"></div>
 			</div>
 			<div class="main-input-box">
-			<form method="POST" >
+			<form method="POST"  >
 				<div class="p_row_num1">
 					<input type="checkbox" name="p_block1"  />
 					<input type="checkbox" name="p_block2" />
@@ -100,6 +100,8 @@
 			</div>
 			
 		</div>
+		<button id="clear">정답확인</button>
+		<div id="CLEAR_IS"></div>
 	</section>
 </body>
 </html>
