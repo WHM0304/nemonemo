@@ -1,4 +1,4 @@
-package com.nemo.nemo.model;
+package com.nemo.hello.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,12 +1,13 @@
 package com.nemo.nemo.controller;
 
+import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.nemo.nemo.dao.NemoDao;
 import com.nemo.nemo.dao.SpeechDao;
@@ -26,17 +27,27 @@ public class HomeController {
 	}
 
 	@GetMapping("/")
-	public String home(Model model) {
-		List<SpeechVO> speechList = speechDao.selectByNNum(1);
-        StringBuilder conversationScriptBuilder = new StringBuilder();
-        for (SpeechVO speech : speechList) {
-            conversationScriptBuilder.append(speech.generateConversationScript());
-        }
-        String conversationScript = conversationScriptBuilder.toString();
-        
-        model.addAttribute("conversationScript", conversationScript);
-		return "layout";
-	}
+    public String home(Model model) {
+        // 현재 날짜 가져오기
+        LocalDate now = LocalDate.now();
+
+        // 년, 월, 일 추출
+        int year = now.getYear();
+        int month = now.getMonthValue();
+        int day = now.getDayOfMonth();
+
+        List<SpeechVO> speechList = speechDao.selectAll();
+//		List<SpeechVO> speechList = speechDao.selectByNNum(1);
+
+        // 모델에 날짜와 대화 데이터 추가
+        model.addAttribute("year", year);
+        model.addAttribute("month", month);
+        model.addAttribute("day", day);
+        model.addAttribute("SPEECH", speechList);
+        model.addAttribute("BODY", "HOME");
+
+        return "layout";
+    }
 
 	@GetMapping("/nono1")
 	public String nono1(Model model) {

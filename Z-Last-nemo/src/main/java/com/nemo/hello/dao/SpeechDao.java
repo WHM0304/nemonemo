@@ -1,4 +1,4 @@
-package com.nemo.nemo.dao;
+package com.nemo.hello.dao;
 
 import java.util.List;
 

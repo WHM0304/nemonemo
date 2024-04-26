@@ -13,8 +13,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SpeechVO {
+public class TestSpeechVO {
     private int s_num;
-    private String s_speaker;
-    private String s_message;
+    private String s_a1;
+    private String s_b1;
+    private String s_a2;
+    private String s_b2;
 }
