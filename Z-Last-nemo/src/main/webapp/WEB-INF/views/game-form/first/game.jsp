@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="${rootPath }/static/js/game.js?2024-04-25-222"></script>
-<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-123">
+<script src="${rootPath }/static/js/game.js?2024-04-25-555"></script>
+<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-522">
 <title>여기는 제목</title>
 <script>
 	const STEP = "${STEP}"
 	const PLAY = "${PLAY}"
+	
 </script>
 </head>
 <body>
@@ -95,11 +96,16 @@
 					<input name="p_num" value="1" hidden="true"/>
 					<input name="p_row_num" value="5" hidden="true"/>
 				</div>
-			</form>			
+			</form>	
+					
 			
+			</div>
+			<div class="main-delete">
+			<button id="ALL_DELETE">모두지우기</button>
 			</div>
 			
 		</div>
+		<div id="lives">목숨: <span class="heart">♥</span><span class="heart">♥</span><span class="heart">♥</span></div>
 		<button id="clear">정답확인</button>
 		<div id="CLEAR_IS"></div>
 	</section>

@@ -1,6 +1,8 @@
 document?.addEventListener("DOMContentLoaded", () => {
   const form_container = document.querySelector(".main-input-box");
-  const input_check_all = document.querySelectorAll("input[type='checkbox']");
+  const input_check_all = document.querySelectorAll(
+    "input[type='checkbox']"
+  );
   const _hint_div = document.querySelector(".main-column-hint");
   const hint_div = _hint_div.querySelectorAll("div");
   const row_hint = [];
@@ -145,11 +147,22 @@ document?.addEventListener("DOMContentLoaded", () => {
   if (PLAYER) {
     for (let i = 0; i < row_hint.length; i++) {
       for (let j = 0; j < column_hint.length; j++) {
-        _div[i].querySelectorAll('input[type="checkbox"]')[j].value = PLAYER[i][j];
-        if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 1) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = "checked";
-        } else if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 0) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = false;
+        _div[i].querySelectorAll('input[type="checkbox"]')[j].value =
+          PLAYER[i][j];
+        if (
+          _div[i].querySelectorAll('input[type="checkbox"]')[j]
+            .value == 1
+        ) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[
+            j
+          ].checked = "checked";
+        } else if (
+          _div[i].querySelectorAll('input[type="checkbox"]')[j]
+            .value == 0
+        ) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[
+            j
+          ].checked = false;
         }
       }
     }
@@ -170,6 +183,7 @@ document?.addEventListener("DOMContentLoaded", () => {
     const find = target.closest("div");
     const p_row_num = find.className.substr(9) - 1;
     const p_block = target.name.substr(7) - 1;
+
     target.value = Number(1);
     if (target.checked === "checked") {
       target.value = Number(1);
@@ -191,8 +205,7 @@ document?.addEventListener("DOMContentLoaded", () => {
     // console.log(CLEAR);
 
     // 클리어 여부확인
-    const CLEAR = areArrayEqual(CORRECT, PLAYER);
-    const MANY = HOW_MANY_DIFFERNT(CORRECT, PLAYER);
+
     // console.log(CLEAR);
     // console.log(MANY);
 
@@ -209,41 +222,57 @@ document?.addEventListener("DOMContentLoaded", () => {
     //   }
     // }
 
-    // const p_block_name = document.createElement("input");
-    // p_block_name.name = "p_block_name";
-    // p_block_name.value = target.name;
-    // p_block_name.hidden = "hidden";
-    // const p_block_value = document.createElement("input");
-    // p_block_value.name = "p_block_value";
-    // p_block_value.value = target.value;
-    // p_block_value.hidden = "hidden";
+    const p_block_name = document.createElement("input");
+    p_block_name.name = "p_block_name";
+    p_block_name.value = target.name;
+    p_block_name.hidden = "hidden";
+    const p_block_value = document.createElement("input");
+    p_block_value.name = "p_block_value";
+    p_block_value.value = target.value;
+    p_block_value.hidden = "hidden";
 
-    // submit_form.appendChild(p_block_name);
-    // submit_form.appendChild(p_block_value);
-    // alert(target.name);
-    // alert(submit_form.querySelector("div").className);
-    // console.log(submit_form.innerHTML);
+    submit_form.appendChild(p_block_name);
+    submit_form.appendChild(p_block_value);
 
-    // console.log(str.value);
-    // alert(target.name);
-    // alert(target.value);
-
-    // console.log(PLAYER);
-    // for (let i = 0; i < ex.length; i++) {
-    //   if (ex[i].checked) {
-    //     ex[i].value = "0";
-    //   }
-    // }
-
-    // console.log(submit_form.innerHTML);
     submit_form.submit();
 
     //
   });
+  const input_all = document.querySelector(".main-input-box");
+  const p_row_num = input_all.querySelectorAll("div").length;
+  const p_num = input_all.querySelector('input[name="p_num"]').value;
+  //정답확인 버튼눌렀을때 몇개 틀렸는지  맞았는지 확인
+  const btn_clear = document.querySelector("#clear");
+  btn_clear?.addEventListener("click", (e) => {
+    const CLEAR = areArrayEqual(CORRECT, PLAYER);
+    const MANY = HOW_MANY_DIFFERNT(CORRECT, PLAYER);
+    const lives = document.querySelector("#lives");
+    const heart = lives.querySelectorAll(".heart");
+    const result = document.querySelector("#CLEAR_IS");
+    const last = heart.length - 1;
+    if (CLEAR === true) {
+      result.innerHTML = "정답입니다.";
+    } else {
+      result.innerHTML = `${MANY}개 틀렸습니다.\n다시풀어주세요`;
+      heart[last].remove();
+    }
 
-  // 정답확인 버튼눌렀을때 몇개 틀렸는지  맞았는지 확인
-  // const btn_clear = document.querySelector("#clear");
-  // btn_clear.addEventListener("click",(e)=>{
+    if (last === 0) {
+      alert("실패!");
+      document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
+    }
+  });
 
-  // })
+  // 지우기 버튼 눌렀을때 데이터 다 없애기
+  const btn_delete = document.querySelector("#ALL_DELETE");
+  btn_delete.addEventListener("click", () => {
+    // console.log(p_row_num);
+    // console.log(p_num);
+    if (confirm("삭제하시겠습니까?")) {
+      document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
+    } else {
+      return false;
+    }
+    // console.log(input_all);
+  });
 });
