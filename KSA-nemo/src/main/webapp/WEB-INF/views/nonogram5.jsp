@@ -20,12 +20,12 @@
             cursor: pointer;
             background-color: white; /* 초기에는 모든 셀을 흰색으로 설정합니다. */
         }
-        div.row {
-        	margin-left: 100px 
-        }
         td.num {
         width: 100px;
         text-align: right;
+        }
+        div.row {
+        	margin-left: 102px 
         }
         .black {
             background-color: black;
@@ -52,13 +52,15 @@
 		    writing-mode: vertical-rl; /* 세로로 글을 쓰는 방향으로 설정 */
 		    transform: rotate(180deg); /* 180도 회전 */
 		}
+	
     </style>
 </head>
 <body>
+	<div class="text">하이하이<div>
     <!-- 각 행의 숫자 힌트를 표시하는 부분 -->
     <div class="row">
-        <c:forEach var="row" items="${rows}">
-            <span class="cell"><span>${row.hints}</span></span> <!-- 각 행의 숫자 힌트를 표시 -->
+        <c:forEach var="hint" items="${colHints}">
+            <span class="cell num"><span>${hint}</span></span> <!-- 각 행의 숫자 힌트를 표시 -->
         </c:forEach>
     </div>
 
@@ -66,7 +68,7 @@
         <!-- 게임 보드를 표시하는 부분 -->
         <c:forEach var="row" items="${rows}">
             <tr>
-            	<td class="num">${row.hints}</td> <!-- 각 행의 숫자 힌트를 표시 -->
+            	<td class="num">${row.hints}</td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block1}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block2}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block3}"></td>
@@ -106,7 +108,7 @@
             }
 
             // 클리어 판단
-          /*   if (clickedCells.length === 7) {
+       /*      if (clickedCells.length === 7) {
                 clearGame();
             } */
         }
@@ -122,17 +124,17 @@
             disableCellClicks(); // 셀 클릭 이벤트를 비활성화합니다.
         }
 
-       /*  function gameOver() {
+        function gameOver() {
             alert('게임 오버!'); // 알림 창을 표시합니다.
             disableCellClicks(); // 셀 클릭 이벤트를 비활성화합니다.
-        } */
+        }
 
-       /*  function disableCellClicks() {
+        function disableCellClicks() {
             var cells = document.querySelectorAll('.cell');
             cells.forEach(function(cell) {
                 cell.onclick = null; // 각 셀의 클릭 이벤트를 제거합니다.
             });
-        } */
+        }
 
         function decreaseLife() {
             var heart = document.querySelector('.heart:not(.hidden)');

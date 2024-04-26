@@ -53,8 +53,8 @@
 <body>
     <!-- 각 행의 숫자 힌트를 표시하는 부분 -->
     <div class="row">
-        <c:forEach var="row" items="${rows}">
-            <span class="cell"><span>${row.hints}</span></span> <!-- 각 행의 숫자 힌트를 표시 -->
+        <c:forEach var="hint" items="${colHints}">
+            <span class="cell"><span>${hint}</span></span> <!-- 각 행의 숫자 힌트를 표시 -->
         </c:forEach>
     </div>
 
