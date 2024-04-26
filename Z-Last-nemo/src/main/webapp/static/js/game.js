@@ -214,6 +214,18 @@ document?.addEventListener("DOMContentLoaded", () => {
     // console.log(submit_form.innerHTML);
     // console.log(PLAYER);
     const ex = submit_form.querySelectorAll('input[type="checkbox"]');
+
+    // const _data = [];
+    // for (let i = 0; i < ex.length; i++) {
+    //   if (ex[i].value == 0) {
+    //     _data = document.createElement("input");
+    //     _data[i].hidden = "hidden";
+    //     _data[i].value = ex[i].value;
+    //     submit_form.appendChild(_data[i]);
+    //   }
+    // }
+    // console.log(_date[0]);
+    // submit_form.submit();
     // submit_form.append(ex);
     // for (let i = 0; i < ex.length; i++) {
     //   if (ex[i].value == 0) {

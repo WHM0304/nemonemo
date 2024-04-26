@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nemo.hello.dao.GameDao;
 import com.nemo.hello.dao.PlayerDao;
@@ -53,9 +52,9 @@ public class GameController {
 		vo.setP_id(p_id);
 		
 		
-		log.debug("dd : {}");
-		
-		int result = playerDao.update(vo); 
+		log.debug("dd : {}",vo);
+		int result = playerDao.update(vo);
+//		int result = playerDao.update(vo); 
 		return "redirect:/game";
 //		return "game-form/first/game";
 		
