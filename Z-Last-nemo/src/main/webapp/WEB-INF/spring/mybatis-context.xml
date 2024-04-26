@@ -22,5 +22,7 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="factoryBean"/>
 	</bean>
+	
+	<mybatis-spring:scan base-package="com.nemo.hello.dao"/>
 
 </beans>

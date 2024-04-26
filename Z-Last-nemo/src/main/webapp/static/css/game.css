@@ -14,12 +14,12 @@ body {
 .main-all-container {
   border: 1px solid #ddd;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .main-form-container {
   width: 50%;
-  margin: 100px auto;
+  margin: 0 auto;
 
   input[type="checkbox"] {
     width: 60px;
@@ -36,5 +36,47 @@ body {
   }
 }
 
-.p_row_num1 {
+.main-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+}
+.main-row-hint {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+  flex: 1;
+  text-align: right;
+  margin-right: 2rem;
+}
+.main-input-box {
+  flex: 3;
+  margin: 0 auto;
+}
+.main-hint-container {
+  display: flex;
+  flex: 1;
+}
+.blank {
+  flex: 1;
+}
+.main-column-hint {
+  margin: 0 auto;
+  display: flex;
+  flex: 2;
+  /* gap: 60px; */
+  gap: 13px;
+  align-items: end;
+  margin-top: 1rem;
+  margin-left: 9%;
+  padding: 10px;
+  div {
+    width: 55px;
+    text-align: center;
+  }
+}
+.game-container {
+  padding: 6rem;
 }

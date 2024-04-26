@@ -7,18 +7,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="${rootPath }/static/js/game.js?2024-04-25-0067"></script>
-<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-006">
+<script src="${rootPath }/static/js/game.js?2024-04-25-222"></script>
+<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-123">
 <title>여기는 제목</title>
+<script>
+	const STEP = "${STEP}"
+	const PLAY = "${PLAY}"
+</script>
 </head>
 <body>
-	<section class="main-all-container">
-		<div class="main-column-hint">
-			<div id="column1-hint"></div>
-			<div id="column2-hint"></div>
-			<div id="column3-hint"></div>
-			<div id="column4-hint"></div>
-			<div id="column5-hint"></div>
+<%@ include file="/WEB-INF/views/include/head.jspf"%>
+<%@ include file="/WEB-INF/views/include/header.jspf"%>
+
+
+
+	<section class="game-container">
+		<div class="main-hint-container">
+			<div class="blank"></div>
+			<div class="main-column-hint">
+				<div id="column1-hint"></div>
+				<div id="column2-hint"></div>
+				<div id="column3-hint"></div>
+				<div id="column4-hint"></div>
+				<div id="column5-hint"></div>
+			</div>
 		</div>
 		<div class="main-form-container">
 			<div class="main-row-hint">
@@ -28,6 +40,7 @@
 				<div id="row4-hint"></div>
 				<div id="row5-hint"></div>
 			</div>
+			<div class="main-input-box">
 			<form method="POST" >
 				<div class="p_row_num1">
 					<input type="checkbox" name="p_block1"  />
@@ -84,7 +97,7 @@
 				</div>
 			</form>			
 			
-			
+			</div>
 			
 		</div>
 	</section>
