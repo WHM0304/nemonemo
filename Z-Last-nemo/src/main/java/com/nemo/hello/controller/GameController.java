@@ -46,10 +46,24 @@ public class GameController {
 		log.debug("asdasdasd{}",LEVEL);
 		String p_id = "1";
 		List<GameVO> game = gameDao.selectAll(p_num);
+		playerDao.insert(p_id,p_num);
 		List<PlayerVO> player = playerDao.selectAll(p_id, p_num);
+		
 		model.addAttribute("STEP",game);
 		model.addAttribute("PLAY",player);
-		return "game-form/third/game";
+		String output = null ;
+		if(LEVEL.equals("1")) {
+			output = "first";
+//			log.debug("asdaskdpiowqkpodqkwpodqwkopd : {}",LEVEL);
+		}else if(LEVEL.equals("2")){
+			output = "second";
+		}else if(LEVEL.equals("3")){
+			output = "third";
+		}else if(LEVEL.equals("4")){
+			output = "fourth";
+		}
+		log.debug("asdaskdpiowqkpodqkwpodqwkopd : {}",LEVEL);
+		return "game-form/"+ output +"/game";
 	}
 	
 	@RequestMapping(value="/{LEVEL}" , method=RequestMethod.POST)
@@ -76,12 +90,11 @@ public class GameController {
 		vo.setP_id(p_id);
 		log.debug(" VO :{}",Integer.valueOf(vo.getP_row_num()));
 		Integer max = Integer.valueOf(vo.getP_row_num());
-
-		for(int i = 1; i<=max; i++) {
-			vo.setP_row_num(i);
-			int reset = playerDao.reset(vo);
+	
+			int reset = playerDao.reset(p_id, p_num);
 			
-		}
+		
+		log.debug("확인좀해봅시다 --{} -- {}",p_id,p_num);
 		return "redirect:/game/{p_num}";
 //		return null;
 //		return "game-form/first/game";

@@ -8,7 +8,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="${rootPath }/static/js/game.js?2024-04-25-222"></script>
+
 <link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-522">
+
 <title>여기는 제목</title>
 <script>
 	const STEP = "${STEP}"
@@ -109,5 +111,6 @@
 		<button id="clear">정답확인</button>
 		<div id="CLEAR_IS"></div>
 	</section>
+	
 </body>
 </html>

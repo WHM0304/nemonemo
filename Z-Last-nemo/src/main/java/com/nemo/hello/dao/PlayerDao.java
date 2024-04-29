@@ -23,10 +23,13 @@ public interface PlayerDao {
 
 
 
-	public int insert(PlayerVO vo);
 
 
 
-	public int reset(PlayerVO vo);
+	public int reset(@Param("p_id") String p_id,@Param("p_num") String p_num);
+
+
+
+	public int insert(@Param("p_id")String p_id,@Param("p_num") String p_num);
 
 }
