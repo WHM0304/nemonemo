@@ -52,8 +52,9 @@ public class GameController {
 		return "game-form/third/game";
 	}
 	
-	@RequestMapping(value={"/",""} , method=RequestMethod.POST)
-	public String game(UpdateVO vo) {
+	@RequestMapping(value="/{LEVEL}" , method=RequestMethod.POST)
+	public String game(UpdateVO vo, 
+			@PathVariable(name="LEVEL",required = false) String LEVEL) {
 
 		String p_id = "1";
 		vo.setP_id(p_id);
@@ -62,13 +63,14 @@ public class GameController {
 		log.debug("dd : {}",vo);
 		int result = playerDao.update(vo);
 //		int result = playerDao.update(vo); 
-		return "redirect:/game";
+		return "redirect:/game/{LEVEL}";
 //		return "game-form/first/game";
 		
 	}
 	
 	@RequestMapping(value="/reset/{p_num}/{p_row_num}", method=RequestMethod.GET)
-	public String reset(Model model,PlayerVO vo) {
+	public String reset(Model model,PlayerVO vo,
+			@PathVariable(name="p_num",required = false) String p_num) {
 		
 		String p_id = "1";
 		vo.setP_id(p_id);
@@ -80,8 +82,8 @@ public class GameController {
 			int reset = playerDao.reset(vo);
 			
 		}
-		return "redirect:/game";
-		
+		return "redirect:/game/{p_num}";
+//		return null;
 //		return "game-form/first/game";
 	}
 
