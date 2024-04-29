@@ -52,6 +52,7 @@
 				</c:forEach>
 			</div>
 		</div>
+		<button id="skipButton">skip</button>
 		<button id="nextButton">&#187;&#187;</button>
 	</div>
 </div>

@@ -28,10 +28,8 @@ public class HomeController {
 
 	@GetMapping("/")
     public String home(Model model) {
-        // 현재 날짜 가져오기
+		
         LocalDate now = LocalDate.now();
-
-        // 년, 월, 일 추출
         int year = now.getYear();
         int month = now.getMonthValue();
         int day = now.getDayOfMonth();
