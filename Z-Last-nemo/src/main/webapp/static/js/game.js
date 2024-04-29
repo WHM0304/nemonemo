@@ -1,8 +1,6 @@
 document?.addEventListener("DOMContentLoaded", () => {
   const form_container = document.querySelector(".main-input-box");
-  const input_check_all = document.querySelectorAll(
-    "input[type='checkbox']"
-  );
+  const input_check_all = document.querySelectorAll("input[type='checkbox']");
   const _hint_div = document.querySelector(".main-column-hint");
   const hint_div = _hint_div.querySelectorAll("div");
   const row_hint = [];
@@ -11,6 +9,19 @@ document?.addEventListener("DOMContentLoaded", () => {
     row_hint[i] = document.querySelector(`#row${i + 1}-hint`);
     column_hint[i] = document.querySelector(`#column${i + 1}-hint`);
   }
+  // 마우스 우클릭 제거
+  window.oncontextmenu = function () {
+    return false;
+  };
+  // 마우스 우클릭
+  form_container.addEventListener("mousedown", (event) => {
+    if (event.input === 2 || event.which === 3) {
+      const target = event.target;
+      if (target.type === "checkbox") {
+        target.classList.toggle("blue");
+      }
+    }
+  });
 
   // 정답정보를 2차원배열로 변환하는 코드
   const MAKE_CLEAR_ARRAY = (LEVEL, row) => {
@@ -147,22 +158,11 @@ document?.addEventListener("DOMContentLoaded", () => {
   if (PLAYER) {
     for (let i = 0; i < row_hint.length; i++) {
       for (let j = 0; j < column_hint.length; j++) {
-        _div[i].querySelectorAll('input[type="checkbox"]')[j].value =
-          PLAYER[i][j];
-        if (
-          _div[i].querySelectorAll('input[type="checkbox"]')[j]
-            .value == 1
-        ) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[
-            j
-          ].checked = "checked";
-        } else if (
-          _div[i].querySelectorAll('input[type="checkbox"]')[j]
-            .value == 0
-        ) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[
-            j
-          ].checked = false;
+        _div[i].querySelectorAll('input[type="checkbox"]')[j].value = PLAYER[i][j];
+        if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 1) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = "checked";
+        } else if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 0) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = false;
         }
       }
     }
