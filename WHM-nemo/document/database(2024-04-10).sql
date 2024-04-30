@@ -220,3 +220,11 @@ VALUES	('1','4','1','0','0','0','0','0','0','0','0','0','0','0'),
 
 
 SELECT * FROM tbl_clear;
+
+
+CREATE TABLE tbl_speech(
+s_num	INT,
+s_speaker	VARCHAR(1),
+s_message	VARCHAR(100)
+
+);
