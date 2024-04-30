@@ -39,7 +39,11 @@ public class GameController {
 		List<GameVO> game = gameDao.selectAll(p_num);
 
 		List<PlayerVO> player = playerDao.selectAll(p_id, p_num);
-
+		try {
+			playerDao.insert(p_id, p_num);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		model.addAttribute("STEP", game);
 		model.addAttribute("PLAY", player);
 		String output = null;
@@ -52,6 +56,8 @@ public class GameController {
 			output = "third";
 		} else if (LEVEL.equals("4")) {
 			output = "fourth";
+		} else if (LEVEL.equals("5")) {
+			output = "last";
 		}
 		log.debug("asdaskdpiowqkpodqkwpodqwkopd : {}", LEVEL);
 		return "game-form/" + output + "/game";
