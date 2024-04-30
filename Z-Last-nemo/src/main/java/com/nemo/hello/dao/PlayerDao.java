@@ -31,5 +31,6 @@ public interface PlayerDao {
 
 
 	public int insert(@Param("p_id")String p_id,@Param("p_num") String p_num);
+	
 
 }

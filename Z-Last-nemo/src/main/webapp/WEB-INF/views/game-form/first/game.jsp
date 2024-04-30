@@ -108,7 +108,7 @@
 			
 		</div>
 		<div id="lives">목숨: <span class="heart">♥</span><span class="heart">♥</span><span class="heart">♥</span></div>
-		<button id="clear">정답확인</button>
+		<div class="clear"><button id="clear">정답확인</button></div>
 		<div id="CLEAR_IS"></div>
 	</section>
 	
