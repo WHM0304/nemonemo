@@ -101,3 +101,16 @@ body {
 .blue {
   background-color: blue;
 }
+#ALL_DELETE {
+  background-image: url("../img/eraser_icon.png");
+  background-color: white;
+  background-position: center;
+  width: 96px;
+  height: 96px;
+  transition: 1s;
+  border-radius: 20px;
+  &:hover {
+    cursor: pointer;
+    background-color: #ddd;
+  }
+}
