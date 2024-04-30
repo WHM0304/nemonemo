@@ -5,6 +5,32 @@ document?.addEventListener("DOMContentLoaded", () => {
   const hint_div = _hint_div.querySelectorAll("div");
   const row_hint = [];
   const column_hint = [];
+  let _heart_count = "3";
+  const lives = document.querySelector("#lives");
+  const heart = lives.querySelectorAll(".heart");
+  if (!sessionStorage.getItem("heartSession") || sessionStorage.getItem("heartSession") == 0) {
+    sessionStorage.setItem("heartSession", _heart_count);
+    for (let i = 0; i < 3; i++) {
+      const create_heart = document.createElement("span");
+      create_heart.classList.add("heart");
+      create_heart.innerHTML = "♥";
+      lives.appendChild(create_heart);
+    }
+  } else {
+    sessionStorage.getItem("heartSession");
+    const heart = lives.querySelectorAll(".heart");
+    if (sessionStorage.getItem("heartSession") !== heart.length) {
+      const heart_number = sessionStorage.getItem("heartSession");
+      for (let i = 0; i < heart_number; i++) {
+        const create_heart = document.createElement("span");
+        create_heart.classList.add("heart");
+        create_heart.innerHTML = "♥";
+        lives.appendChild(create_heart);
+      }
+    }
+  }
+
+  // console.log(sessionStorage.getItem("heartSession"));
   for (let i = 0; i < hint_div.length; i++) {
     row_hint[i] = document.querySelector(`#row${i + 1}-hint`);
     column_hint[i] = document.querySelector(`#column${i + 1}-hint`);
@@ -258,18 +284,21 @@ document?.addEventListener("DOMContentLoaded", () => {
   btn_clear?.addEventListener("click", (e) => {
     const CLEAR = areArrayEqual(CORRECT, PLAYER);
     const MANY = HOW_MANY_DIFFERNT(CORRECT, PLAYER);
-    const lives = document.querySelector("#lives");
-    const heart = lives.querySelectorAll(".heart");
+
     const result = document.querySelector("#CLEAR_IS");
-    const last = heart.length - 1;
+
     if (CLEAR === true) {
       result.innerHTML = "정답입니다.";
     } else {
       result.innerHTML = `${MANY}개 틀렸습니다.\n다시풀어주세요`;
-      heart[last].remove();
+      const _minus = sessionStorage.getItem("heartSession");
+      sessionStorage.setItem("heartSession", _minus - 1);
+      const qwer = document.querySelectorAll(".heart");
+      let last = qwer.length - 1;
+      qwer[last].remove();
     }
 
-    if (last === 0) {
+    if (sessionStorage.getItem("heartSession") == 0) {
       alert("실패!");
       document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
     }

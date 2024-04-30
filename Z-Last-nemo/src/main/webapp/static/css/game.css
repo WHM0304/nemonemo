@@ -112,5 +112,6 @@ body {
   &:hover {
     cursor: pointer;
     background-color: #ddd;
+    background-position: right;
   }
 }
