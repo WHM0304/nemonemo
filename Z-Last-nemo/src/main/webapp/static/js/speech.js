@@ -41,6 +41,21 @@ function displayConversation() {
   }
 }
 
+// 대화 완료 상태를 로컬 스토리지에 저장하는 함수
+function saveConversationState() {
+  localStorage.setItem("conversationComplete", "true");
+}
+
+// 이전에 대화를 완료한 상태인지 확인하는 함수
+function isConversationComplete() {
+  return localStorage.getItem("conversationComplete") === "true";
+}
+
+// 대화 완료 상태를 초기화하는 함수
+function resetConversationState() {
+  localStorage.removeItem("conversationComplete");
+}
+
 // 다음 버튼 클릭 시 대화 진행
 nextButton.addEventListener("click", () => {
   // 다음 대화로 이동
@@ -48,6 +63,8 @@ nextButton.addEventListener("click", () => {
 
   // 대화가 끝났는지 확인
   if (currentSpeechIndex >= speechParts.length) {
+    // 대화가 끝나면 대화 완료 상태를 저장
+    saveConversationState();
     // 대화가 끝나면 conversationBox-back 요소 숨기기
     speechend.style.display = "none";
   } else {
@@ -56,10 +73,20 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// 스킵 버튼 클릭 시 대화 창 닫기
+// 스킵 버튼 클릭 시 대화 완료 처리
 skipButton.addEventListener("click", () => {
+  // 대화 완료 상태를 저장
+  saveConversationState();
   // 대화 창 숨기기
   speechend.style.display = "none";
+});
+
+// 페이지 로드 시 이전에 대화를 완료한 상태인지 확인하여 처리
+window.addEventListener("load", () => {
+  if (isConversationComplete()) {
+    // 이전에 대화를 완료한 상태인 경우 대화창 숨기기
+    speechend.style.display = "none";
+  }
 });
 
 // 엔터 키 이벤트 핸들러 추가
@@ -71,6 +98,8 @@ document.addEventListener("keydown", function (event) {
 
     // 대화가 끝났는지 확인
     if (currentSpeechIndex >= speechParts.length) {
+      // 대화가 끝나면 대화 완료 상태를 저장
+      saveConversationState();
       // 대화가 끝나면 conversationBox-back 요소 숨기기
       speechend.style.display = "none";
     } else {

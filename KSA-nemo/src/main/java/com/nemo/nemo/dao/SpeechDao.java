@@ -7,4 +7,6 @@ import com.nemo.nemo.model.SpeechVO;
 public interface SpeechDao {
 	public List<SpeechVO> selectByNNum(int sNum);
 	public List<SpeechVO> selectAll();
+	public List<SpeechVO> selectBySpeechNum(int speechNum);
+	
 }

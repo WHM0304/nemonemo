@@ -22,7 +22,7 @@
 	<nav class="HM-main_nav">
 		<ul>
 			<li>홈</li>
-			<li>게임</li>
+			<li>로그인</li>
 		</ul>
 	</nav>
 </body>
