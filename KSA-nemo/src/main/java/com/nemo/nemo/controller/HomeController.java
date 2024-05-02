@@ -8,7 +8,10 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.nemo.nemo.dao.ClearDao;
 import com.nemo.nemo.dao.NemoDao;
 import com.nemo.nemo.dao.SpeechDao;
 import com.nemo.nemo.model.NemoVO;
@@ -19,14 +22,16 @@ public class HomeController {
 
 	private final NemoDao nemoDao;
 	private final SpeechDao speechDao;
-
-	public HomeController(NemoDao nemoDao, SpeechDao speechDao) {
+	private final ClearDao clearDao;
+//
+	public HomeController(NemoDao nemoDao, SpeechDao speechDao, ClearDao clearDao) {
 		super();
 		this.nemoDao = nemoDao;
 		this.speechDao = speechDao;
+		this.clearDao = clearDao;
 	}
 
-	@GetMapping("/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) {
 		
         LocalDate now = LocalDate.now();
@@ -41,11 +46,12 @@ public class HomeController {
         model.addAttribute("year", year);
         model.addAttribute("month", month);
         model.addAttribute("day", day);
+        
         model.addAttribute("SPEECH", speechList);
         model.addAttribute("BODY", "HOME");
 
         return "layout";
-    }
+	}
 
 	@GetMapping("/nono1")
 	public String nono1(Model model) {
