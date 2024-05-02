@@ -19,8 +19,6 @@ import com.nemo.hello.models.SpeechVO;
 public class HomeController {
 	
 	private final SpeechDao speechDao;
-	
-	
 
 	public HomeController(SpeechDao speechDao) {
 		super();
