@@ -7,10 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="${rootPath }/static/js/game.js?2024-04-25-222"></script>
-
-<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-522">
-
+<script src="${rootPath }/static/js/game.js?2024-04-25-111"></script>
+<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-011">
 <title>여기는 제목</title>
 <script>
 	const STEP = "${STEP}"
@@ -33,6 +31,11 @@
 				<div id="column3-hint"></div>
 				<div id="column4-hint"></div>
 				<div id="column5-hint"></div>
+				<div id="column6-hint"></div>
+				<div id="column7-hint"></div>
+			</div>
+			<div class="main-delete">
+			
 			</div>
 		</div>
 		<div class="main-form-container">
@@ -42,6 +45,8 @@
 				<div id="row3-hint"></div>
 				<div id="row4-hint"></div>
 				<div id="row5-hint"></div>
+				<div id="row6-hint"></div>
+				<div id="row7-hint"></div>
 			</div>
 			<div class="main-input-box">
 			<form method="POST"  >
@@ -51,7 +56,9 @@
 					<input type="checkbox" name="p_block3" >
 					<input type="checkbox" name="p_block4" />
 					<input type="checkbox" name="p_block5" />
-					<input name="p_num" value="1" hidden="true"/>
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
 					<input name="p_row_num" value="1" hidden="true"/>
 				</div>
 			</form>
@@ -62,7 +69,9 @@
 					<input type="checkbox" name="p_block3" />
 					<input type="checkbox" name="p_block4" />
 					<input type="checkbox" name="p_block5" />
-					<input name="p_num" value="1" hidden="true"/>
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
 					<input name="p_row_num" value="2" hidden="true"/>
 				</div>
 			</form>
@@ -73,7 +82,9 @@
 					<input type="checkbox" name="p_block3" />
 					<input type="checkbox" name="p_block4" />
 					<input type="checkbox" name="p_block5" />
-					<input name="p_num" value="1" hidden="true"/>
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
 					<input name="p_row_num" value="3" hidden="true"/>
 				</div>
 			</form>
@@ -84,7 +95,9 @@
 					<input type="checkbox" name="p_block3" />
 					<input type="checkbox" name="p_block4" />
 					<input type="checkbox" name="p_block5" />
-					<input name="p_num" value="1" hidden="true"/>
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
 					<input name="p_row_num" value="4" hidden="true"/>
 				</div>
 			</form>
@@ -95,15 +108,42 @@
 					<input type="checkbox" name="p_block3" />
 					<input type="checkbox" name="p_block4" />
 					<input type="checkbox" name="p_block5" />
-					<input name="p_num" value="1" hidden="true"/>
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
 					<input name="p_row_num" value="5" hidden="true"/>
 				</div>
 			</form>	
-					
+			<form method="POST" >
+				<div class="p_row_num6">
+					<input type="checkbox" name="p_block1" />
+					<input type="checkbox" name="p_block2" />
+					<input type="checkbox" name="p_block3" />
+					<input type="checkbox" name="p_block4" />
+					<input type="checkbox" name="p_block5" />
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
+					<input name="p_row_num" value="6" hidden="true"/>
+				</div>
+			</form>	
+			<form method="POST" >
+				<div class="p_row_num7">
+					<input type="checkbox" name="p_block1" />
+					<input type="checkbox" name="p_block2" />
+					<input type="checkbox" name="p_block3" />
+					<input type="checkbox" name="p_block4" />
+					<input type="checkbox" name="p_block5" />
+					<input type="checkbox" name="p_block6" />
+					<input type="checkbox" name="p_block7" />
+					<input name="p_num" value="2" hidden="true"/>
+					<input name="p_row_num" value="7" hidden="true"/>
+				</div>
+			</form>			
 			
 			</div>
 			<div class="main-delete">
-			<button id="ALL_DELETE"></button>
+			<button id="ALL_DELETE">모두지우기</button>
 			</div>
 			
 		</div>
@@ -111,6 +151,5 @@
 		<div class="clear"><button id="clear">정답확인</button></div>
 		<div id="CLEAR_IS"></div>
 	</section>
-	
 </body>
 </html>

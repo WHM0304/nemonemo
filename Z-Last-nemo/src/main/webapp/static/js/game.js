@@ -1,16 +1,53 @@
 document?.addEventListener("DOMContentLoaded", () => {
   const form_container = document.querySelector(".main-input-box");
-  const input_check_all = document.querySelectorAll(
-    "input[type='checkbox']"
-  );
+  const input_check_all = document.querySelectorAll("input[type='checkbox']");
   const _hint_div = document.querySelector(".main-column-hint");
   const hint_div = _hint_div.querySelectorAll("div");
   const row_hint = [];
   const column_hint = [];
+  let _heart_count = "3";
+  const lives = document.querySelector("#lives");
+  const heart = lives.querySelectorAll(".heart");
+  if (!sessionStorage.getItem("heartSession") || sessionStorage.getItem("heartSession") == 0) {
+    sessionStorage.setItem("heartSession", _heart_count);
+    for (let i = 0; i < 3; i++) {
+      const create_heart = document.createElement("span");
+      create_heart.classList.add("heart");
+      create_heart.innerHTML = "♥";
+      lives.appendChild(create_heart);
+    }
+  } else {
+    sessionStorage.getItem("heartSession");
+    const heart = lives.querySelectorAll(".heart");
+    if (sessionStorage.getItem("heartSession") !== heart.length) {
+      const heart_number = sessionStorage.getItem("heartSession");
+      for (let i = 0; i < heart_number; i++) {
+        const create_heart = document.createElement("span");
+        create_heart.classList.add("heart");
+        create_heart.innerHTML = "♥";
+        lives.appendChild(create_heart);
+      }
+    }
+  }
+
+  // console.log(sessionStorage.getItem("heartSession"));
   for (let i = 0; i < hint_div.length; i++) {
     row_hint[i] = document.querySelector(`#row${i + 1}-hint`);
     column_hint[i] = document.querySelector(`#column${i + 1}-hint`);
   }
+  // 마우스 우클릭 제거
+  window.oncontextmenu = function () {
+    return false;
+  };
+  // 마우스 우클릭
+  form_container.addEventListener("mousedown", (event) => {
+    if (event.input === 2 || event.which === 3) {
+      const target = event.target;
+      if (target.type === "checkbox") {
+        target.classList.toggle("blue");
+      }
+    }
+  });
 
   // 정답정보를 2차원배열로 변환하는 코드
   const MAKE_CLEAR_ARRAY = (LEVEL, row) => {
@@ -147,22 +184,11 @@ document?.addEventListener("DOMContentLoaded", () => {
   if (PLAYER) {
     for (let i = 0; i < row_hint.length; i++) {
       for (let j = 0; j < column_hint.length; j++) {
-        _div[i].querySelectorAll('input[type="checkbox"]')[j].value =
-          PLAYER[i][j];
-        if (
-          _div[i].querySelectorAll('input[type="checkbox"]')[j]
-            .value == 1
-        ) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[
-            j
-          ].checked = "checked";
-        } else if (
-          _div[i].querySelectorAll('input[type="checkbox"]')[j]
-            .value == 0
-        ) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[
-            j
-          ].checked = false;
+        _div[i].querySelectorAll('input[type="checkbox"]')[j].value = PLAYER[i][j];
+        if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 1) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = "checked";
+        } else if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 0) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = false;
         }
       }
     }
@@ -258,18 +284,21 @@ document?.addEventListener("DOMContentLoaded", () => {
   btn_clear?.addEventListener("click", (e) => {
     const CLEAR = areArrayEqual(CORRECT, PLAYER);
     const MANY = HOW_MANY_DIFFERNT(CORRECT, PLAYER);
-    const lives = document.querySelector("#lives");
-    const heart = lives.querySelectorAll(".heart");
+
     const result = document.querySelector("#CLEAR_IS");
-    const last = heart.length - 1;
+
     if (CLEAR === true) {
       result.innerHTML = "정답입니다.";
     } else {
       result.innerHTML = `${MANY}개 틀렸습니다.\n다시풀어주세요`;
-      heart[last].remove();
+      const _minus = sessionStorage.getItem("heartSession");
+      sessionStorage.setItem("heartSession", _minus - 1);
+      const qwer = document.querySelectorAll(".heart");
+      let last = qwer.length - 1;
+      qwer[last].remove();
     }
 
-    if (last === 0) {
+    if (sessionStorage.getItem("heartSession") == 0) {
       alert("실패!");
       document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
     }
