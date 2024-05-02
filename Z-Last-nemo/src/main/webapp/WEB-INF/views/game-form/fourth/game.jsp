@@ -246,7 +246,7 @@
 			</form>
 			</div>
 			<div class="main-delete">
-			<button id="ALL_DELETE">모두지우기</button>
+			<button id="ALL_DELETE"></button>
 			</div>
 			
 		</div>

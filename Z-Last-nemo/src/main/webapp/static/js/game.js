@@ -299,7 +299,7 @@ document?.addEventListener("DOMContentLoaded", () => {
     }
 
     if (sessionStorage.getItem("heartSession") == 0) {
-      alert("실패!");
+      alert("실패! 목숨을 모두 소진하여 초기화됩니다");
       document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
     }
   });
