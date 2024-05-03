@@ -61,25 +61,37 @@ body {
 
 .main-column-hint {
   display: flex;
-  /* gap: 60px; */
-  gap: 5px;
-  align-items: end;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  /* width: 50%; */
+  /* margin: 0 auto; */
 
+  margin-right: 37px;
+  gap: 2px;
+  margin-bottom: 3rem;
   div {
-    border: 1px solid blue;
     width: 40px;
+    height: 40px;
+    margin: 1px;
+
     text-align: center;
+    margin-right: 4px;
   }
 }
-.blank {
+.main-column-left-blank {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;
+  /* gap: 10px; */
   flex: 0.4;
   text-align: right;
+}
+.main-column-right-blank {
+  margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
 .heart {

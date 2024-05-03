@@ -25,7 +25,7 @@
 
 	<section class="game-container">
 		<div class="main-hint-container">
-			<div class="blank"></div>
+				<div class="main-column-left-blank"></div>
 			<div class="main-column-hint">
 				<div id="column1-hint"></div>
 				<div id="column2-hint"></div>
@@ -37,9 +37,7 @@
 				<div id="column8-hint"></div>
 				<div id="column9-hint"></div>
 			</div>
-			<div class="main-delete">
-			
-			</div>
+			<button class="main-column-right-blank"></button>
 		</div>
 		<div class="main-form-container">
 			<div class="main-row-hint">
