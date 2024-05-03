@@ -11,6 +11,12 @@
 		<c:if test="${BODY eq 'HOME' }">
 			<%@ include file="/WEB-INF/views/home.jsp"%>
 		</c:if>
+		<c:if test="${BODY eq 'LOGIN' }">
+			<%@ include file="/WEB-INF/views/user/login.jsp"%>
+		</c:if>
+		<c:if test="${BODY eq 'JOIN' }">
+			<%@ include file="/WEB-INF/views/user/join.jsp"%>
+		</c:if>
 <%-- 		<c:if test="${BODY eq 'GAME' }">
 			<%@ include file="/WEB-INF/views/game/game.jsp" %>
 		

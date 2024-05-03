@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nemo.nemo.dao.ClearDao;
 import com.nemo.nemo.dao.NemoDao;
@@ -32,25 +33,25 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Model model) {
-		
-        LocalDate now = LocalDate.now();
-        int year = now.getYear();
-        int month = now.getMonthValue();
-        int day = now.getDayOfMonth();
+	public String home( Model model) {
+	    LocalDate now = LocalDate.now();
+	    int year = now.getYear();
+	    int month = now.getMonthValue();
+	    int day = now.getDayOfMonth();
 
-        List<SpeechVO> speechList = speechDao.selectAll();
-//		List<SpeechVO> speechList = speechDao.selectByNNum(1);
+	    List<SpeechVO> speechList;
 
-        // 모델에 날짜와 대화 데이터 추가
-        model.addAttribute("year", year);
-        model.addAttribute("month", month);
-        model.addAttribute("day", day);
-        
-        model.addAttribute("SPEECH", speechList);
-        model.addAttribute("BODY", "HOME");
+//	        speechList = speechDao.selectByNNum(1);
+	        speechList = speechDao.selectAll();
 
-        return "layout";
+	    // 모델에 날짜와 대화 데이터 추가
+	    model.addAttribute("year", year);
+	    model.addAttribute("month", month);
+	    model.addAttribute("day", day);
+	    model.addAttribute("SPEECH", speechList);
+	    model.addAttribute("BODY", "HOME");
+
+	    return "layout";
 	}
 
 	@GetMapping("/nono1")
