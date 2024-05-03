@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
+
 	public String login(Model model) {
 		model.addAttribute("BODY", "LOGIN");
 		return "layout";

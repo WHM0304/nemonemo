@@ -14,6 +14,7 @@
 		
 		<sec:intercept-url pattern="/user/login" access="isAnonymous()"/>
 		<sec:intercept-url pattern="/user/join" access="isAnonymous()"/>
+
 		<sec:intercept-url pattern="/**" access="permitAll()"/>
 		
 		<sec:form-login/>

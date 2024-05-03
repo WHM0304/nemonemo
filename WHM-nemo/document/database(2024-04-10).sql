@@ -67,7 +67,10 @@ INSERT INTO tbl_nemo_play
 VALUE('1','1','5','0','0','0','0','0');
 
 SELECT * FROM tbl_nemo_play
-WHERE p_id = 1 AND p_num = 5;
+WHERE p_id = '22' AND p_num = '1';
+
+DELETE FROM tbl_nemo_play
+WHERE p_id = '22' AND p_num = '1';
 
 
 -- 클리어정보
@@ -141,6 +144,7 @@ VALUES('1','5','1','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'),
 
 SELECT * FROM tbl_nemo WHERE n_num = '2';
 SELECT * FROM tbl_nemo_play WHERE p_num = '2' AND p_id = '1';
+
 
 INSERT INTO tbl_nemo
 (n_num,n_row_num,n_block1,n_block2,n_block3,n_block4,n_block5,n_block6,n_block7)

@@ -1,5 +1,7 @@
 package com.callor.hello;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
@@ -15,8 +17,6 @@ import com.callor.hello.model.ANemoVO;
 import com.callor.hello.model.ClearVO;
 import com.callor.hello.model.NemoVO;
 
-import lombok.extern.slf4j.Slf4j;
-
 
 @Controller
 public class HomeController {
@@ -30,9 +30,45 @@ public class HomeController {
 		this.anemoDao = anemoDao;
 		this.clearDao = clearDao;
 	}
+	// 메인추가해보기
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String main (Locale locale, Model model, ClearVO clearVO) {
+		
+		LocalDate currentDate = LocalDate.now();
+		DateTimeFormatter yearFormatter = DateTimeFormatter.ofPattern("yyyy");
+		DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("MM");
+		DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd");
+
+		model.addAttribute("YEAR", currentDate.format(yearFormatter));
+		model.addAttribute("MONTH", currentDate.format(monthFormatter));
+		model.addAttribute("DAY", currentDate.format(dayFormatter));
+
+		
+		model.addAttribute("BODY","MAIN"); // include 용
+		// 사진변경용 ----------------------------------
+		String userid = "USER1";
+		clearVO.setC_id(userid);
+		clearVO.setC_clear(1);
+		
+//		clearVO.setC_level(1);
+//		ClearVO clearData =  clearDao.findByRow(clearVO);
+//		 model.addAttribute("clear_data1" , clearData);
+//		// 총5개 그림(레벨)
+		for(int i=1 ; i<=5 ; i++) {
+			clearVO.setC_level(i);
+			ClearVO clearData =  clearDao.findByRow(clearVO);
+			
+			    model.addAttribute("clear_data" + i , clearData);
+			// 클리어정보 1~5에 따라 그림다르게
+		}
+		
+		return "layout";
+	}
+	
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, NemoVO nemoVO) {
+		model.addAttribute("BODY","HOME"); // 레이아웃용
 
 		// 주소에서 가져오는 대신 임시로 쓸 칸개수 번호 변수
 		// 나중에 난이도 별로 만들면 주소에 그림번호/칸개수번호/(n*n)를 넣고
@@ -88,7 +124,8 @@ public class HomeController {
 		 // ================================================================= 
 
 
-		return "home";
+		// return "home";
+		 return "layout"; //레이아웃 씌우기
 	}
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.POST)
@@ -191,13 +228,6 @@ public class HomeController {
 		} 
 		nemoDao.update(nemoVO);
 
-		// ---------- 이후 할일 --------------
-
-		// 입력한 데이터 바로바로 불러와지기 (칸 칠해져있게)
-
-		// 나중에 메인화면(스테이지 선택창)에서 이 클리어테이블 정보를 불러와서 없으면 ?같은 그림으로 보이게하고
-		// 클리어를 한 스테이지 이면 완성된 도트 이미지 보여주기
-
 		
 		return "redirect:/";
 	}
@@ -288,6 +318,18 @@ public class HomeController {
 		
 		return "home"; // 지우고 다시 보내기
 		
+	}
+	
+//	로그인, 회원가입 만들기~~~
+	
+	@RequestMapping(value="/join",method=RequestMethod.GET)
+	public String join() {
+		return null;
+	}
+	
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login() {
+		return null;
 	}
 	
 }

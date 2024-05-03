@@ -52,7 +52,7 @@ public class HomeController {
 	    model.addAttribute("BODY", "HOME");
 
 	    return "layout";
-	}
+
 
 	@GetMapping("/nono1")
 	public String nono1(Model model) {

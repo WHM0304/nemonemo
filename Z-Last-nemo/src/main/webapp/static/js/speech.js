@@ -35,6 +35,7 @@ skipButton.addEventListener("click", () => {
   speechend.style.display = "none";
 });
 
+
 // 다음 버튼 클릭 시 대화 진행
 nextButton.addEventListener("click", () => {
   // 다음 대화로 이동
@@ -42,6 +43,7 @@ nextButton.addEventListener("click", () => {
 
   // 대화가 끝났는지 확인
   if (currentSpeechIndex >= speechParts.length) {
+
     // 대화가 끝나면 대화 창 숨기기
     speechend.style.display = "none";
   } else {
@@ -49,6 +51,7 @@ nextButton.addEventListener("click", () => {
     displayConversation();
   }
 });
+
 
 // 엔터 키 이벤트 핸들러 추가
 document.addEventListener("keydown", function (event) {
@@ -60,6 +63,7 @@ document.addEventListener("keydown", function (event) {
     // 대화가 끝났는지 확인
     if (currentSpeechIndex >= speechParts.length) {
       // 대화가 끝나면 대화 창 숨기기
+
       speechend.style.display = "none";
     } else {
       // 다음 대화 표시
