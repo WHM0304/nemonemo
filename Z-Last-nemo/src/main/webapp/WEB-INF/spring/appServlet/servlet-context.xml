@@ -11,6 +11,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<!-- <tx:annotation-driven proxy-target-class="true"/> -->
 	<!-- Enables the Spring MVC @Controller programming model -->
+	<tx:annotation-driven proxy-target-class="true"/>
 	<mvc:annotation-driven />
 
 	<!-- Handles HTTP GET requests for /static/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -23,6 +24,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<context:component-scan base-package="com.nemo.hello.controller" />
-	<!-- <context:component-scan base-package="com.nemo.hello.impl" /> -->
+	 <context:component-scan base-package="com.nemo.hello.impl" /> 
 </beans>
 

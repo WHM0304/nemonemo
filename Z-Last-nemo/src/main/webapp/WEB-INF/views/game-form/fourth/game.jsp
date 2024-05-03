@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,8 +58,8 @@
 				<div id="row11-hint"></div>
 			</div>
 			<div class="main-input-box">
-			<form method="POST"  >
-				<div class="p_row_num1">
+			<f:form method="POST" action="${rootPath }/game/4" >
+				<div class="p_row_num1 row">
 					<input type="checkbox" name="p_block1"  />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" >
@@ -73,9 +74,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="1" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num2">
+			</f:form>
+			<f:form method="POST" action="${rootPath }/game/4">
+				<div class="p_row_num2 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -90,9 +91,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="2" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num3">
+			</f:form>
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num3 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -107,9 +108,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="3" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num4">
+			</f:form>
+			<f:form method="POST" action="${rootPath }/game/4">
+				<div class="p_row_num4 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -124,9 +125,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="4" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num5">
+			</f:form>
+			<f:form method="POST" action="${rootPath }/game/4">
+				<div class="p_row_num5 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -141,9 +142,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="5" hidden="true"/>
 				</div>
-			</form>	
-			<form method="POST" >
-				<div class="p_row_num6">
+			</f:form>	
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num6 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -158,9 +159,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="6" hidden="true"/>
 				</div>
-			</form>	
-			<form method="POST" >
-				<div class="p_row_num7">
+			</f:form >	
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num7 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -175,9 +176,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="7" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num8">
+			</f:form>
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num8 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -192,9 +193,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="8" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num9">
+			</f:form>
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num9 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -209,9 +210,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="9" hidden="true"/>
 				</div>
-			</form>
-			<form method="POST" >
-				<div class="p_row_num10">
+			</f:form>
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num10 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -226,9 +227,9 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="10" hidden="true"/>
 				</div>
-			</form>			
-			<form method="POST" >
-				<div class="p_row_num11">
+			</f:form>			
+			<f:form method="POST"  action="${rootPath }/game/4">
+				<div class="p_row_num11 row">
 					<input type="checkbox" name="p_block1" />
 					<input type="checkbox" name="p_block2" />
 					<input type="checkbox" name="p_block3" />
@@ -243,7 +244,7 @@
 					<input name="p_num" value="4" hidden="true"/>
 					<input name="p_row_num" value="11" hidden="true"/>
 				</div>
-			</form>
+			</f:form>
 			</div>
 			<div class="main-delete">
 			<button id="ALL_DELETE"></button>
