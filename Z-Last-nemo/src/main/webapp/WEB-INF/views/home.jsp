@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="${rootPath}/static/css/speech.css?2024-04-26-001">
+<link rel="stylesheet"
+	href="${rootPath}/static/css/speech.css?2024-04-26-001">
 <div class="HM-home_container">
 	<div class="HM-home_top">
 		<div class="HM-home_first_menu">
@@ -17,7 +18,8 @@
 					src="${rootPath}/static/img/snow.png">
 			</div>
 			<div>
-				<label class="HM-home_cal"> <span>${year}년</span> <span>${month}월</span> <span>${day}일</span>
+				<label class="HM-home_cal"> <span>${year}년</span> <span>${month}월</span>
+					<span>${day}일</span>
 				</label>
 			</div>
 		</div>
@@ -45,16 +47,20 @@
 			<div id="speechContainer" class="speech-container">
 				<!-- JSTL을 사용하여 대화 데이터를 반복해서 출력 -->
 				<c:forEach items="${SPEECH}" var="speech">
-					<div class="speech-part">
-						<span class="speaker" style="display: none;">${speech.s_speaker}</span>
+					<div class="speech-part" style="display: none;">
+						<!-- 모든 대화를 숨김 -->
+						<span class="num" style="display: none;">${speech.s_num}</span> <span
+							class="speaker" style="display: none;">${speech.s_speaker}</span>
 						<span class="message">${speech.s_message}</span>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
-		<button id="skipButton" class="skipButton">skip</button>
+		<button id="skipButton">skip</button>
 		<button id="nextButton">&#187;&#187;</button>
 	</div>
 </div>
 
-<script src="${rootPath}/static/js/speech.js?2024-04-26-001"></script>
+<script src="${rootPath}/static/js/speech.js?2024-04-26-001">
+
+</script>

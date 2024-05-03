@@ -54,6 +54,7 @@
 						<span class="message">${speech.s_message}</span>
 					</div>
 				</c:forEach>
+
 			</div>
 		</div>
 		<button id="skipButton">skip</button>
@@ -61,6 +62,6 @@
 	</div>
 </div>
 
-<script src="${rootPath}/static/js/speech.js?2024-04-26-001">
-
+<script>
+	
 </script>

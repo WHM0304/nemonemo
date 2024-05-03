@@ -1,5 +1,7 @@
 package com.nemo.nemo.model;
 
+import javax.swing.Spring;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,16 +9,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
 @Setter
+@Getter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TestSpeechVO {
-    private int s_num;
-    private String s_a1;
-    private String s_b1;
-    private String s_a2;
-    private String s_b2;
+public class UserVO {
+ 	private String m_id;
+ 	private String m_pw;	
+ 	private String m_nick;	
 }
