@@ -18,9 +18,9 @@ document?.addEventListener("DOMContentLoaded", () => {
       document.location.href = `${rootPath}/game`;
     }
   });
-  select_box?.addEventListener("click", (e) => {
-    const target = e.target;
-    // alert(target.id);
-    // document.location.href = `${rootPath}/game/${target.id}`;
-  });
+  // select_box?.addEventListener("click", (e) => {
+  //   const target = e.target;
+  //   alert(target.id);
+  //   // document.location.href = `${rootPath}/game/${target.id}`;
+  // });
 });

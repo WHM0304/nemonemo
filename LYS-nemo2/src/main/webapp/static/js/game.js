@@ -1,6 +1,8 @@
 document?.addEventListener("DOMContentLoaded", () => {
   const form_container = document.querySelector(".main-input-box");
-  const input_check_all = document.querySelectorAll("input[type='checkbox']");
+  const input_check_all = document.querySelectorAll(
+    "input[type='checkbox']"
+  );
   const _hint_div = document.querySelector(".main-column-hint");
   const hint_div = _hint_div.querySelectorAll("div");
   const row_hint = [];
@@ -8,7 +10,10 @@ document?.addEventListener("DOMContentLoaded", () => {
   let _heart_count = "3";
   const lives = document.querySelector("#lives");
   const heart = lives.querySelectorAll(".heart");
-  if (!sessionStorage.getItem("heartSession") || sessionStorage.getItem("heartSession") == 0) {
+  if (
+    !sessionStorage.getItem("heartSession") ||
+    sessionStorage.getItem("heartSession") == 0
+  ) {
     sessionStorage.setItem("heartSession", _heart_count);
     for (let i = 0; i < 3; i++) {
       const create_heart = document.createElement("span");
@@ -178,17 +183,28 @@ document?.addEventListener("DOMContentLoaded", () => {
   const PLAYER = Get_Play_Arr(PLAY, row_hint.length);
   // console.log(PLAYER);
   const input_container = document.querySelector(".main-input-box");
-  const _div = input_container.querySelectorAll("div.row");
-  console.log(_div);
+  const _div = input_container.querySelectorAll("div");
+
   // PLAYER 정보가 있으면 사용자 2차배열 들을 input 에 집어넣기
   if (PLAYER) {
     for (let i = 0; i < row_hint.length; i++) {
       for (let j = 0; j < column_hint.length; j++) {
-        _div[i].querySelectorAll('input[type="checkbox"]')[j].value = PLAYER[i][j];
-        if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 1) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = "checked";
-        } else if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 0) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = false;
+        _div[i].querySelectorAll('input[type="checkbox"]')[j].value =
+          PLAYER[i][j];
+        if (
+          _div[i].querySelectorAll('input[type="checkbox"]')[j]
+            .value == 1
+        ) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[
+            j
+          ].checked = "checked";
+        } else if (
+          _div[i].querySelectorAll('input[type="checkbox"]')[j]
+            .value == 0
+        ) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[
+            j
+          ].checked = false;
         }
       }
     }
@@ -206,8 +222,8 @@ document?.addEventListener("DOMContentLoaded", () => {
 
   form_container?.addEventListener("click", (e) => {
     const target = e.target;
-    const find = target.closest("div.row");
-    const p_row_num = find.className.substr(9, 1) - 1;
+    const find = target.closest("div");
+    const p_row_num = find.className.substr(9) - 1;
     const p_block = target.name.substr(7) - 1;
 
     target.value = Number(1);
@@ -277,7 +293,7 @@ document?.addEventListener("DOMContentLoaded", () => {
     //
   });
   const input_all = document.querySelector(".main-input-box");
-  const p_row_num = input_all.querySelectorAll("div.row").length;
+  const p_row_num = input_all.querySelectorAll("div").length;
   const p_num = input_all.querySelector('input[name="p_num"]').value;
   //정답확인 버튼눌렀을때 몇개 틀렸는지  맞았는지 확인
   const btn_clear = document.querySelector("#clear");
@@ -288,8 +304,10 @@ document?.addEventListener("DOMContentLoaded", () => {
     const result = document.querySelector("#CLEAR_IS");
 
     if (CLEAR === true) {
-      // 클리어시 클리어화면 주소로 이동
+      // ys수정
       document.location.href = `${rootPath}/game/clear/${p_num}`;
+      // 클리어정보 생성하는 주소갔다가 돌아오면 정답입니다 메시지뜨게
+
       // result.innerHTML = "정답입니다.";
     } else {
       result.innerHTML = `${MANY}개 틀렸습니다.\n다시풀어주세요`;
@@ -301,17 +319,16 @@ document?.addEventListener("DOMContentLoaded", () => {
     }
 
     if (sessionStorage.getItem("heartSession") == 0) {
-      alert("실패! 목숨을 모두 소진하여 초기화됩니다");
+      alert("실패!");
       document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
     }
   });
 
   // 지우기 버튼 눌렀을때 데이터 다 없애기
   const btn_delete = document.querySelector("#ALL_DELETE");
-
   btn_delete.addEventListener("click", () => {
-    console.log(p_row_num);
-    console.log(p_num);
+    // console.log(p_row_num);
+    // console.log(p_num);
     if (confirm("삭제하시겠습니까?")) {
       document.location.href = `${rootPath}/game/reset/${p_num}/${p_row_num}`;
     } else {
@@ -320,4 +337,3 @@ document?.addEventListener("DOMContentLoaded", () => {
     // console.log(input_all);
   });
 });
-
