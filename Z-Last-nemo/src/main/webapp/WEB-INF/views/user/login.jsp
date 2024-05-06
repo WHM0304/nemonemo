@@ -8,8 +8,8 @@
 <script>
 	const rootPath = "${rootPath}"
 </script>
-
-<f:form action="${rootPath}/user/login">
+<link rel="stylesheet" href="${rootPath }/static/css/join.css?2024-05-07-002">
+<f:form action="${rootPath}/user/login" class="join">
 	<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
 		<div>${SPRING_SECURITY_LAST_EXCEPTION.message}</div>
 	</c:if>
@@ -21,6 +21,6 @@
 	</div>
 
 	<div>
-		<button type="submit">로그인</button>
+		<button type="submit" class="button">로그인</button>
 	</div>
 </f:form>

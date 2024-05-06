@@ -9,11 +9,14 @@ html {
 }
 body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-all-container {
   border: 1px solid #ddd;
   display: flex;
+  flex: 1;
   /* flex-direction: column; */
 }
 
@@ -46,7 +49,7 @@ body {
   gap: 25px;
   flex: 0.4;
   text-align: right;
-  margin-right: 2rem;
+  margin-right: 20px;
 }
 .main-input-box {
   display: flex;
@@ -62,23 +65,19 @@ body {
 .main-column-hint {
   display: flex;
   /* gap: 60px; */
-  gap: 5px;
+  gap: 8px;
   align-items: end;
   margin-top: 1rem;
+  margin-right: 20px;
+  flex-wrap: wrap;
 
   div {
-    border: 1px solid blue;
     width: 40px;
     text-align: center;
   }
 }
 .blank {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  flex: 0.4;
+  flex: 0.38;
   text-align: right;
 }
 

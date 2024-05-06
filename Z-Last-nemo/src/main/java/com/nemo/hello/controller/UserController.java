@@ -1,6 +1,7 @@
 package com.nemo.hello.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,20 +35,22 @@ public class UserController {
 
 
 	@RequestMapping(value="/join" , method=RequestMethod.GET)
-	public String join() {
-		return "user/join";
+	public String join(Model model) {
+		model.addAttribute("BODY" , "JOIN");
+		return "layout";
 	}
 	
 	@RequestMapping(value="/join" , method=RequestMethod.POST)
 	public String join(UserVO VO) {
 		
 		UserVO ret = userService.createUser(VO);
-		return null;
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/login" , method=RequestMethod.GET)
-	public String login() {
-		return null;
+	public String login(Model model) {
+		model.addAttribute("BODY","LOGIN");
+		return "layout";
 	}
 	
 	

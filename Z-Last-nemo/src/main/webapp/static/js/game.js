@@ -1,6 +1,8 @@
 document?.addEventListener("DOMContentLoaded", () => {
   const form_container = document.querySelector(".main-input-box");
-  const input_check_all = document.querySelectorAll("input[type='checkbox']");
+  const input_check_all = document.querySelectorAll(
+    "input[type='checkbox']"
+  );
   const _hint_div = document.querySelector(".main-column-hint");
   const hint_div = _hint_div.querySelectorAll("div");
   const row_hint = [];
@@ -8,7 +10,10 @@ document?.addEventListener("DOMContentLoaded", () => {
   let _heart_count = "3";
   const lives = document.querySelector("#lives");
   const heart = lives.querySelectorAll(".heart");
-  if (!sessionStorage.getItem("heartSession") || sessionStorage.getItem("heartSession") == 0) {
+  if (
+    !sessionStorage.getItem("heartSession") ||
+    sessionStorage.getItem("heartSession") == 0
+  ) {
     sessionStorage.setItem("heartSession", _heart_count);
     for (let i = 0; i < 3; i++) {
       const create_heart = document.createElement("span");
@@ -184,11 +189,22 @@ document?.addEventListener("DOMContentLoaded", () => {
   if (PLAYER) {
     for (let i = 0; i < row_hint.length; i++) {
       for (let j = 0; j < column_hint.length; j++) {
-        _div[i].querySelectorAll('input[type="checkbox"]')[j].value = PLAYER[i][j];
-        if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 1) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = "checked";
-        } else if (_div[i].querySelectorAll('input[type="checkbox"]')[j].value == 0) {
-          _div[i].querySelectorAll('input[type="checkbox"]')[j].checked = false;
+        _div[i].querySelectorAll('input[type="checkbox"]')[j].value =
+          PLAYER[i][j];
+        if (
+          _div[i].querySelectorAll('input[type="checkbox"]')[j]
+            .value == 1
+        ) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[
+            j
+          ].checked = "checked";
+        } else if (
+          _div[i].querySelectorAll('input[type="checkbox"]')[j]
+            .value == 0
+        ) {
+          _div[i].querySelectorAll('input[type="checkbox"]')[
+            j
+          ].checked = false;
         }
       }
     }
@@ -320,4 +336,3 @@ document?.addEventListener("DOMContentLoaded", () => {
     // console.log(input_all);
   });
 });
-
