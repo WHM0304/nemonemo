@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // speechend.style.display = "block"; // 대화창 표시
         // currentSpeechIndex = 10; // 대화 인덱스 초기화
         // displayConversation(); // 대화 표시 함수 호출
-        // document.location.href = `${rootPath}/game/` + levelNumber;
+        document.location.href = `${rootPath}/game/` + levelNumber;
     }
      });
  }); 
