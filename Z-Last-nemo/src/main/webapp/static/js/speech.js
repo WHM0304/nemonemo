@@ -33,8 +33,10 @@ function displayConversation() {
 skipButton.addEventListener("click", () => {
   // 대화 창 숨기기
   speechend.style.display = "none";
+  const level = document.querySelector(".HM-home_picture").dataset
+    .level;
+  document.location.href = `${rootPath}/game/${level}`;
 });
-
 
 // // 다음 버튼 클릭 시 대화 진행
 // nextButton.addEventListener("click", () => {
@@ -52,12 +54,7 @@ skipButton.addEventListener("click", () => {
 //   }
 // });
 
-
-
-
-
-
-// --------- YS 수정 
+// --------- YS 수정
 // 다음 버튼 클릭 시 대화 진행
 
 // const nextLevelImages = document.querySelectorAll(".YS_picture.next_level");
@@ -68,10 +65,10 @@ skipButton.addEventListener("click", () => {
 
 // 다음 버튼 클릭 시 대화 진행
 const levelNumberMap = {
-  "LEVEL1": 1,
-  "LEVEL2": 2,
-  "LEVEL3": 3,
-  "LEVEL4": 4,
+  LEVEL1: 1,
+  LEVEL2: 2,
+  LEVEL3: 3,
+  LEVEL4: 4,
   // 다른 레벨이 있을 경우 여기에 추가
 };
 
@@ -84,26 +81,20 @@ nextButton.addEventListener("click", () => {
   if (currentSpeechIndex >= speechParts.length) {
     // 대화가 끝나면 대화 창 숨기기
     speechend.style.display = "none";
-    
+
     // 현재 LEVEL에 대한 번호를 가져옴
-    const currentLevel = speechend.parentElement.id;
-    const levelNumber = levelNumberMap[currentLevel];//undefined 나옴
+    const level = document.querySelector(".HM-home_picture").dataset
+      .level;
 
     // 해당 LEVEL에 대한 게임 페이지로 이동
-    document.location.href = `${rootPath}/game/${levelNumber}`; 
+    document.location.href = `${rootPath}/game/${level}`;
   } else {
     // 다음 대화 표시
     displayConversation();
   }
 });
 
-
-
-
-
 //-------------
-
-
 
 // 엔터 키 이벤트 핸들러 추가
 document.addEventListener("keydown", function (event) {
@@ -155,47 +146,51 @@ speechend.style.display = "none";
 
 // --------------------- YS 수정 : 다음스테이지 이미지 클릭으로 이벤트변경
 document.addEventListener("DOMContentLoaded", () => {
-  const nextLevelImages = document.querySelectorAll(".YS_picture.next_level");
- nextLevelImages.forEach((image) => {
-     image.addEventListener("click", () => {
-         const levelNumber = image.parentElement.id.replace("LEVEL", "");
-        //  alert(levelNumber);
-         if(levelNumber == 1) {
-            speechend.style.display = "block"; // 대화창 표시
-            currentSpeechIndex = 0; // 대화 인덱스 초기화
-            displayConversation(); // 대화 표시 함수 호출
-            // document.location.href = `${rootPath}/game/` + levelNumber;
-    
-         }
-         if(levelNumber == 2) {
-          speechend.style.display = "block"; // 대화창 표시
-          currentSpeechIndex = 3; // 대화 인덱스 초기화
-          displayConversation(); // 대화 표시 함수 호출
-          // document.location.href = `${rootPath}/game/` + levelNumber;
-       }
+  const nextLevelImages = document.querySelectorAll(
+    ".YS_picture.next_level"
+  );
+  // 레벨 전달해줄 이미지 전체 덮는 div 찾기
+  const container_div = document.querySelector(".HM-home_picture");
 
-       if(levelNumber == 3) {
+  nextLevelImages.forEach((image) => {
+    image.addEventListener("click", () => {
+      const levelNumber = image.parentElement.id.replace("LEVEL", "");
+      // 클릭했을때 레벨을 전달해줄 div 에 넣기
+      container_div.dataset.level = levelNumber;
+      //  alert(levelNumber);
+      if (levelNumber == 1) {
+        speechend.style.display = "block"; // 대화창 표시
+        currentSpeechIndex = 0; // 대화 인덱스 초기화
+        displayConversation(); // 대화 표시 함수 호출
+        // document.location.href = `${rootPath}/game/` + levelNumber;
+      }
+      if (levelNumber == 2) {
+        speechend.style.display = "block"; // 대화창 표시
+        currentSpeechIndex = 3; // 대화 인덱스 초기화
+        displayConversation(); // 대화 표시 함수 호출
+        // document.location.href = `${rootPath}/game/` + levelNumber;
+      }
+
+      if (levelNumber == 3) {
         speechend.style.display = "block"; // 대화창 표시
         currentSpeechIndex = 7; // 대화 인덱스 초기화
         displayConversation(); // 대화 표시 함수 호출
         // document.location.href = `${rootPath}/game/` + levelNumber;
-     }
+      }
 
-     if(levelNumber == 4) {
-      speechend.style.display = "block"; // 대화창 표시
-      currentSpeechIndex = 10; // 대화 인덱스 초기화
-      displayConversation(); // 대화 표시 함수 호출
-      // document.location.href = `${rootPath}/game/` + levelNumber;
-   }
-    //  보스스테이지
-      if(levelNumber == 5) {
+      if (levelNumber == 4) {
+        speechend.style.display = "block"; // 대화창 표시
+        currentSpeechIndex = 10; // 대화 인덱스 초기화
+        displayConversation(); // 대화 표시 함수 호출
+        // document.location.href = `${rootPath}/game/` + levelNumber;
+      }
+      //  보스스테이지
+      if (levelNumber == 5) {
         // speechend.style.display = "block"; // 대화창 표시
         // currentSpeechIndex = 10; // 대화 인덱스 초기화
         // displayConversation(); // 대화 표시 함수 호출
-        // document.location.href = `${rootPath}/game/` + levelNumber;
-    }
-     });
- }); 
- 
-
+        document.location.href = `${rootPath}/game/` + levelNumber;
+      }
+    });
+  });
 });

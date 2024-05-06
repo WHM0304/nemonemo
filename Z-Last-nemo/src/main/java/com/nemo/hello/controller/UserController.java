@@ -42,7 +42,7 @@ public class UserController {
 	public String join(UserVO VO) {
 		
 		UserVO ret = userService.createUser(VO);
-		return "redirect:/";
+		return null;
 	}
 	
 	@RequestMapping(value="/login" , method=RequestMethod.GET)

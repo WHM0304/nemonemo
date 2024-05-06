@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="${rootPath }/static/js/game.js?2024-04-25-111"></script>
 
-<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-399">
+<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-521">
 
 <title>여기는 제목</title>
 <script>
@@ -27,7 +27,7 @@
 
 	<section class="game-container">
 		<div class="main-hint-container">
-			<div class="main-column-left-blank"></div>
+			<div class="blank"></div>
 			<div class="main-column-hint">
 				<div id="column1-hint"></div>
 				<div id="column2-hint"></div>
@@ -35,7 +35,6 @@
 				<div id="column4-hint"></div>
 				<div id="column5-hint"></div>
 			</div>
-			<button class="main-column-right-blank"></button>
 		</div>
 		<div class="main-form-container">
 			<div class="main-row-hint">
