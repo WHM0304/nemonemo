@@ -91,8 +91,8 @@
 				<img class="YS_picture fade-in" src="${rootPath}/static/img/complete_img.png">
 			</div>
 		</c:if>
-		<section class="ex-mark hidden YS_picture next_level"  id="LEVEL5">
-			<img src="${rootPath}/static/img/ex-mark.png" alt="느낌표" width="100%"/>
+		<section class="ex-mark hidden"  id="LEVEL5">
+			<img class="YS_picture next_level" src="${rootPath}/static/img/ex-mark.png" alt="느낌표" width="100%"/>
 		</section>
 		
 	</div>
