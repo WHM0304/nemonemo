@@ -14,8 +14,8 @@ document?.addEventListener("DOMContentLoaded", () => {
     if (target === "홈") {
       document.location.href = `${rootPath}`;
     }
-    if (target === "게임") {
-      document.location.href = `${rootPath}/game`;
+    if (target === "회원가입") {
+      document.location.href = `${rootPath}/user/join`;
     }
   });
   select_box?.addEventListener("click", (e) => {

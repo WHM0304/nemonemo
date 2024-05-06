@@ -199,6 +199,13 @@
 		<div id="lives">목숨: </div>
 		<div class="clear"><button id="clear">정답확인</button></div>
 		<div id="CLEAR_IS"></div>
+		<div class="HM-main_hover_box"></div>
+	<nav class="HM-main_nav">
+		<ul>
+			<li>홈</li>
+			<li><f:form action="${rootPath}/user/logout" onclick="this.submit()">로그아웃</f:form></li>
+		</ul>
+	</nav>
 	</section>
 </body>
 </html>

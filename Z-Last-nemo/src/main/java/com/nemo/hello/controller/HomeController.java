@@ -57,10 +57,17 @@ public class HomeController {
         
         
         for(int i=1 ; i<=5 ; i++) {
-//    		String p_id = userService.getLoginUid();
-//    		clearVO.setC_id(p_id);
+        	try {
+        		String p_id = userService.getLoginUid();
+        		clearVO.setC_id(p_id);
+				
+			} catch (Exception e) {
+				
+				String id = "11";
+				clearVO.setC_id(id);
+			}
     		
-    		clearVO.setC_id("11");
+//    		clearVO.setC_id("11");
         	clearVO.setC_clear(1);
 			clearVO.setC_level(i);
 			ClearVO clearData =  clearDao.findByRow(clearVO);

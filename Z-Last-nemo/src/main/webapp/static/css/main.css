@@ -167,3 +167,8 @@ body.HM-main_container {
 .HM-home_weather {
   flex: 0.3;
 }
+a {
+  font-style: inherit;
+  color: inherit;
+  text-decoration: none;
+}
