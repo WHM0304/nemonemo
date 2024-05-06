@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.nemo.hello.dao.ClearDao;
 import com.nemo.hello.dao.GameDao;
 import com.nemo.hello.dao.PlayerDao;
+import com.nemo.hello.models.ClearVO;
 import com.nemo.hello.models.GameVO;
 import com.nemo.hello.models.PlayerVO;
 import com.nemo.hello.models.UpdateVO;
@@ -23,12 +25,14 @@ import lombok.extern.slf4j.Slf4j;
 public class GameController {
 	private final GameDao gameDao;
 	private final PlayerDao playerDao;
+	private final ClearDao clearDao;
 	private final UserService userService;
 
-	public GameController(GameDao gameDao, PlayerDao playerDao, UserService userService) {
+	public GameController(GameDao gameDao, PlayerDao playerDao, ClearDao clearDao, UserService userService) {
 		super();
 		this.gameDao = gameDao;
 		this.playerDao = playerDao;
+		this.clearDao = clearDao;
 		this.userService = userService;
 	}
 
@@ -107,6 +111,33 @@ public class GameController {
 		return "redirect:/game/{p_num}";
 //		return null;
 //		return "game-form/first/game";
+	}
+	
+	
+	
+	// 클리어 화면
+	@RequestMapping(value="/clear/{p_num}", method = RequestMethod.GET)
+	public String clear(Model model, ClearVO clearVO, @PathVariable(name = "p_num", required = false) Integer p_num) {
+		
+		String p_id = userService.getLoginUid();
+		clearVO.setC_id(p_id);
+		clearVO.setC_clear(1);
+		
+		// 클리어데이터를 만들고
+//		clearVO.setC_level(p_num);
+//		clearDao.insert(clearVO);
+		
+		
+		// 클리어기록에따라 그림보이게
+		for(int i=1 ; i<=5 ; i++) {
+			clearVO.setC_level(i);
+			ClearVO clearData =  clearDao.findByRow(clearVO);
+			
+			    model.addAttribute("clear_data" + i , clearData);
+		}
+		
+		
+		return "clear";
 	}
 
 }

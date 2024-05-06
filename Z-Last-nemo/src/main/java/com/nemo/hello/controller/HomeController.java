@@ -8,8 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.nemo.hello.dao.ClearDao;
 import com.nemo.hello.dao.SpeechDao;
+import com.nemo.hello.models.ClearVO;
 import com.nemo.hello.models.SpeechVO;
+import com.nemo.hello.service.UserService;
 
 
 /**
@@ -19,16 +22,21 @@ import com.nemo.hello.models.SpeechVO;
 public class HomeController {
 	
 	private final SpeechDao speechDao;
-
-	public HomeController(SpeechDao speechDao) {
+	private final ClearDao clearDao;
+	private final UserService userService;
+	
+	public HomeController(SpeechDao speechDao, ClearDao clearDao, UserService userService) {
 		super();
 		this.speechDao = speechDao;
+		this.clearDao = clearDao;
+		this.userService = userService;
 	}
 
 
 
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Model model) {
+    public String home(Model model, ClearVO clearVO) {
 		
         LocalDate now = LocalDate.now();
         int year = now.getYear();
@@ -45,6 +53,21 @@ public class HomeController {
         
         model.addAttribute("SPEECH", speechList);
         model.addAttribute("BODY", "HOME");
+        
+        
+        
+        for(int i=1 ; i<=5 ; i++) {
+//    		String p_id = userService.getLoginUid();
+//    		clearVO.setC_id(p_id);
+    		
+    		clearVO.setC_id("11");
+        	clearVO.setC_clear(1);
+			clearVO.setC_level(i);
+			ClearVO clearData =  clearDao.findByRow(clearVO);
+			
+			    model.addAttribute("clear_data" + i , clearData);
+			// 클리어정보 1~5에 따라 그림다르게
+		}
 
         return "layout";
 	}

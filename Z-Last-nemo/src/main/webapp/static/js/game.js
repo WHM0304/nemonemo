@@ -288,7 +288,9 @@ document?.addEventListener("DOMContentLoaded", () => {
     const result = document.querySelector("#CLEAR_IS");
 
     if (CLEAR === true) {
-      result.innerHTML = "정답입니다.";
+      // 클리어시 클리어화면 주소로 이동
+      document.location.href = `${rootPath}/game/clear/${p_num}`;
+      // result.innerHTML = "정답입니다.";
     } else {
       result.innerHTML = `${MANY}개 틀렸습니다.\n다시풀어주세요`;
       const _minus = sessionStorage.getItem("heartSession");
@@ -318,3 +320,4 @@ document?.addEventListener("DOMContentLoaded", () => {
     // console.log(input_all);
   });
 });
+

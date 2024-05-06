@@ -20,7 +20,7 @@ document?.addEventListener("DOMContentLoaded", () => {
   });
   select_box?.addEventListener("click", (e) => {
     const target = e.target;
-    alert(target.id);
+    // alert(target.id);
     // document.location.href = `${rootPath}/game/${target.id}`;
   });
 });
