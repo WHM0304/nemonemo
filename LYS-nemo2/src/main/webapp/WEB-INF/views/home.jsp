@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet"
-	href="${rootPath}/static/css/speech.css?2024-04-26-001">
+<link rel="stylesheet" href="${rootPath}/static/css/speech.css?2024-04-26-001">
 <div class="HM-home_container">
 	<div class="HM-home_top">
 		<div class="HM-home_first_menu">
@@ -18,8 +17,7 @@
 					src="${rootPath}/static/img/snow.png">
 			</div>
 			<div>
-				<label class="HM-home_cal"> <span>${year}년</span> <span>${month}월</span>
-					<span>${day}일</span>
+				<label class="HM-home_cal"> <span>${year}년</span> <span>${month}월</span> <span>${day}일</span>
 				</label>
 			</div>
 		</div>
@@ -87,14 +85,13 @@
 			</div>
 		</c:if>
 		<c:if test="${clear_data5.c_clear == 1}">
-			<div>
-				<img class="YS_picture fade-in" src="${rootPath}/static/img/complete_img.png">
+			<div id="LEVEL5">
+				<img class="YS_picture fade-in" src="${rootPath}/static/img/aqua.png">
 			</div>
 		</c:if>
-		<section class="ex-mark hidden YS_picture next_level"  id="LEVEL5">
+		<section class="ex-mark hidden">
 			<img src="${rootPath}/static/img/ex-mark.png" alt="느낌표" width="100%"/>
-		</section>
-		
+		</section>	
 	</div>
 	
 	<h1 class="clear_msg
@@ -107,7 +104,6 @@
 		<span>R</span>
 		<span>!</span>
 	</h1>
-	
 	
 	<div class="HM-home_diary">
 		<c:if test="${clear_data1.c_clear == 1}">
@@ -149,7 +145,9 @@
 		<c:if test="${clear_data4.c_clear == 1}">
 			<section class="YS_border-bottom">
 				<h2 class="YS_diary_row
-				<c:if test="${clear_data1.c_clear == 1 && clear_data2.c_clear == 1&& clear_data3.c_clear == 1 && clear_data4.c_clear == 1}">fade-in</c:if>"
+				<c:if test="${clear_data1.c_clear == 1 && clear_data2.c_clear == 1&& clear_data3.c_clear == 1 && clear_data4.c_clear == 1
+				&& clear_data5.c_clear != 1
+				}">fade-in</c:if>"
 				>멋진 흰돌고래를 보고</h2>
 			</section>
 		</c:if>
@@ -160,10 +158,14 @@
 		</c:if>
 		<c:if test="${clear_data5.c_clear == 1}">
 			<section class="YS_border-bottom">		
-				<h2 class="YS_diary_row">엄청 커다란 문어를 만났다!</h2>
+				<h2 class="YS_diary_row
+					<c:if test="${clear_data5.c_clear == 1}">fade-in</c:if>"
+				>엄청 커다란 문어를 만났다!</h2>
 			</section>
 			<section class="YS_border-bottom">
-				<h2 class="YS_diary_row">참 재밌었다!</h2>
+				<h2 class="YS_diary_row
+				<c:if test="${clear_data5.c_clear == 1}">fade-in</c:if>"
+				>참 재밌었다!</h2>
 			</section>
 		</c:if>
 		<c:if test="${clear_data5.c_clear != 1}">
@@ -182,27 +184,23 @@
 			<div id="speechContainer" class="speech-container">
 				<!-- JSTL을 사용하여 대화 데이터를 반복해서 출력 -->
 				<c:forEach items="${SPEECH}" var="speech">
-					<div class="speech-part" style="display: none;">
-						<!-- 모든 대화를 숨김 -->
-						<span class="num" style="display: none;">${speech.s_num}</span> <span
-							class="speaker" style="display: none;">${speech.s_speaker}</span>
+					<div class="speech-part">
+						<span class="speaker" style="display: none;">${speech.s_speaker}</span>
 						<span class="message">${speech.s_message}</span>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
-		<button id="skipButton">skip</button>
+		<button id="skipButton" class="skipButton">skip</button>
 		<button id="nextButton">&#187;&#187;</button>
 	</div>
+</div>
 
+<script src="${rootPath}/static/js/speech.js?2024-04-26-001"></script>
 
-<script src="${rootPath}/static/js/speech.js?2024-04-26-001">
-
-</script>
 <script>
-	//---------------------------------------------
 	// 4까지 클리어하고 나서 이미지클릭시 ! 이미지 나오게
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     // LEVEL4의 fade-in 애니메이션 종료 후 처리
     document.getElementById("LEVEL4").addEventListener("animationend", () => {
         // YS_picture_c 클래스를 가진 모든 이미지에 next_level 클래스 추가
@@ -210,17 +208,6 @@
         const images = document.querySelectorAll(".YS_picture_c");
         images.forEach((image) => {
             image.classList.add("next_level5");
-            
-            // -------- 대화 스크립트 못나오게 id LEVEL1~ 4 삭제
-            for (let i = 1; i <= 4; i++) {
-        const levelElement = document.getElementById(`LEVEL${i}`);
-        if (levelElement) {
-            levelElement.remove();
-        	}
-    	}
-            //--------------------------------------
-            
-            // 이4그림을 클릭하고 나면 보스스테이지 등장
             image.addEventListener("click", () => {
                 const exMark = document.querySelector(".ex-mark");
                 exMark.classList.remove("hidden");
@@ -228,23 +215,22 @@
         });
     });
 });
-
+	
 	// 게임 이동용
-/*     document.addEventListener("DOMContentLoaded", () => {
-         const nextLevelImages = document.querySelectorAll(".YS_picture.next_level");
+    document.addEventListener("DOMContentLoaded", () => {
+        const nextLevelImages = document.querySelectorAll(".YS_picture.next_level");
         nextLevelImages.forEach((image) => {
             image.addEventListener("click", () => {
                 const levelNumber = image.parentElement.id.replace("LEVEL", "");
                 window.location.href = "${rootPath}/game/" + levelNumber;
             });
-        }); 
+        });
         
         // 보스 스테이지 이동
         const last_game = document.querySelector(".ex-mark ");
         last_game.addEventListener("click", () => {
         	document.location.href = "${rootPath}/game/5";
         });
-    }); */
-	
+    });
 
 </script>

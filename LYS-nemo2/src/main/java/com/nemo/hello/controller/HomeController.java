@@ -12,7 +12,6 @@ import com.nemo.hello.dao.ClearDao;
 import com.nemo.hello.dao.SpeechDao;
 import com.nemo.hello.models.ClearVO;
 import com.nemo.hello.models.SpeechVO;
-import com.nemo.hello.service.UserService;
 
 
 /**
@@ -21,16 +20,15 @@ import com.nemo.hello.service.UserService;
 @Controller
 public class HomeController {
 	
-	private final SpeechDao speechDao;
 	private final ClearDao clearDao;
-	private final UserService userService;
-	
-	public HomeController(SpeechDao speechDao, ClearDao clearDao, UserService userService) {
+	private final SpeechDao speechDao;
+
+	public HomeController(ClearDao clearDao, SpeechDao speechDao) {
 		super();
-		this.speechDao = speechDao;
 		this.clearDao = clearDao;
-		this.userService = userService;
+		this.speechDao = speechDao;
 	}
+
 
 
 
@@ -54,20 +52,21 @@ public class HomeController {
         model.addAttribute("SPEECH", speechList);
         model.addAttribute("BODY", "HOME");
         
+//        ----------------------- 메인화면용
         
-        
+        // 클리어정보 보내기 화면 이미지용
         for(int i=1 ; i<=5 ; i++) {
-//    		String p_id = userService.getLoginUid();
-//    		clearVO.setC_id(p_id);
+    		String userid = "1"; // 임시적용 id
+    		clearVO.setC_id(userid);
     		
-    		clearVO.setC_id("11");
-        	clearVO.setC_clear(1);
 			clearVO.setC_level(i);
 			ClearVO clearData =  clearDao.findByRow(clearVO);
 			
 			    model.addAttribute("clear_data" + i , clearData);
-			// 클리어정보 1~5에 따라 그림다르게
+			
 		}
+        
+        //--------------------------------------
 
         return "layout";
 	}
