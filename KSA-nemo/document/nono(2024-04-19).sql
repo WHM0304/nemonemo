@@ -54,6 +54,8 @@ p_block14 INT,
 p_block15 INT,
 PRIMARY KEY (p_id, p_num, p_row_num)
 );
+
+drop table tbl_clear;
 -- 클리어정보
 CREATE TABLE tbl_clear (
 c_id	VARCHAR(20)	,
@@ -62,8 +64,11 @@ c_clear	INT	,
 		primary key (c_id, c_level)
 );
 
+select * from tbl_clear;
+
+
 INSERT INTO tbl_clear (c_id,c_level,c_clear)value
-('USER1', 1,1);
+('11', 4,1);
 
 INSERT INTO tbl_nemo (n_num, n_row_num, n_block1, n_block2, n_block3, n_block4, n_block5, n_block6, n_block7, n_block8, n_block9, n_block10, n_block11, n_block12, n_block13, n_block14, n_block15)
 VALUES
