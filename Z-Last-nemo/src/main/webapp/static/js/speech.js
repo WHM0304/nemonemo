@@ -44,8 +44,8 @@ function addEventHandlers(startIndex, endIndex) {
     // 대화가 끝났는지 확인
     if (currentSpeechIndex > endIndex) {
       // 대화 종료 후 게임 페이지로 이동
-  const level = document.querySelector(".HM-home_picture").dataset
-  .level;
+      const level = document.querySelector(".HM-home_picture").dataset
+      .level;
       endConversation(level); // 대화 종료 처리 함수 호출
     } else {
       // 다음 대화 표시
@@ -61,7 +61,8 @@ function addEventHandlers(startIndex, endIndex) {
       currentSpeechIndex++;
       // 대화가 끝났는지 확인
       if (currentSpeechIndex > endIndex) {
-        endConversation(); // 대화 종료 처리 함수 호출
+        const level = document.querySelector(".HM-home_picture").dataset.level;
+        endConversation(level); // 대화 종료 처리 함수 호출
       } else {
         // 다음 대화 표시
         displayConversation();
@@ -74,28 +75,39 @@ function addEventHandlers(startIndex, endIndex) {
   speechend.style.display = "block";
   displayConversation();
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const nextLevelImages = document.querySelectorAll(
+    ".YS_picture.next_level"
+  );
+  // 레벨정보를 넣어놓을 이미지 를 다 감싸고 있는 div
+  const level_div = document.querySelector(".HM-home_picture");
 
-// 각 레벨 클릭 시 이벤트 핸들러 추가
-document.getElementById("LEVEL1").addEventListener("click", () => {
-  addEventHandlers(0, 2); // 첫 번째 대화부터 시작하고, 인덱스 2에서 종료
+  nextLevelImages.forEach((image) => {
+    image.addEventListener("click", () => {
+      const levelNumber = image.parentElement.id.replace("LEVEL", "");
+
+      // dataset 을 통해서 div 에 넣어놓기
+      level_div.dataset.level = levelNumber;
+      //  alert(levelNumber);
+      if (levelNumber == 1) {
+        addEventHandlers(0, 2); // 첫 번째 대화부터 시작하고, 인덱스 2에서 종료
+      }
+      if (levelNumber == 2) {
+        addEventHandlers(3, 6); // LEVEL2에서는 대화 인덱스 3부터 시작하고, 인덱스 6에서 종료
+      }
+      if (levelNumber == 3) {
+        addEventHandlers(7, 9); // LEVEL3에서는 대화 인덱스 7부터 시작하고, 인덱스 9에서 종료
+      }
+      if (levelNumber == 4) {
+        addEventHandlers(10, 12); // LEVEL4에서는 대화 인덱스 10부터 시작하고, 인덱스 13에서 종료
+      }
+      //  보스스테이지
+      if (levelNumber == 5) {
+        addEventHandlers(13, 16); // LEVEL5에서는 대화 인덱스 14부터 시작하고, 인덱스 16에서 종료
+      }
+    });
+  });
 });
-
-document.getElementById("LEVEL2").addEventListener("click", () => {
-  addEventHandlers(3, 6); // LEVEL2에서는 대화 인덱스 3부터 시작하고, 인덱스 6에서 종료
-});
-
-document.getElementById("LEVEL3").addEventListener("click", () => {
-  addEventHandlers(7, 9); // LEVEL3에서는 대화 인덱스 7부터 시작하고, 인덱스 9에서 종료
-});
-
-document.getElementById("LEVEL4").addEventListener("click", () => {
-  addEventHandlers(10, 12); // LEVEL4에서는 대화 인덱스 10부터 시작하고, 인덱스 13에서 종료
-});
-
-document.getElementById("LEVEL5").addEventListener("click", () => {
-  addEventHandlers(13, 16); // LEVEL5에서는 대화 인덱스 14부터 시작하고, 인덱스 16에서 종료
-});
-
 // 스킵 버튼 클릭 시 대화 종료 및 게임 페이지로 이동
 skipButton.addEventListener("click", () => {
   const level = document.querySelector(".HM-home_picture").dataset.level;
