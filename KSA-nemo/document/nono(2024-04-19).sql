@@ -7,7 +7,7 @@ m_id	VARCHAR(20)		PRIMARY KEY,
 m_pw	VARCHAR(125)	NOT NULL	,
 m_nick	VARCHAR(20)		
 );
-
+drop table tbl_members;
 -- 5x5 정답테이블
 CREATE TABLE tbl_nemo (
 n_num INT,
@@ -61,6 +61,9 @@ c_level	INT	,
 c_clear	INT	,
 		primary key (c_id, c_level)
 );
+
+INSERT INTO tbl_clear (c_id,c_level,c_clear)value
+('USER1', 1,1);
 
 INSERT INTO tbl_nemo (n_num, n_row_num, n_block1, n_block2, n_block3, n_block4, n_block5, n_block6, n_block7, n_block8, n_block9, n_block10, n_block11, n_block12, n_block13, n_block14, n_block15)
 VALUES

@@ -26,7 +26,6 @@ public class HomeController {
 	private final UserService userService;
 	
 	public HomeController(SpeechDao speechDao, ClearDao clearDao, UserService userService) {
-		super();
 		this.speechDao = speechDao;
 		this.clearDao = clearDao;
 		this.userService = userService;
@@ -53,6 +52,7 @@ public class HomeController {
         
         model.addAttribute("SPEECH", speechList);
         model.addAttribute("BODY", "HOME");
+        
         
         
         
