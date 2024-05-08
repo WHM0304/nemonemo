@@ -12,6 +12,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+.game-container {
+  flex: 1;
+}
 
 .main-all-container {
   border: 1px solid #ddd;

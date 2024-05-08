@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="${rootPath }/static/js/game.js?2024-04-25-111"></script>
 
-<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-521">
+<link rel="stylesheet" href="${rootPath }/static/css/game.css?2024-04-25-001">
 
 <title>여기는 제목</title>
 <script>
@@ -111,14 +111,14 @@
 		<div id="lives">목숨: </div>
 		<div class="clear"><button id="clear">정답확인</button></div>
 		<div id="CLEAR_IS"></div>
-		<div class="HM-main_hover_box"></div>
-	<nav class="HM-main_nav">
-		<ul>
-			<li>홈</li>
-			<li><f:form action="${rootPath}/user/logout" onclick="this.submit()">로그아웃</f:form></li>
-		</ul>
-	</nav>
 	</section>
+		<div class="HM-main_hover_box"></div>
+		<nav class="HM-main_nav">
+			<ul>
+				<li>홈</li>
+				<li><f:form action="${rootPath}/user/logout" onclick="this.submit()">로그아웃</f:form></li>
+			</ul>
+		</nav>
 		
 	
 	
