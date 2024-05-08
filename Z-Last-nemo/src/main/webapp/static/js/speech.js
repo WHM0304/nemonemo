@@ -40,8 +40,7 @@ function addEventHandlers(startIndex, endIndex) {
     // 대화가 끝났는지 확인
     if (currentSpeechIndex > endIndex) {
       // 대화 종료 후 게임 페이지로 이동
-      const level = document.querySelector(".HM-home_picture").dataset
-        .level;
+      const level = document.querySelector(".HM-home_picture").dataset.level;
       endConversation(level); // 대화 종료 처리 함수 호출
     } else {
       // 다음 대화 표시
@@ -57,8 +56,7 @@ function addEventHandlers(startIndex, endIndex) {
       currentSpeechIndex++;
       // 대화가 끝났는지 확인
       if (currentSpeechIndex > endIndex) {
-        const level = document.querySelector(".HM-home_picture")
-          .dataset.level;
+        const level = document.querySelector(".HM-home_picture").dataset.level;
         endConversation(level); // 대화 종료 처리 함수 호출
       } else {
         // 다음 대화 표시
@@ -73,9 +71,7 @@ function addEventHandlers(startIndex, endIndex) {
   displayConversation();
 }
 document.addEventListener("DOMContentLoaded", () => {
-  const nextLevelImages = document.querySelectorAll(
-    ".YS_picture.next_level"
-  );
+  const nextLevelImages = document.querySelectorAll(".YS_picture.next_level");
   // 레벨정보를 넣어놓을 이미지 를 다 감싸고 있는 div
   const level_div = document.querySelector(".HM-home_picture");
 
@@ -107,8 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // 스킵 버튼 클릭 시 대화 종료 및 게임 페이지로 이동
 skipButton.addEventListener("click", () => {
-  const level = document.querySelector(".HM-home_picture").dataset
-    .level;
+  const level = document.querySelector(".HM-home_picture").dataset.level;
   document.location.replace(`${rootPath}/game/${level}`);
 });
 
