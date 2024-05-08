@@ -18,7 +18,7 @@
 	
 	<delete id="reset">
 		DELETE FROM tbl_nemo_play
-		WHERE p_id = ${p_id} AND p_num = ${p_num}
+		WHERE p_id = #{p_id} AND p_num = ${p_num}
 	</delete>	
 	
 	<insert id="insert" >
