@@ -10,12 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.nemo.hello.models.ClearVO;
 import com.nemo.nemo.dao.ClearDao;
 import com.nemo.nemo.dao.NemoDao;
 import com.nemo.nemo.dao.SpeechDao;
+import com.nemo.nemo.model.ClearVO;
 import com.nemo.nemo.model.NemoVO;
 import com.nemo.nemo.model.SpeechVO;
 
@@ -25,7 +24,14 @@ public class HomeController {
 	private final NemoDao nemoDao;
 	private final SpeechDao speechDao;
 	private final ClearDao clearDao;
-//
+public HomeController(NemoDao nemoDao, SpeechDao speechDao, ClearDao clearDao) {
+		super();
+		this.nemoDao = nemoDao;
+		this.speechDao = speechDao;
+		this.clearDao = clearDao;
+	}
+
+	//
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model, ClearVO clearVO) {
 		
