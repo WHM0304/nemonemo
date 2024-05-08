@@ -127,7 +127,7 @@ public class GameController {
 		
 		// 클리어데이터를 만들고
 		clearVO.setC_level(p_num);
-//		clearDao.insert(clearVO);
+		clearDao.insert(clearVO);
 		
 		
 		// 클리어기록에따라 그림보이게
