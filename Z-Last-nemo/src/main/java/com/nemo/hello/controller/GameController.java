@@ -93,8 +93,12 @@ public class GameController {
 //		String p_id = "1";
 //		vo.setP_id(p_id);
 		log.debug(" VO ---------=-=-=-=-=-=:{} ,{}", p_num, p_id);
-		
-			int reset = playerDao.reset(p_id, p_num);
+			try {
+				
+				int reset = playerDao.reset(p_id, p_num);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			
 		
 
