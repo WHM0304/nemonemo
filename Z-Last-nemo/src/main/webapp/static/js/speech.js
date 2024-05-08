@@ -8,17 +8,13 @@ let currentSpeechIndex = 0;
 // 대화 표시 함수
 function displayConversation() {
   const currentSpeech = speechParts[currentSpeechIndex];
-  // 대화의 발화자가 A인 경우 텍스트 색상을 녹색으로 변경
-  if (currentSpeech.querySelector(".speaker").innerText === "A") {
-    currentSpeech.querySelector(".message").style.color = "green";
-  } else {
-    currentSpeech.querySelector(".message").style.color = "black";
-  }
   // 현재 대화의 발화자가 'B'일 때만 오퍼시티를 조절
   if (currentSpeech.querySelector(".speaker").innerText === "B") {
     avatar.style.opacity = "0.5";
+    currentSpeech.querySelector(".message").style.color = "black";
   } else {
     avatar.style.opacity = "1";
+    currentSpeech.querySelector(".message").style.color = "green";
   }
   // 현재 대화만 표시하고 나머지는 숨김
   speechParts.forEach(function (speech) {
