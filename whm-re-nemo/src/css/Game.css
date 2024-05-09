@@ -1,0 +1,27 @@
+input {
+  width: 40px;
+  height: 40px;
+}
+
+.Game-container {
+  display: flex;
+  flex-direction: column;
+  input[type="checkbox"] {
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    border: 1px solid black;
+    cursor: pointer;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+  input[type="checkbox"]:checked {
+    background-color: black;
+  }
+}
+.Game-container > div {
+  display: flex;
+  margin: 0 auto;
+  gap: 5px;
+}
