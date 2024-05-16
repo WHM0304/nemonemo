@@ -20,6 +20,6 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<context:component-scan base-package="com.whm0304.nemo" />
+	<context:component-scan base-package="com.whm0304.nemo.controller" />
 </beans>
 
