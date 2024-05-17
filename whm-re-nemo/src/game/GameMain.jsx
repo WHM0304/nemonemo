@@ -32,8 +32,8 @@ const GameMain = () => {
 
     // console.log(play);
   };
-  console.log(nemo);
-  console.log(play);
+  // console.log(nemo);
+  // console.log(play);
   // console.log(play);
   useEffect(() => {
     if (JSON.stringify(play) === JSON.stringify(nemo)) {
