@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const [nemo, SetNemo] = useState([]);
+  const [n_block, setN_block] = useState([]);
 
   useEffect(() => {
     fetch("/nemo/bridge")
@@ -17,6 +18,8 @@ function App() {
       })
       .catch((error) => console.log("error : ", error));
   }, [SetNemo]);
+  // console.log(nemo);
+
   const onClickNav = (e) => {
     const target = e.target;
     const nav = document.querySelector(".App-nav");
@@ -27,7 +30,7 @@ function App() {
   };
   // console.log(nemo);
 
-  console.log(nemo);
+  // console.log(n_block);
 
   // console.log(
   //   nemo.map((e) => ({
@@ -46,13 +49,13 @@ function App() {
       </header>
       <section className="App-section">
         {/* {nemo.map((e) => (
-          <div>{e}</div>
+          <div>{e.n_block1}</div>
         ))} */}
 
         <BrowserRouter>
           <Routes>
             <Route path="/" exact element={<HomeMain />} />
-            <Route path="/game" element={<GameMain />} />
+            <Route path="/game" element={<GameMain data={nemo} />} />
           </Routes>
         </BrowserRouter>
       </section>
