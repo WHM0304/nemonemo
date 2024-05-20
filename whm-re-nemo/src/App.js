@@ -1,23 +1,15 @@
 import "./css/App.css";
 import HomeMain from "./main/HomeMain";
-import GameMain from "./game/GameMain";
+import GameMain from "./game/LEVEL1";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LEVEL1 from "./game/LEVEL1";
+import LEVEL2 from "./game/LEVEL2";
+import LEVEL3 from "./game/LEVEL3";
+import LEVEL4 from "./game/LEVEL4";
+import LEVEL5 from "./game/LEVEL5";
 
 function App() {
-  const [nemo, SetNemo] = useState([]);
-  const [n_block, setN_block] = useState([]);
-
-  useEffect(() => {
-    fetch("/nemo/bridge")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        SetNemo(data);
-      })
-      .catch((error) => console.log("error : ", error));
-  }, [SetNemo]);
   // console.log(nemo);
 
   const onClickNav = (e) => {
@@ -30,17 +22,6 @@ function App() {
   };
   // console.log(nemo);
 
-  // console.log(n_block);
-
-  // console.log(
-  //   nemo.map((e) => ({
-  //     1: e.n_block1,
-  //     2: e.n_block2,
-  //     3: e.n_block3,
-  //     4: e.n_block4,
-  //     5: e.n_block5,
-  //   }))
-  // );
   return (
     <div className="App">
       <header className="App-header">
@@ -48,14 +29,14 @@ function App() {
         <a href></a>
       </header>
       <section className="App-section">
-        {/* {nemo.map((e) => (
-          <div>{e.n_block1}</div>
-        ))} */}
-
         <BrowserRouter>
           <Routes>
             <Route path="/" exact element={<HomeMain />} />
-            <Route path="/game" element={<GameMain data={nemo} />} />
+            <Route path="/game/LEVEL1" element={<LEVEL1 />} />
+            <Route path="/game/LEVEL2" element={<LEVEL2 />} />
+            <Route path="/game/LEVEL3" element={<LEVEL3 />} />
+            <Route path="/game/LEVEL4" element={<LEVEL4 />} />
+            <Route path="/game/LEVEL5" element={<LEVEL5 />} />
           </Routes>
         </BrowserRouter>
       </section>

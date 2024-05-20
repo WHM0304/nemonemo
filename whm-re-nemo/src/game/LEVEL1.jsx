@@ -1,20 +1,33 @@
 import { useEffect, useState } from "react";
 import "../css/Game.css";
 
-const GameMain = () => {
+const LEVEL1 = () => {
   const [play, Setplay] = useState(() => {
     const rows = 5;
     const columns = 5;
     return Array.from({ length: rows }, () => Array(columns).fill("0"));
   });
-  const [nemo, SetNemo] = useState([
-    ["0", "0", "0", "0", "0"],
-    ["0", "1", "0", "1", "0"],
-    ["0", "0", "0", "0", "0"],
-    ["1", "0", "0", "0", "1"],
-    ["0", "1", "1", "1", "0"],
-  ]);
+  const [nemo, setNemo] = useState([]);
 
+  useEffect(() => {
+    fetch("/nemo/bridge/LEVEL1")
+      .then((res) => res.json())
+      .then((newData) => {
+        const newBlocks = newData.map((item) => [
+          item.n_block1 + "",
+          item.n_block2 + "",
+          item.n_block3 + "",
+          item.n_block4 + "",
+          item.n_block5 + "",
+        ]);
+
+        // nemo 상태를 직접적으로 업데이트
+        setNemo(newBlocks);
+      })
+      .catch((error) => console.log("error : ", error));
+  }, []);
+
+  console.log(nemo);
   const [part, SetPart] = useState("1");
 
   const onClickValue = (e) => {
@@ -29,56 +42,13 @@ const GameMain = () => {
     const newplay = [...play];
     newplay[column][row] = target.checked ? "1" : "0";
     Setplay(newplay);
-
-    // console.log(play);
   };
-  // console.log(nemo);
-  // console.log(play);
-  // console.log(play);
+
   useEffect(() => {
     if (JSON.stringify(play) === JSON.stringify(nemo)) {
       alert("정답");
     }
   }, [play]);
-
-  const calculateHintsForRow = (row) => {
-    const hints = [];
-    let count = 0;
-
-    row.forEach((cell) => {
-      if (cell !== "0") {
-        count++;
-      } else {
-        if (count !== 0) {
-          hints.push(count);
-          count = 0;
-        }
-      }
-    });
-
-    // 마지막에 연속된 숫자가 있는 경우
-    if (count !== 0) {
-      hints.push(count);
-    } else if (hints.length === 0) {
-      // 모든 숫자가 0인 경우
-      hints.push(0);
-    }
-
-    return hints;
-  };
-  const view_rowhint = () => {
-    {
-      nemo.map((row, rowIndex) => (
-        <div key={rowIndex} className="row-hints">
-          {calculateHintsForRow(row).map((hint, index) => (
-            <div key={index} className="hint">
-              {hint}
-            </div>
-          ))}
-        </div>
-      ));
-    }
-  };
   const calculateRowHints = (row) => {
     const hints = [];
     let count = 0;
@@ -94,18 +64,15 @@ const GameMain = () => {
       }
     });
 
-    // 마지막에 연속된 숫자가 있는 경우
     if (count !== 0) {
       hints.push(count);
     } else if (hints.length === 0) {
-      // 모든 숫자가 0인 경우
       hints.push(0);
     }
 
     return hints;
   };
 
-  // 각 열의 힌트를 계산하여 반환하는 함수 (칼럼으로 이름 변경)
   const calculateColumnHintsByColumn = (columnIndex) => {
     const hints = [];
     let count = 0;
@@ -121,17 +88,18 @@ const GameMain = () => {
       }
     });
 
-    // 마지막에 연속된 숫자가 있는 경우
     if (count !== 0) {
       hints.push(count);
     } else if (hints.length === 0) {
-      // 모든 숫자가 0인 경우
       hints.push(0);
     }
 
     return hints;
   };
 
+  if (nemo.length === 0) {
+    return <p>Loading...</p>;
+  }
   return (
     <section className="GAME-ALL">
       <div className="COLUMN">
@@ -150,7 +118,7 @@ const GameMain = () => {
         <div className="ROW">
           {nemo.map((row, rowIndex) => (
             <div key={rowIndex} className="row-hints">
-              {calculateHintsForRow(row).map((hint, index) => (
+              {calculateRowHints(row).map((hint, index) => (
                 <div key={index} className="hint">
                   {hint}
                 </div>
@@ -200,4 +168,4 @@ const GameMain = () => {
   );
 };
 
-export default GameMain;
+export default LEVEL1;
