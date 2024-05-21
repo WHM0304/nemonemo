@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/Game.css";
+import { useNavigate } from "react-router-dom";
 
 const LEVEL5 = () => {
   const [play, Setplay] = useState(() => {
@@ -8,6 +9,15 @@ const LEVEL5 = () => {
     return Array.from({ length: rows }, () => Array(columns).fill("0"));
   });
   const [nemo, setNemo] = useState([]);
+  const navigate = useNavigate();
+  const OnclickCorrect = () => {
+    if (JSON.stringify(play) === JSON.stringify(nemo)) {
+      alert("정답");
+      navigate("/");
+    } else {
+      alert("정답이아닙니다 다시 풀어주세요");
+    }
+  };
 
   useEffect(() => {
     fetch("/nemo/bridge/LEVEL5")
@@ -149,6 +159,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num2">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -162,6 +176,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num3">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -175,6 +193,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num4">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -188,6 +210,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num5">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -201,6 +227,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num6">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -214,6 +244,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num7">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -227,6 +261,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num8">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -240,6 +278,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num9">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -253,6 +295,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num10">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -266,6 +312,10 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
           <div className="p_row_num11">
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
@@ -279,7 +329,80 @@ const LEVEL5 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
           </div>
+          <div className="p_row_num12">
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block2"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block3"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block4"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block5"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block6"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block7"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block8"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
+          </div>
+          <div className="p_row_num13">
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block2"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block3"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block4"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block5"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block6"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block7"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block8"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
+          </div>
+          <div className="p_row_num14">
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block2"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block3"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block4"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block5"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block6"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block7"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block8"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
+          </div>
+          <div className="p_row_num15">
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block1"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block2"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block3"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block4"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block5"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block6"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block7"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block8"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block9"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block12"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block13"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block14"></input>
+            <input type="checkbox" onClick={onClickValue} value={part} name="p_block15"></input>
+          </div>
+          <button onClick={OnclickCorrect}>제출하기</button>
         </div>
       </div>
     </section>

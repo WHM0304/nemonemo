@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/Game.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const LEVEL1 = () => {
   const [play, Setplay] = useState(() => {
@@ -9,6 +10,15 @@ const LEVEL1 = () => {
   });
   const [nemo, setNemo] = useState([]);
 
+  const navigate = useNavigate();
+  const OnclickCorrect = () => {
+    if (JSON.stringify(play) === JSON.stringify(nemo)) {
+      alert("정답");
+      navigate("/");
+    } else {
+      alert("정답이아닙니다 다시 풀어주세요");
+    }
+  };
   useEffect(() => {
     fetch("/nemo/bridge/LEVEL1")
       .then((res) => res.json())
@@ -44,11 +54,6 @@ const LEVEL1 = () => {
     Setplay(newplay);
   };
 
-  useEffect(() => {
-    if (JSON.stringify(play) === JSON.stringify(nemo)) {
-      alert("정답");
-    }
-  }, [play]);
   const calculateRowHints = (row) => {
     const hints = [];
     let count = 0;
@@ -162,6 +167,7 @@ const LEVEL1 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block4"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block5"></input>
           </div>
+          <button onClick={OnclickCorrect}>제출하기</button>
         </div>
       </div>
     </section>

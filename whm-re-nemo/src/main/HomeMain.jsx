@@ -1,15 +1,16 @@
+import { NavLink } from "react-router-dom";
 import "../css/Home.css";
 
 const HomeMain = () => {
   return (
     <section className="home-section">
       <div className="home-picture">
-        <div>4</div>
-        <div>3</div>
+        <NavLink to="/game/LEVEL3"></NavLink>
+        <NavLink to="/game/LEVEL4"></NavLink>
       </div>
       <div className="home-picture">
-        <div>1</div>
-        <div>2</div>
+        <NavLink to="/game/LEVEL1"></NavLink>
+        <NavLink to="/game/LEVEL2"></NavLink>
       </div>
     </section>
   );

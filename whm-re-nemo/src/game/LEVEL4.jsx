@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/Game.css";
+import { useNavigate } from "react-router-dom";
 
 const LEVEL4 = () => {
   const [play, Setplay] = useState(() => {
@@ -35,6 +36,15 @@ const LEVEL4 = () => {
 
   console.log(nemo);
   const [part, SetPart] = useState("1");
+  const navigate = useNavigate();
+  const OnclickCorrect = () => {
+    if (JSON.stringify(play) === JSON.stringify(nemo)) {
+      alert("정답");
+      navigate("/");
+    } else {
+      alert("정답이아닙니다 다시 풀어주세요");
+    }
+  };
 
   const onClickValue = (e) => {
     const target = e.target;
@@ -276,6 +286,7 @@ const LEVEL4 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block10"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block11"></input>
           </div>
+          <button onClick={OnclickCorrect}>제출하기</button>
         </div>
       </div>
     </section>
