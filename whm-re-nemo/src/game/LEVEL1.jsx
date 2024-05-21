@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "../css/Game.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
-const LEVEL1 = () => {
+const LEVEL1 = ({ loc, setLoc }) => {
   const [play, Setplay] = useState(() => {
     const rows = 5;
     const columns = 5;
@@ -36,7 +36,7 @@ const LEVEL1 = () => {
       })
       .catch((error) => console.log("error : ", error));
   }, []);
-
+  console.log("위치", loc);
   console.log(nemo);
   const [part, SetPart] = useState("1");
 
@@ -167,6 +167,7 @@ const LEVEL1 = () => {
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block4"></input>
             <input type="checkbox" onClick={onClickValue} value={part} name="p_block5"></input>
           </div>
+
           <button onClick={OnclickCorrect}>제출하기</button>
         </div>
       </div>
