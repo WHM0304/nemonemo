@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { selectAll } from "@/app/api/speech";
 import { findClearData } from "@/app/api/clear.js";
-import Image from "next/image";
+
 
 export default function Main() {
   const [clearData, setClearData] = useState([]);

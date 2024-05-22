@@ -4,19 +4,26 @@ import { compareNemoData } from "@/app/api/nemo";
 import { redirect } from "next/navigation";
 import "@/css/game.css";
 
+
 const first = () => {
   // 정답확인용
   const checkCorrect = async (formData) => {
     "use server";
     let result = "";
-
+  
+    
     result = await compareNemoData(formData); // 정답확인결과 잘와짐
     console.log(result);
-
+    
+    const level = 1;
     if (result === "정답입니다") {
-      redirect("/"); // 클리어주소로 적기
+      redirect(`/clear/${level}`); // 클리어주소로 적기
+    } else if(result === "틀렸습니다"){
+      // 틀렸으면 메시지를 보여줘야 하는데...
+     
+      
     }
-    // 틀렸으면 메시지를 보여줘야 하는데...
+   
 
     // alert(result);
     // return result;
@@ -73,6 +80,8 @@ const first = () => {
     // redirect("/game/first"); // 한줄저장하고 다시 겜화면..
     // 안해도 화면안바뀌네
   };
+
+
 
   return (
     <>
@@ -164,7 +173,7 @@ const first = () => {
         <div id="lives">목숨: </div>
         <div class="clear">
           <form method="POST" action={checkCorrect}>
-            <input name="p_id" value="1" hidden="true" />
+            <input name="p_id" value="11" hidden="true" />
             <input name="p_num" value="1" hidden="true" />
             <button id="clear">정답확인</button>
           </form>

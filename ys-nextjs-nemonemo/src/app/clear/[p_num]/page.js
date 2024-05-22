@@ -1,10 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { findClearData } from "@/app/api/clear.js";
 // import { useRouter } from "next/router";
 // 할일 : 클리어주소에서 p_num 가져오고 그걸로 화면이미지 보여주기
 
 const clearpage = () => {
+  const [clearData, setClearData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +35,7 @@ const clearpage = () => {
     console.log("클리어데이터", clearData);
     return clearData;
   };
+  // -------------------
   return (
     <body className="HM-main_container">
       <div className="clear_picture">
