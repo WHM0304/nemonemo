@@ -7,77 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model clear {
-  c_id    String
-  c_level Int
-  c_clear Int
-
-  @@id([c_id, c_level])
-}
-
-model member {
-  m_id   String  @id
-  m_pw   String
-  m_nick String?
-}
-
-model nemo {
-  n_num     Int
-  n_row_num Int
-  n_block1  Int
-  n_block2  Int
-  n_block3  Int
-  n_block4  Int
-  n_block5  Int
-  n_block6  Int
-  n_block7  Int
-  n_block8  Int
-  n_block9  Int
-  n_block10 Int
-  n_block11 Int
-  n_block12 Int
-  n_block13 Int
-  n_block14 Int
-  n_block15 Int
-
-  @@id([n_num, n_row_num])
-}
-
-model nemoplay {
-  p_id      String
-  p_num     Int
-  p_row_num Int
-  p_block1  Int
-  p_block2  Int
-  p_block3  Int
-  p_block4  Int
-  p_block5  Int
-  p_block6  Int
-  p_block7  Int
-  p_block8  Int
-  p_block9  Int
-  p_block10 Int
-  p_block11 Int
-  p_block12 Int
-  p_block13 Int
-  p_block14 Int
-  p_block15 Int
-
-  @@id([p_id, p_num, p_row_num])
-}
-
-model speech {
-  s_num     Int    @id @default(autoincrement())
-  s_speaker String
-  s_message String
-}
-
 model tbl_clear {
   c_id    String @db.VarChar(20)
   c_level Int
-  c_clear Int?
+  c_clear Int
 
-  @@id([c_id, c_level])
+  @@id([c_id, c_level, c_clear])
 }
 
 model tbl_members {
@@ -131,10 +66,11 @@ model tbl_nemo_play {
   @@id([p_id, p_num, p_row_num])
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model tbl_speech {
-  s_num     Int    // 선택적 필드에서 필수 필드로 변경
-  s_speaker String
-  s_message String
+  s_num     Int?
+  s_speaker String? @db.VarChar(1)
+  s_message String? @db.VarChar(100)
 
-  @@id([s_num, s_speaker, s_message])
+  @@ignore
 }

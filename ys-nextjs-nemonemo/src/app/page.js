@@ -40,10 +40,7 @@ export default function Main() {
         const data = await findClearData("11", i);
         if (data) clearData.push(data);
       } catch (error) {
-        console.error(
-          `Error fetching clear data for level ${i}:`,
-          error
-        );
+        console.error(`Error fetching clear data for level ${i}:`, error);
       }
     }
     console.log("클리어데이터", clearData);
@@ -87,8 +84,7 @@ export default function Main() {
           <div className="HM-home_picture">
             <div>
               <div id="LEVEL3" className="YS_p_div">
-                {clearData.length > 0 &&
-                clearData[2]?.c_clear === 1 ? (
+                {clearData.length > 0 && clearData[2]?.c_clear === 1 ? (
                   <img
                     className={`YS_picture_c ${
                       clearData[0]?.c_clear === 1 &&
@@ -121,8 +117,7 @@ export default function Main() {
                 )}
               </div>
               <div id="LEVEL1" className="YS_p_div">
-                {clearData.length > 0 &&
-                clearData[0]?.c_clear === 1 ? (
+                {clearData.length > 0 && clearData[0]?.c_clear === 1 ? (
                   <img
                     className={`YS_picture_c ${
                       clearData[0]?.c_clear === 1 &&
@@ -157,8 +152,7 @@ export default function Main() {
             </div>
             <div>
               <div id="LEVEL4" className="YS_p_div">
-                {clearData.length > 0 &&
-                clearData[3]?.c_clear === 1 ? (
+                {clearData.length > 0 && clearData[3]?.c_clear === 1 ? (
                   <img
                     className={`YS_picture_c ${
                       clearData[0]?.c_clear === 1 &&
@@ -191,8 +185,7 @@ export default function Main() {
                 )}
               </div>
               <div id="LEVEL2" classNames="YS_p_div">
-                {clearData.length > 0 &&
-                clearData[1]?.c_clear === 1 ? (
+                {clearData.length > 0 && clearData[1]?.c_clear === 1 ? (
                   <img
                     className={`YS_picture_c ${
                       clearData[0]?.c_clear === 1 &&
@@ -230,25 +223,15 @@ export default function Main() {
         {clearData.length > 0 && clearData[4]?.c_clear === 1 && (
           <div className="HM-home_picture">
             <div className="complete_img_box">
-              <img
-                className="YS_picture fade-in"
-                src="/img/complete_img.png"
-              />
+              <img className="YS_picture fade-in" src="/img/complete_img.png" />
             </div>
             <section className="ex-mark hidden" id="LEVEL5">
-              <img
-                className="YS_picture next_level"
-                src="img/ex-mark.png"
-              />
+              <img className="YS_picture next_level" src="img/ex-mark.png" />
             </section>
           </div>
         )}
 
-        <h1
-          className={`clear_msg ${
-            clearData[4]?.c_clear === 1 ? "show_clear fade-in" : ""
-          }`}
-        >
+        <h1 className={`clear_msg ${clearData[4]?.c_clear === 1 ? "show_clear fade-in" : ""}`}>
           <span>C</span>
           <span>L</span>
           <span>E</span>
@@ -267,9 +250,7 @@ export default function Main() {
                   : ""
               }`}
             >
-              <h2 className="YS_diary_row">
-                어제 수족관에 놀러갔었다!
-              </h2>
+              <h2 className="YS_diary_row">어제 수족관에 놀러갔었다!</h2>
             </section>
           ) : (
             <section className="YS_border-bottom">
@@ -286,9 +267,7 @@ export default function Main() {
                   : ""
               }`}
             >
-              <h2 className="YS_diary_row">
-                작고 귀여운 흰 동가리도 보고
-              </h2>
+              <h2 className="YS_diary_row">작고 귀여운 흰 동가리도 보고</h2>
             </section>
           ) : (
             <section className="YS_border-bottom">
@@ -305,9 +284,7 @@ export default function Main() {
                   : ""
               }`}
             >
-              <h2 className="YS_diary_row">
-                알록달록한 조명빛을 받는 해파리와
-              </h2>
+              <h2 className="YS_diary_row">알록달록한 조명빛을 받는 해파리와</h2>
             </section>
           ) : (
             <section className="YS_border-bottom">
@@ -342,9 +319,7 @@ export default function Main() {
                   : ""
               }`}
             >
-              <h2 className="YS_diary_row">
-                엄청 커다란 문어를 만났다!
-              </h2>
+              <h2 className="YS_diary_row">엄청 커다란 문어를 만났다!</h2>
             </section>
           ) : (
             <section className="YS_border-bottom">
