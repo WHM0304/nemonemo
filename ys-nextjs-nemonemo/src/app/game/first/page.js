@@ -8,7 +8,20 @@ const first = () => {
   // 정답확인용
   const checkCorrect = async (formData) => {
     "use server";
-    await compareNemoData(formData);
+    let result = "";
+
+    result = await compareNemoData(formData); // 정답확인결과 잘와짐
+    console.log(result);
+
+    if (result === "정답입니다") {
+      redirect("/"); // 클리어주소로 적기
+    }
+    // 틀렸으면 메시지를 보여줘야 하는데...
+
+    // alert(result);
+    // return result;
+
+    // document.getElementById("CLEAR_IS").innerText = result;
   };
 
   //-- 게임정보생성

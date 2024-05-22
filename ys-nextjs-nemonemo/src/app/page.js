@@ -6,19 +6,19 @@ import Image from "next/image";
 
 export default function Main() {
   const [clearData, setClearData] = useState([]);
-  const [speech, setSpeech] = useState([]);
+  // const [speech, setSpeech] = useState([]);
 
-  useEffect(() => {
-    const spFetch = async () => {
-      try {
-        const result = await selectAll();
-        setSpeech(result);
-      } catch (error) {
-        console.error("Error fetching speech data:", error);
-      }
-    };
-    spFetch();
-  }, []);
+  // useEffect(() => {
+  //   const spFetch = async () => {
+  //     try {
+  //       const result = await selectAll();
+  //       setSpeech(result);
+  //     } catch (error) {
+  //       console.error("Error fetching speech data:", error);
+  //     }
+  //   };
+  //   spFetch();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,11 +51,11 @@ export default function Main() {
   };
   //----------------------
 
-  const viewList = speech.map((item, index) => (
-    <li key={index}>
-      <strong>{item.s_speaker}</strong>
-    </li>
-  ));
+  // const viewList = speech.map((item, index) => (
+  //   <li key={index}>
+  //     <strong>{item.s_speaker}</strong>
+  //   </li>
+  // ));
 
   return (
     <main>

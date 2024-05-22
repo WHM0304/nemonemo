@@ -1,32 +1,17 @@
-// 정답테이블정보
 "use server";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-// export const selectAll = async () => {
-//   try {
-//     const result = await prisma.tbl_nemo.findMany();
-//     console.log("RESULT", result);
-//     prisma.$disconnect;
-//     return result;
-//   } catch (error) {
-//     console.error(error);
-//     prisma.$disconnect;
-//   }
-// };
-
-// 정답확인용
 export const NemoCheck = async (data) => {
   const result = await prisma.tbl_nemo.findMany({
     where: {
       n_num: data.p_num,
     },
   });
-  prisma.$disconnect;
+  prisma.$disconnect();
   return result;
 };
 
-// 정답확인용 플레이 데이터
 export const PlayNemoCheck = async (data) => {
   const result = await prisma.tbl_nemo_play.findMany({
     where: {
@@ -34,26 +19,24 @@ export const PlayNemoCheck = async (data) => {
       p_num: data.p_num,
     },
   });
-  prisma.$disconnect;
+  prisma.$disconnect();
   return result;
 };
 
-// 정답확인용
 export const compareNemoData = async (data) => {
   const nemoData = await NemoCheck(data);
   const playNemoData = await PlayNemoCheck(data);
 
-  // Assuming nemoData and playNemoData are arrays of rows
   const comparisonResults = playNemoData.map((playRow) => {
     const matchingNemoRow = nemoData.find(
       (nemoRow) => nemoRow.n_row_num === playRow.p_row_num
     );
 
     if (!matchingNemoRow) {
-      return { match: false, playRow, nemoRow: null };
+      return false;
     }
 
-    const isMatch =
+    return (
       playRow.p_block1 === matchingNemoRow.n_block1 &&
       playRow.p_block2 === matchingNemoRow.n_block2 &&
       playRow.p_block3 === matchingNemoRow.n_block3 &&
@@ -78,10 +61,19 @@ export const compareNemoData = async (data) => {
       (playRow.p_block14 === undefined ||
         playRow.p_block14 === matchingNemoRow.n_block14) &&
       (playRow.p_block15 === undefined ||
-        playRow.p_block15 === matchingNemoRow.n_block15);
-
-    return { match: isMatch, playRow, nemoRow: matchingNemoRow };
+        playRow.p_block15 === matchingNemoRow.n_block15)
+    );
   });
 
-  return comparisonResults;
+  // 같으면 true 아님 false
+  const isCorrect = comparisonResults.every((result) => result);
+  let answer = "";
+  if (isCorrect === true) {
+    answer = "정답입니다";
+    // 여기에 클리어 정보생성하는거 만들기..
+  } else {
+    answer = "틀렸습니다";
+  }
+
+  return answer;
 };
