@@ -45,6 +45,11 @@ export const compareNemoData = async (data) => {
   const nemoData = await NemoCheck(data);
   const playNemoData = await PlayNemoCheck(data);
 
+  // playNemoData가 비어 있으면 정답이 아님
+  if (playNemoData.length === 0) {
+    return "틀렸습니다";
+  }
+
   const comparisonResults = playNemoData.map((playRow) => {
     const matchingNemoRow = nemoData.find(
       (nemoRow) => nemoRow.n_row_num === playRow.p_row_num
