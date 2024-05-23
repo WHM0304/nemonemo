@@ -5,17 +5,40 @@ import { redirect } from "next/navigation";
 import "@/css/game.css";
 
 const first = () => {
+  // 지우개 버튼 : 수동..   / 온클릭
+  // const blockCounter = 5;
+  // const deleteData = async (blockCounter) => {
+  //   console.log("리셋 만들기");
+  // };
+
   // 정답확인용
   const checkCorrect = async (formData) => {
     "use server";
-    await compareNemoData(formData);
+    let result = "";
+
+    result = await compareNemoData(formData); // 정답확인결과 잘와짐
+    console.log(result);
+
+    // 여기게임레벨 : 수동..
+    const level = 1;
+
+    if (result === "정답입니다") {
+      redirect(`/clear/${level}`); // 클리어주소로 적기
+    } else if (result === "틀렸습니다") {
+      // 틀렸으면 메시지를 보여줘야 하는데...
+    }
+
+    // alert(result);
+    // return result;
+
+    // document.getElementById("CLEAR_IS").innerText = result;
   };
 
   //-- 게임정보생성
   const gameaction = async (formData) => {
     "use server";
     const game1Data = {
-      p_id: "11", // 문자열을 정수로 변환
+      p_id: "11",
       p_num: parseInt(formData.get("p_num"), 10), // 문자열을 정수로 변환
       p_row_num: parseInt(formData.get("p_row_num"), 10), // 문자열을 정수로 변환
       p_block1: formData.get("p_block1") === "on" ? 1 : 0,
@@ -92,7 +115,7 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input name="p_num" value="1" hidden="true" />
                 <input name="p_row_num" value="1" hidden="true" />
-                <button>대충저장버튼</button>
+                <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
@@ -104,7 +127,7 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input name="p_num" value="1" hidden="true" />
                 <input name="p_row_num" value="2" hidden="true" />
-                <button>대충저장버튼</button>
+                <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
@@ -116,7 +139,7 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input name="p_num" value="1" hidden="true" />
                 <input name="p_row_num" value="3" hidden="true" />
-                <button>대충저장버튼</button>
+                <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
@@ -128,7 +151,7 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input name="p_num" value="1" hidden="true" />
                 <input name="p_row_num" value="4" hidden="true" />
-                <button>대충저장버튼</button>
+                <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
@@ -140,7 +163,7 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input name="p_num" value="1" hidden="true" />
                 <input name="p_row_num" value="5" hidden="true" />
-                <button>대충저장버튼</button>
+                <button>저장</button>
               </div>
             </form>
           </div>
@@ -151,35 +174,19 @@ const first = () => {
         <div id="lives">목숨: </div>
         <div class="clear">
           <form method="POST" action={checkCorrect}>
-            <input name="p_id" value="1" hidden="true" />
+            <input name="p_id" value="11" hidden="true" />
             <input name="p_num" value="1" hidden="true" />
             <button id="clear">정답확인</button>
           </form>
         </div>
         <div id="CLEAR_IS"></div>
       </section>
-      <div class="HM-main_hover_box"></div>
-      <nav class="HM-main_nav">
-        <ul>
-          <li>홈</li>
-          <li>
-            <form
-              action="${rootPath}/user/logout"
-              onclick="this.submit()"
-            >
-              로그아웃
-            </form>
-          </li>
-        </ul>
-      </nav>
     </>
   );
 };
 export default first;
 
-// 할거 : 정답확인버튼에 정답확인핸들러 만들어서 붙이기
-// 플레이데이터, 정답비교..
-// 플레이js에다가 지우개만들기
+// 할거 : 정답확인버튼에 정답확인핸들러 만들어서 붙이기 - 판별은 됨
+//- 틀렸을때 알려줄거 필요
 
-// 정답확인 버튼을 form 안에넣고..
-// action에 정답테이블이랑 플레이 정보 조회하는 거만들어서 붙이기
+// 플레이js에다가 지우개만들기 -해야함

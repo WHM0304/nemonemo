@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body>
+      <body className="HM-main_container">
         <header className="HM-main_header">
           <div className="HM-main_sketch"></div>
         </header>

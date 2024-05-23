@@ -1,32 +1,17 @@
-// 정답테이블정보
 "use server";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-// export const selectAll = async () => {
-//   try {
-//     const result = await prisma.tbl_nemo.findMany();
-//     console.log("RESULT", result);
-//     prisma.$disconnect;
-//     return result;
-//   } catch (error) {
-//     console.error(error);
-//     prisma.$disconnect;
-//   }
-// };
-
-// 정답확인용
 export const NemoCheck = async (data) => {
   const result = await prisma.tbl_nemo.findMany({
     where: {
       n_num: data.p_num,
     },
   });
-  prisma.$disconnect;
+  // prisma.$disconnect();
   return result;
 };
 
-// 정답확인용 플레이 데이터
 export const PlayNemoCheck = async (data) => {
   const result = await prisma.tbl_nemo_play.findMany({
     where: {
@@ -34,26 +19,42 @@ export const PlayNemoCheck = async (data) => {
       p_num: data.p_num,
     },
   });
-  prisma.$disconnect;
+  prisma.$disconnect();
   return result;
 };
 
-// 정답확인용
+// 정답일때 클리어 데이터 생성하는용 -> 정답화면에서 만들기로
+// export const CreateClearData = async (p_num) => {
+//   // 왜 위의 2개는 되는데 이것만 data.p_id 이 안되냐
+//   // 일단1렙되게
+//   await prisma.tbl_clear.create({
+//     data: {
+//       c_id: "11",
+//       c_level: p_num,
+//       // c_id: "11",
+//       // c_level: 1,
+//       c_clear: 1,
+//     },
+//   });
+//   prisma.$disconnect();
+// };
+
 export const compareNemoData = async (data) => {
+  // console.log('Received data:', data);
+
   const nemoData = await NemoCheck(data);
   const playNemoData = await PlayNemoCheck(data);
 
-  // Assuming nemoData and playNemoData are arrays of rows
   const comparisonResults = playNemoData.map((playRow) => {
     const matchingNemoRow = nemoData.find(
       (nemoRow) => nemoRow.n_row_num === playRow.p_row_num
     );
 
     if (!matchingNemoRow) {
-      return { match: false, playRow, nemoRow: null };
+      return false;
     }
 
-    const isMatch =
+    return (
       playRow.p_block1 === matchingNemoRow.n_block1 &&
       playRow.p_block2 === matchingNemoRow.n_block2 &&
       playRow.p_block3 === matchingNemoRow.n_block3 &&
@@ -78,10 +79,21 @@ export const compareNemoData = async (data) => {
       (playRow.p_block14 === undefined ||
         playRow.p_block14 === matchingNemoRow.n_block14) &&
       (playRow.p_block15 === undefined ||
-        playRow.p_block15 === matchingNemoRow.n_block15);
-
-    return { match: isMatch, playRow, nemoRow: matchingNemoRow };
+        playRow.p_block15 === matchingNemoRow.n_block15)
+    );
   });
 
-  return comparisonResults;
+  // 같으면 true 아님 false
+  const isCorrect = comparisonResults.every((result) => result);
+  let answer = "";
+  if (isCorrect === true) {
+    answer = "정답입니다";
+    // 클리어정보만들기 -> 클리어화면에서 만들까
+    // await CreateClearData(data);
+  } else {
+    answer = "틀렸습니다";
+  }
+
+  prisma.$disconnect();
+  return answer;
 };

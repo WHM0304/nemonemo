@@ -68,9 +68,9 @@ model tbl_nemo_play {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model tbl_speech {
-  s_num     Int?
-  s_speaker String? @db.VarChar(1)
-  s_message String? @db.VarChar(100)
+  s_num     Int
+  s_speaker String @db.VarChar(1)
+  s_message String @db.VarChar(100)
 
   @@ignore
 }
