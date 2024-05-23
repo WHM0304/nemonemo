@@ -9,9 +9,9 @@ export default function RootLayout({ children }) {
         <header className="HM-main_header">
           <div className="HM-main_sketch"></div>
         </header>
-        <div class="HM-main_body">{children}</div>
-        <div class="HM-main_hover_box"></div>
-        <nav class="HM-main_nav">
+        <div className="HM-main_body">{children}</div>
+        <div className="HM-main_hover_box"></div>
+        <nav className="HM-main_nav">
           <ul>
             <li>홈</li>
             <li>

@@ -14,12 +14,8 @@ export default function Main() {
     const fetchSpeeches = async () => {
       try {
         const response = await Speech_SelectAll();
-        console.log(response);
-        const data = await response.json();
-        setSpeeches(data);
-      } catch (error) {
-        console.error("Error fetching speeches:", error);
-      }
+        setSpeeches(response);
+      } catch (error) {}
     };
     fetchSpeeches();
   }, []);
@@ -138,8 +134,7 @@ export default function Main() {
             </div>
             <div>
               <label className="HM-home_cal">
-                <span>{currentYear}년</span>{" "}
-                <span>{currentMonth}월</span>{" "}
+                <span>{currentYear}년</span> <span>{currentMonth}월</span>{" "}
                 <span>{currentDay}일</span>
               </label>
             </div>
@@ -256,7 +251,7 @@ export default function Main() {
                   />
                 )}
               </div>
-              <div id="LEVEL2" classNames="YS_p_div">
+              <div id="LEVEL2" className="YS_p_div">
                 {clearData.length > 0 && clearData[1]?.c_clear === 1 ? (
                   <img
                     className={`YS_picture_c ${
@@ -292,14 +287,8 @@ export default function Main() {
                 )}
               </div>
             </div>
-            <section
-              className={`ex-mark ${onclickboss ? "" : "hidden"}`}
-              id="LEVEL5"
-            >
-              <img
-                className="YS_picture next_level"
-                src="img/ex-mark.png"
-              />
+            <section className={`ex-mark ${onclickboss ? "" : "hidden"}`} id="LEVEL5">
+              <img className="YS_picture next_level" src="img/ex-mark.png" />
             </section>
           </div>
         )}
@@ -356,7 +345,6 @@ export default function Main() {
             <section className="ex-mark hidden" id="LEVEL5">
               <img className="YS_picture next_level" src="img/ex-mark.png" />
             </section>
-
           </div>
         )}
 
@@ -474,9 +462,7 @@ export default function Main() {
             </section>
           )}
         </div>
-        {currentLevel !== null && (
-          <Speech speeches={speeches} currentLevel={currentLevel} />
-        )}
+        {currentLevel !== null && <Speech speeches={speeches} currentLevel={currentLevel} />}
       </div>
     </main>
   );
