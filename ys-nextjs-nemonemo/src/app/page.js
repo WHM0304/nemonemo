@@ -14,6 +14,7 @@ export default function Main() {
     const fetchSpeeches = async () => {
       try {
         const response = await Speech_SelectAll();
+
         setSpeeches(response);
       } catch (error) {}
     };
@@ -40,8 +41,10 @@ export default function Main() {
   // };
   // ---------------------
 
-  const speechclick = () => {
-    setCurrentLevel(2);
+  const speechclick = (e) => {
+    const target = Number(e.target.closest("div").id.split("LEVEL")[1]);
+    console.log(target);
+    setCurrentLevel(target);
   };
 
   const [clearData, setClearData] = useState([]);
@@ -177,6 +180,7 @@ export default function Main() {
                     alt="Question Image"
                     width={200}
                     height={200}
+                    onClick={speechclick}
                   />
                 )}
               </div>
@@ -211,6 +215,7 @@ export default function Main() {
                     alt="Question Image"
                     width={200}
                     height={200}
+                    onClick={speechclick}
                   />
                 )}
               </div>
@@ -248,6 +253,7 @@ export default function Main() {
                     alt="Question Image"
                     width={200}
                     height={200}
+                    onClick={speechclick}
                   />
                 )}
               </div>
