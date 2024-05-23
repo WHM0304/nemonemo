@@ -30,14 +30,14 @@ const Speech = ({ speeches, currentLevel }) => {
     } else {
       setIsSpeechVisible(false);
       // 대화를 모두 본 후 `/game/[level]`로 이동
-      router.push(`/game/first`);
+      router.push(`/game/${currentLevel}`);
     }
   };
 
   const handleSkip = () => {
     setIsSpeechVisible(false);
     // 대화를 건너뛴 후 `/game/[level]`로 이동
-    router.push(`/game/second`);
+    router.push(`/game/${currentLevel}`);
   };
 
   const handleKeyDown = (event) => {
