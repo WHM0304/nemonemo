@@ -4,9 +4,13 @@ const prisma = new PrismaClient();
 
 // const SPEECH = prisma.tbl_speech;
 
-export const Speech_SelectAll = async () => {
+export const speech_SelectAll = async () => {
   console.log("??");
 
+  // return await prisma.tbl
   const result = await prisma.tbl_speech.findMany();
-  console.log("스피치", result);
+  // console.log("스피치", result);
+  return result;
+  // const result = await prisma.tbl_speech.findMany();
+  // console.log("스피치", result);
 };

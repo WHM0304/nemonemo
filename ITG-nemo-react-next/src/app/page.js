@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { findClearData } from "@/app/api/clear.js";
 // import { useRouter } from "next/navigation";
 import Speech from "./script/speech";
-import { Speech_SelectAll } from "./api/speeches";
-// import { Speech_SelectAll } from "@/app/api/speeches.js";
+import { speech_SelectAll } from "./api/speeches";
 
 export default function Main() {
   //------------------스피치
@@ -13,7 +12,8 @@ export default function Main() {
   const [speeches, setSpeeches] = useState([]);
   useEffect(() => {
     const fetchSpeeches = async () => {
-      const response = await Speech_SelectAll();
+      const response = await speech_SelectAll();
+      console.log(response);
       setSpeeches(response);
     };
     fetchSpeeches();
@@ -40,6 +40,7 @@ export default function Main() {
   // ---------------------
 
   const speechclick = (e) => {
+    console.log("?");
     const target = Number(
       e.target.closest("div").id.split("LEVEL")[1]
     );
@@ -221,7 +222,6 @@ export default function Main() {
                     alt="Question Image"
                     width={200}
                     height={200}
-                    onClick={speechclick}
                   />
                 )}
               </div>
@@ -331,6 +331,7 @@ export default function Main() {
                   alt="Question Image"
                   width={200}
                   height={200}
+                  onClick={speechclick}
                 />
               </div>
             </div>

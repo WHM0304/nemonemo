@@ -37,6 +37,7 @@ const first = () => {
   //-- 게임정보생성
   const gameaction = async (formData) => {
     "use server";
+    console.log(formData);
     const game1Data = {
       p_id: "11",
       p_num: parseInt(formData.get("p_num"), 10), // 문자열을 정수로 변환
@@ -77,6 +78,7 @@ const first = () => {
         p_block15: formData.get("p_block15") === "on" ? 1 : 0,
       }),
     };
+    console.log("ㅁ니임니암니아ㅣ", game1Data);
 
     // await createPlayData(game1Data);
     await playDataCheck(game1Data);
@@ -86,10 +88,10 @@ const first = () => {
 
   return (
     <>
-      <section class="game-container">
-        <div class="main-hint-container">
-          <div class="blank"></div>
-          <div class="main-column-hint">
+      <section className="game-container">
+        <div className="main-hint-container">
+          <div className="blank"></div>
+          <div className="main-column-hint">
             <div id="column1-hint"></div>
             <div id="column2-hint"></div>
             <div id="column3-hint"></div>
@@ -97,17 +99,17 @@ const first = () => {
             <div id="column5-hint"></div>
           </div>
         </div>
-        <div class="main-form-container">
-          <div class="main-row-hint">
+        <div className="main-form-container">
+          <div className="main-row-hint">
             <div id="row1-hint"></div>
             <div id="row2-hint"></div>
             <div id="row3-hint"></div>
             <div id="row4-hint"></div>
             <div id="row5-hint"></div>
           </div>
-          <div class="main-input-box">
+          <div className="main-input-box">
             <form method="POST" action={gameaction}>
-              <div class="p_row_num1 row">
+              <div className="p_row_num1 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -115,13 +117,23 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="1" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="1"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
-              <div class="p_row_num2 row">
+              <div className="p_row_num2 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -129,13 +141,23 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="2" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
-              <div class="p_row_num3 row">
+              <div className="p_row_num3 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -143,13 +165,23 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="3" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="3"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
-              <div class="p_row_num4 row">
+              <div className="p_row_num4 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -157,13 +189,23 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="4" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="4"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
-              <div class="p_row_num5 row">
+              <div className="p_row_num5 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -171,13 +213,23 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="5" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="5"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
-              <div class="p_row_num5 row">
+              <div className="p_row_num5 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -185,13 +237,23 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="6" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="6"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
             <form method="POST" action={gameaction}>
-              <div class="p_row_num5 row">
+              <div className="p_row_num5 row">
                 <input type="checkbox" name="p_block1" />
                 <input type="checkbox" name="p_block2" />
                 <input type="checkbox" name="p_block3" />
@@ -199,21 +261,31 @@ const first = () => {
                 <input type="checkbox" name="p_block5" />
                 <input type="checkbox" name="p_block6" />
                 <input type="checkbox" name="p_block7" />
-                <input name="p_num" value="2" hidden="true" />
-                <input name="p_row_num" value="7" hidden="true" />
+                <input
+                  name="p_num"
+                  value="2"
+                  hidden="hidden"
+                  readOnly
+                />
+                <input
+                  name="p_row_num"
+                  value="7"
+                  hidden="hidden"
+                  readOnly
+                />
                 <button>저장</button>
               </div>
             </form>
           </div>
-          <div class="main-delete">
+          <div className="main-delete">
             <button id="ALL_DELETE"></button>
           </div>
         </div>
         <div id="lives">목숨: </div>
-        <div class="clear">
+        <div className="clear">
           <form method="POST" action={checkCorrect}>
-            <input name="p_id" value="11" hidden="true" />
-            <input name="p_num" value="2" hidden="true" />
+            <input name="p_id" value="11" hidden="hidden" readOnly />
+            <input name="p_num" value="2" hidden="hidden" readOnly />
             <button id="clear">정답확인</button>
           </form>
         </div>

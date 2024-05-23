@@ -24,21 +24,22 @@ export const playDataCheck = async (data) => {
       p_num: data.p_num,
     },
   });
+  console.log(check_result);
   if (check_result.length == 0) {
     // p_num 으로 난이도 구분해서 난이도 상관없이 생성되게끔
     let block_num = 0;
-      if(data.p_num == 1){
-        block_num = 5;
-      } else if (data.p_num == 2){
-        block_num = 7;
-      }else if (data.p_num == 3){
-        block_num = 9;
-      }else if (data.p_num == 4){
-        block_num = 11;
-      }else if (data.p_num == 5){
-        block_num = 15;
-      }
-    for (let i = 1; i <=  block_num; i++) {
+    if (data.p_num == 1) {
+      block_num = 5;
+    } else if (data.p_num == 2) {
+      block_num = 7;
+    } else if (data.p_num == 3) {
+      block_num = 9;
+    } else if (data.p_num == 4) {
+      block_num = 11;
+    } else if (data.p_num == 5) {
+      block_num = 15;
+    }
+    for (let i = 1; i <= block_num; i++) {
       const startData = {
         p_id: data.p_id,
         p_num: data.p_num,

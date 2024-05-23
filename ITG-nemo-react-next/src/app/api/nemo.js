@@ -102,3 +102,10 @@ export const compareNemoData = async (data) => {
   prisma.$disconnect();
   return answer;
 };
+
+export const Nemo_SelectAll = async ({ n_num }) => {
+  const result = await prisma.tbl_nemo.findMany({
+    where: { n_num },
+  });
+  return result;
+};
