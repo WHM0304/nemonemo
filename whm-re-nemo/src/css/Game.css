@@ -5,7 +5,7 @@ input {
 
 .Game-container {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   input[type="checkbox"] {
     width: 40px;
     height: 40px;
@@ -20,8 +20,44 @@ input {
     background-color: black;
   }
 }
-.Game-container > div {
+
+.game-box {
   display: flex;
-  margin: 0 auto;
-  gap: 5px;
+  flex-direction: column;
+  div {
+    display: flex;
+    margin: 0 auto;
+    gap: 5px;
+  }
+}
+
+.COLUMN {
+  margin-left: 60px;
+  display: flex;
+  gap: 40px;
+}
+.ROW {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .row-hints {
+    display: flex;
+    gap: 10px;
+  }
+  /* display: flex; */
+}
+.GAME-ALL {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 50%;
+  margin: 2rem auto;
+}
+button:hover {
+  cursor: pointer;
 }
