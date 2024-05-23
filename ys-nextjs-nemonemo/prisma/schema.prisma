@@ -132,9 +132,9 @@ model tbl_nemo_play {
 }
 
 model tbl_speech {
-  s_num     Int    // 선택적 필드에서 필수 필드로 변경
-  s_speaker String
-  s_message String
+  s_num     Int
+  s_speaker String @db.VarChar(1)
+  s_message String @db.VarChar(100)
 
   @@id([s_num, s_speaker, s_message])
 }

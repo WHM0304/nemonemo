@@ -12,7 +12,7 @@ const Join = () => {
       <div>
         <input
           placeholder="비밀번호확인"
-          class="re_pw"
+          className="re_pw"
           type="password"
         />
       </div>

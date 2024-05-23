@@ -19,27 +19,29 @@ export const PlayNemoCheck = async (data) => {
       p_num: data.p_num,
     },
   });
-  // prisma.$disconnect();
+  prisma.$disconnect();
   return result;
 };
 
-// 정답일때 클리어 데이터 생성하는용
-export const CreateClearData = async (data) => {
-  // 왜 위의 2개는 되는데 이것만 data.p_id 이 안되냐
-  await prisma.tbl_clear.create({
-    data: {
-      c_id: data.p_id,
-      c_level: data.p_num,
-      c_clear: 1,
-    },
-  });
-  // prisma.$disconnect();
-};
-
+// 정답일때 클리어 데이터 생성하는용 -> 정답화면에서 만들기로
+// export const CreateClearData = async (p_num) => {
+//   // 왜 위의 2개는 되는데 이것만 data.p_id 이 안되냐
+//   // 일단1렙되게
+//   await prisma.tbl_clear.create({
+//     data: {
+//       c_id: "11",
+//       c_level: p_num,
+//       // c_id: "11",
+//       // c_level: 1,
+//       c_clear: 1,
+//     },
+//   });
+//   prisma.$disconnect();
+// };
 
 export const compareNemoData = async (data) => {
-  // console.log('Received data:', data); 
-  
+  // console.log('Received data:', data);
+
   const nemoData = await NemoCheck(data);
   const playNemoData = await PlayNemoCheck(data);
 
@@ -86,9 +88,8 @@ export const compareNemoData = async (data) => {
   let answer = "";
   if (isCorrect === true) {
     answer = "정답입니다";
-    // 클리어정보만들기
-    // await CreateClearData(data); 
-    
+    // 클리어정보만들기 -> 클리어화면에서 만들까
+    // await CreateClearData(data);
   } else {
     answer = "틀렸습니다";
   }
