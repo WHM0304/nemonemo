@@ -1,9 +1,11 @@
-import logo from "./logo.svg";
 import "./css/App.css";
-import HomeMain from "./main/HomeMain";
-import GameMain from "./game/GameMain";
+
+import { useEffect, useState } from "react";
+import { BrowserRouter, NavLink, Outlet, Route, Routes } from "react-router-dom";
 
 function App() {
+  // console.log(nemo);
+
   const onClickNav = (e) => {
     const target = e.target;
     const nav = document.querySelector(".App-nav");
@@ -12,6 +14,7 @@ function App() {
 
     // nav.hidden = "";
   };
+  // console.log(nemo);
 
   return (
     <div className="App">
@@ -19,7 +22,7 @@ function App() {
         <h1>스케치북</h1>
       </header>
       <section className="App-section">
-        <GameMain></GameMain>
+        <Outlet />
       </section>
       <div className="App-nav-box" onClick={onClickNav}></div>
       <nav className="App-nav hidden">
@@ -28,13 +31,13 @@ function App() {
             <a href="/">홈</a>
           </li>
           <li>
-            <a href="${rootPath}/user/join">회원가입</a>
+            <a href="/">회원가입</a>
           </li>
           <li>
-            <a href="${rootPath}/user/login">로그인</a>
+            <a href="/">로그인</a>
           </li>
           <li>
-            <a href="${rootPath}/user/logout">로그아웃</a>
+            <a href="/">로그아웃</a>
           </li>
         </ul>
       </nav>

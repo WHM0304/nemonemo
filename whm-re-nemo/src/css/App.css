@@ -21,7 +21,7 @@ body {
 }
 
 .App-section {
-  flex: 1;
+  height: 90vh;
 }
 .App-footer {
   flex: 0.2;

@@ -10,7 +10,7 @@
   margin: 0px auto;
 }
 
-.home-picture > div {
+.home-picture > a {
   border: 1px solid black;
   width: 300px;
   height: 300px;
