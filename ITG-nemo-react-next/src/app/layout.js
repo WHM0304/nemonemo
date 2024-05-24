@@ -5,6 +5,22 @@ import Link from "next/link";
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gasoek+One&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="HM-main_container">
         <header className="HM-main_header">
           <div className="HM-main_sketch"></div>

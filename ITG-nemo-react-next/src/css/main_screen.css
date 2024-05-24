@@ -21,6 +21,7 @@
 }
 /* 게임 컴플리트 이미지 부분, 일기간격 맞추기 */
 .complete_img_box {
+  margin: 0 auto;
   height: 490px;
   width: 700px;
 }

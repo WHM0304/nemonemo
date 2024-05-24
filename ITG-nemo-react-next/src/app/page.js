@@ -48,6 +48,16 @@ export default function Main() {
     setCurrentLevel(target);
   };
 
+  // boss가 section 이어서..
+  const speechclickboss = (e) => {
+    console.log("?");
+    const target = Number(
+      e.target.closest("section").id.split("LEVEL")[1]
+    );
+    console.log(target);
+    setCurrentLevel(target);
+  };
+
   const [clearData, setClearData] = useState([]);
   // 레벨4끝나고나면 클릭하게 깜빡이는용도
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -110,9 +120,16 @@ export default function Main() {
   const handleAnimationEnd = () => {
     setAnimationComplete(true);
   };
-  // 4단계까지 깨고 클릭하면 보스스테이지 나오는 용도
+  // 보스스테이지 나오는 용도
   const bossstage = () => {
     setOnclickboss(true);
+  };
+
+  // 보스스테이지 용도2 - 4단계까지 다진행되야 눌렀을때 보스나오게
+  const handleClick = (event, condition, callback) => {
+    if (condition) {
+      callback(event);
+    }
   };
 
   //----------------------
@@ -170,7 +187,9 @@ export default function Main() {
                     alt="jellyfish Image"
                     width={200}
                     height={200}
-                    onClick={bossstage}
+                    onClick={(e) =>
+                      handleClick(e, animationComplete, bossstage)
+                    }
                   />
                 ) : (
                   <img
@@ -206,7 +225,9 @@ export default function Main() {
                     alt="Smile Image"
                     width={200}
                     height={200}
-                    onClick={bossstage}
+                    onClick={(e) =>
+                      handleClick(e, animationComplete, bossstage)
+                    }
                   />
                 ) : (
                   <img
@@ -244,7 +265,9 @@ export default function Main() {
                     width={200}
                     height={200}
                     onAnimationEnd={handleAnimationEnd}
-                    onClick={bossstage}
+                    onClick={(e) =>
+                      handleClick(e, animationComplete, bossstage)
+                    }
                   />
                 ) : (
                   <img
@@ -280,7 +303,9 @@ export default function Main() {
                     alt="fish Image"
                     width={200}
                     height={200}
-                    onClick={bossstage}
+                    onClick={(e) =>
+                      handleClick(e, animationComplete, bossstage)
+                    }
                   />
                 ) : (
                   <img
@@ -308,6 +333,7 @@ export default function Main() {
               <img
                 className="YS_picture next_level"
                 src="img/ex-mark.png"
+                onClick={speechclickboss}
               />
             </section>
           </div>
@@ -359,7 +385,7 @@ export default function Main() {
         )}
 
         {clearData.length > 0 && clearData[4]?.c_clear === 1 && (
-          <div className="HM-home_picture">
+          <>
             <div className="complete_img_box">
               <img
                 className="YS_picture fade-in"
@@ -372,7 +398,7 @@ export default function Main() {
                 src="img/ex-mark.png"
               />
             </section>
-          </div>
+          </>
         )}
 
         <h1
@@ -389,16 +415,16 @@ export default function Main() {
         </h1>
         <div className="HM-home_diary">
           {clearData.length > 0 && clearData[0]?.c_clear === 1 ? (
-            <section
-              className={`YS_border-bottom ${
-                clearData[1]?.c_clear !== 1 &&
-                clearData[2]?.c_clear !== 1 &&
-                clearData[3]?.c_clear !== 1
-                  ? "fade-in"
-                  : ""
-              }`}
-            >
-              <h2 className="YS_diary_row">
+            <section className="YS_border-bottom ">
+              <h2
+                className={`YS_diary_row ${
+                  clearData[1]?.c_clear !== 1 &&
+                  clearData[2]?.c_clear !== 1 &&
+                  clearData[3]?.c_clear !== 1
+                    ? "fade-in"
+                    : ""
+                }`}
+              >
                 어제 수족관에 놀러갔었다!
               </h2>
             </section>
@@ -408,16 +434,16 @@ export default function Main() {
             </section>
           )}
           {clearData.length > 0 && clearData[1]?.c_clear === 1 ? (
-            <section
-              className={`YS_border-bottom ${
-                clearData[0]?.c_clear === 1 &&
-                clearData[2]?.c_clear !== 1 &&
-                clearData[3]?.c_clear !== 1
-                  ? "fade-in"
-                  : ""
-              }`}
-            >
-              <h2 className="YS_diary_row">
+            <section className="YS_border-bottom">
+              <h2
+                className={`YS_diary_row ${
+                  clearData[0]?.c_clear === 1 &&
+                  clearData[2]?.c_clear !== 1 &&
+                  clearData[3]?.c_clear !== 1
+                    ? "fade-in"
+                    : ""
+                }`}
+              >
                 작고 귀여운 흰 동가리도 보고
               </h2>
             </section>
@@ -427,16 +453,16 @@ export default function Main() {
             </section>
           )}
           {clearData.length > 0 && clearData[2]?.c_clear === 1 ? (
-            <section
-              className={`YS_border-bottom ${
-                clearData[0]?.c_clear === 1 &&
-                clearData[1]?.c_clear !== 1 &&
-                clearData[3]?.c_clear !== 1
-                  ? "fade-in"
-                  : ""
-              }`}
-            >
-              <h2 className="YS_diary_row">
+            <section className="YS_border-bottom">
+              <h2
+                className={`YS_diary_row ${
+                  clearData[0]?.c_clear === 1 &&
+                  clearData[1]?.c_clear === 1 &&
+                  clearData[3]?.c_clear !== 1
+                    ? "fade-in"
+                    : ""
+                }`}
+              >
                 알록달록한 조명빛을 받는 해파리와
               </h2>
             </section>
@@ -446,16 +472,19 @@ export default function Main() {
             </section>
           )}
           {clearData.length > 0 && clearData[3]?.c_clear === 1 ? (
-            <section
-              className={`YS_border-bottom ${
-                clearData[0]?.c_clear === 1 &&
-                clearData[1]?.c_clear !== 1 &&
-                clearData[2]?.c_clear !== 1
-                  ? "fade-in"
-                  : ""
-              }`}
-            >
-              <h2 className="YS_diary_row">멋진 흰돌고래를 보고</h2>
+            <section className="YS_border-bottom">
+              <h2
+                className={`YS_diary_row ${
+                  clearData[0]?.c_clear === 1 &&
+                  clearData[1]?.c_clear === 1 &&
+                  clearData[2]?.c_clear === 1 &&
+                  clearData[3]?.c_clear !== 1
+                    ? "fade-in"
+                    : ""
+                }`}
+              >
+                멋진 흰돌고래를 보고
+              </h2>
             </section>
           ) : (
             <section className="YS_border-bottom">
@@ -463,17 +492,17 @@ export default function Main() {
             </section>
           )}
           {clearData.length > 0 && clearData[4]?.c_clear === 1 ? (
-            <section
-              className={`YS_border-bottom ${
-                clearData[0]?.c_clear === 1 &&
-                clearData[1]?.c_clear === 1 &&
-                clearData[2]?.c_clear === 1 &&
-                clearData[3]?.c_clear === 1
-                  ? "fade-in"
-                  : ""
-              }`}
-            >
-              <h2 className="YS_diary_row">
+            <section className="YS_border-bottom">
+              <h2
+                className={`YS_diary_row ${
+                  clearData[0]?.c_clear === 1 &&
+                  clearData[1]?.c_clear === 1 &&
+                  clearData[2]?.c_clear === 1 &&
+                  clearData[3]?.c_clear === 1
+                    ? "fade-in"
+                    : ""
+                }`}
+              >
                 엄청 커다란 문어를 만났다!
               </h2>
             </section>
@@ -483,17 +512,19 @@ export default function Main() {
             </section>
           )}
           {clearData.length > 0 && clearData[4]?.c_clear === 1 ? (
-            <section
-              className={`YS_border-bottom ${
-                clearData[0]?.c_clear === 1 &&
-                clearData[1]?.c_clear === 1 &&
-                clearData[2]?.c_clear === 1 &&
-                clearData[3]?.c_clear === 1
-                  ? "fade-in"
-                  : ""
-              }`}
-            >
-              <h2 className="YS_diary_row">참 재밌었다!</h2>
+            <section className="YS_border-bottom">
+              <h2
+                className={`YS_diary_row ${
+                  clearData[0]?.c_clear === 1 &&
+                  clearData[1]?.c_clear === 1 &&
+                  clearData[2]?.c_clear === 1 &&
+                  clearData[3]?.c_clear === 1
+                    ? "fade-in"
+                    : ""
+                }`}
+              >
+                참 재밌었다!
+              </h2>
             </section>
           ) : (
             <section className="YS_border-bottom">
