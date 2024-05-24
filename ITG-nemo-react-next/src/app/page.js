@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { findClearData } from "@/app/api/clear.js";
 // import { useRouter } from "next/navigation";
 import Speech from "./script/speech";
+import Speech2 from "./script/speech2";
 import { speech_SelectAll } from "./api/speeches";
 
 export default function Main() {
@@ -535,6 +536,7 @@ export default function Main() {
         {currentLevel !== null && (
           <Speech speeches={speeches} currentLevel={currentLevel} />
         )}
+        <Speech2 />
       </div>
     </main>
   );
