@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { findClearData } from "@/app/api/clear.js";
 // import { useRouter } from "next/navigation";
 import Speech from "./script/speech";
+import Speech2 from "./script/speech2";
 import { speech_SelectAll } from "./api/speeches";
 
 export default function Main() {
@@ -305,10 +306,13 @@ export default function Main() {
               className={`ex-mark ${onclickboss ? "" : "hidden"}`}
               id="LEVEL5"
             >
-              <img
-                className="YS_picture next_level"
-                src="img/ex-mark.png"
-              />
+              <div id="LEVEL5">
+                <img
+                  className="YS_picture next_level"
+                  src="img/ex-mark.png"
+                  onClick={speechclick}
+                />
+              </div>
             </section>
           </div>
         )}
@@ -366,6 +370,7 @@ export default function Main() {
                 src="/img/complete_img.png"
               />
             </div>
+
             <section className="ex-mark hidden" id="LEVEL5">
               <img
                 className="YS_picture next_level"
@@ -504,6 +509,7 @@ export default function Main() {
         {currentLevel !== null && (
           <Speech speeches={speeches} currentLevel={currentLevel} />
         )}
+        <Speech2 />
       </div>
     </main>
   );
