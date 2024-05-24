@@ -2,7 +2,7 @@
 import { Nemo_SelectAll } from "@/app/api/nemo";
 import { useEffect, useState } from "react";
 import "@/css/game_a.css";
-import { GameAction, nemo_play_select } from "@/app/api/game";
+import { DELETE_PlAY, GameAction, nemo_play_select } from "@/app/api/game";
 const GamePage = ({ params }) => {
   const n_num = Number(params.level);
 
@@ -15,6 +15,21 @@ const GamePage = ({ params }) => {
     // const target =fo;
     // console.log(formData);
     GameAction(formData);
+  };
+  const DELETE_EVENT = async () => {
+    let p_num = parseInt(params.level);
+    if (p_num === 1) {
+      p_num = 5;
+    } else if (p_num === 2) {
+      p_num = 7;
+    } else if (p_num === 3) {
+      p_num = 9;
+    } else if (p_num === 4) {
+      p_num = 11;
+    } else if (p_num === 5) {
+      p_num = 15;
+    }
+    await DELETE_PlAY({ p_id: "11", p_num: p_num });
   };
   const OnclickCorrect = () => {
     if (JSON.stringify(play) === JSON.stringify(nemo)) {
@@ -119,16 +134,8 @@ const GamePage = ({ params }) => {
     return (
       <form method="POST" action={actionHandler}>
         <div className="input_box" key={index}>
-          <input
-            name={`p_row_num`}
-            value={index + 1}
-            hidden="hidden"
-          />
-          <input
-            name={"p_num"}
-            value={params.level}
-            hidden="hidden"
-          />
+          <input name={`p_row_num`} value={index + 1} hidden="hidden" />
+          <input name={"p_num"} value={params.level} hidden="hidden" />
 
           {Object.keys(item).map(
             (blockName) =>
@@ -137,14 +144,11 @@ const GamePage = ({ params }) => {
                   name={blockName}
                   type="checkbox"
                   onChange={(e) => ChangeHandler(e, index, blockName)}
-                  checked={
-                    checkboxState[index] &&
-                    checkboxState[index][blockName] === 1
-                  }
+                  checked={checkboxState[index] && checkboxState[index][blockName] === 1}
                 />
               )
           )}
-          <button>ㅇㅇ?</button>
+          <button>저장</button>
         </div>
       </form>
     );
@@ -152,8 +156,6 @@ const GamePage = ({ params }) => {
 
   return (
     <>
-      <h1>1 {params.level}</h1>
-
       {viewList}
       <input hidden="hidden" name="p_num" value={n_num} readOnly />
       <input hidden="hidden" name="p_id" value="11" readOnly />
@@ -175,6 +177,7 @@ const GamePage = ({ params }) => {
             ))}
           </div>
         ))} */}
+      <button onClick={DELETE_EVENT}>삭제</button>
     </>
   );
 };

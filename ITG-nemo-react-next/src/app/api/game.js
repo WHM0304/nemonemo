@@ -48,105 +48,22 @@ export const GameAction = async (formData) => {
   });
   console.log(formData.get("p_num"));
   const p_num = formData.get("p_num");
+};
 
-  // p_num 으로 난이도 구분해서 난이도 상관없이 생성되게끔
-  // const findUser= async(p_id)=>{
-  //     p_id = '11';
-  //     await prisma.tbl_nemo_play.findMany(
-  //         where:{
-  //             p_id:{p_id}
-  //         }
-  //     )
+export const DELETE_PlAY = async ({ p_id, p_num }) => {
+  console.log(`${p_num}`);
+  console.log(p_id);
+  // for (let i = 0; i <= p_num; i++) {
+  await prisma.tbl_nemo_play.delete({
+    where: {
+      p_id_p_num_p_row_num: {
+        p_id: p_id,
+        p_num: p_num,
+        p_row_num: 1,
+      },
+    },
+  });
   // }
-  //   console.log("아", formData.get("p_block10"));
-  //   const data = {
-  //     p_id: "11",
-  //     p_num: Number(p_num, 10), // 문자열을 정수로 변환
-  //     p_row_num: parseInt(formData.get("p_row_num"), 10), // 문자열을 정수로 변환
-  // p_block1: formData.get("p_block1") === "on" ? 1 : 0,
-  // p_block2: formData.get("p_block2") === "on" ? 1 : 0,
-  // p_block3: formData.get("p_block3") === "on" ? 1 : 0,
-  // p_block4: formData.get("p_block4") === "on" ? 1 : 0,
-  // p_block5: formData.get("p_block5") === "on" ? 1 : 0,
-  // p_block6:
-  //   formData.get("p_block6") !== null &&
-  //   formData.get("p_block6") === "on"
-  //     ? 1
-  //     : 0,
-  // p_block7:
-  //   formData.get("p_block7") !== null &&
-  //   formData.get("p_block7") === "on"
-  //     ? 1
-  //     : 0,
-  // p_block8:
-  //   formData.get("p_block8") !== null &&
-  //   formData.get("p_block8") === "on"
-  //     ? 1
-  //     : 0,
-  // p_block9:
-  //   formData.get("p_block9") !== null &&
-  //   formData.get("p_block9") === "on"
-  //     ? 1
-  //     : 0,
-  // p_block10:
-  //   formData.get("p_block10") !== null &&
-  //   formData.get("p_block10") === "on"
-  //     ? 1
-  //     : 0,
-  // ...(formData.get("p_block11") !== null && {
-  //   p_block11: formData.get("p_block11") === "on" ? 1 : 0,
-  // }),
-  // ...(formData.get("p_block12") !== null && {
-  //   p_block12: formData.get("p_block12") === "on" ? 1 : 0,
-  // }),
-  // ...(formData.get("p_block13") !== null && {
-  //   p_block13: formData.get("p_block13") === "on" ? 1 : 0,
-  // }),
-  // ...(formData.get("p_block14") !== null && {
-  //   p_block14: formData.get("p_block14") === "on" ? 1 : 0,
-  // }),
-  // ...(formData.get("p_block15") !== null && {
-  //   p_block15: formData.get("p_block15") === "on" ? 1 : 0,
-  // }),
-  //   };
-  //   console.log(data);
-  //   for (let i = 1; i <= 15; i++) {
-  //     const blockkey = `p_block${i}`;
-  //     const value = formData.get(blockkey);
-  //     console.log("?", blockkey);
-  //     if (value !== null) {
-  //       data[blockkey] = value === "on" ? 1 : 0;
-  //     }
-  //   }
-  //   console.log("제발요", data);
-
-  //   await prisma.tbl_nemo_play.update({
-  //     where: {
-  //       p_id_p_num_p_row_num: {
-  //         p_id: data.p_id,
-  //         p_num: data.p_num,
-  //         p_row_num: data.p_row_num,
-  //       },
-  //     },
-  //     data: {
-  //       p_block1: data.p_block1,
-  //       p_block2: data.p_block2,
-  //       p_block3: data.p_block3,
-  //       p_block4: data.p_block4,
-  //       p_block5: data.p_block5,
-  //       p_block6: data.p_block6 !== undefined ? data.p_block6 : null,
-  //       p_block7: data.p_block7 !== undefined ? data.p_block7 : null,
-  //       p_block8: data.p_block8 !== undefined ? data.p_block8 : null,
-  //       p_block9: data.p_block9 !== undefined ? data.p_block9 : null,
-  //       p_block10: data.p_block10 !== undefined ? data.p_block10 : null,
-  //       p_block11: data.p_block11 !== undefined ? data.p_block11 : null,
-  //       p_block12: data.p_block12 !== undefined ? data.p_block12 : null,
-  //       p_block13: data.p_block13 !== undefined ? data.p_block13 : null,
-  //       p_block14: data.p_block14 !== undefined ? data.p_block14 : null,
-  //       p_block15: data.p_block15 !== undefined ? data.p_block15 : null,
-  //     },
-  //   });
-  //   console.log(data);
 };
 
 //------------------------------------------------------------
