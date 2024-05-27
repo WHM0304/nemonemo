@@ -1,14 +1,17 @@
 "use client";
 import { Nemo_SelectAll } from "@/app/api/nemo";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "@/css/game_a.css";
 import { DELETE_PlAY, GameAction, nemo_play_select } from "@/app/api/game";
+import { useRouter } from "next/navigation";
+
 const GamePage = ({ params }) => {
   const n_num = Number(params.level);
-
+  const router = useRouter();
   const [nemo, setNemo] = useState([]);
   const [play, setPlay] = useState([]);
   const [checkboxState, setCheckboxState] = useState("");
+
   console.log(nemo.length);
 
   const actionHandler = async (formData) => {
@@ -18,19 +21,13 @@ const GamePage = ({ params }) => {
   };
   const DELETE_EVENT = async () => {
     let p_num = parseInt(params.level);
-    if (p_num === 1) {
-      p_num = 5;
-    } else if (p_num === 2) {
-      p_num = 7;
-    } else if (p_num === 3) {
-      p_num = 9;
-    } else if (p_num === 4) {
-      p_num = 11;
-    } else if (p_num === 5) {
-      p_num = 15;
+    if (confirm("삭제하시겠습니까?")) {
+      await DELETE_PlAY({ p_id: "11", p_num });
     }
-    await DELETE_PlAY({ p_id: "11", p_num: p_num });
+    // router.push(`/game/${p_num}`);
+    location.reload();
   };
+
   const OnclickCorrect = () => {
     if (JSON.stringify(play) === JSON.stringify(nemo)) {
       alert("정답");
@@ -52,9 +49,11 @@ const GamePage = ({ params }) => {
   // console.log(nemo);
   // console.log(checkboxState);
   // console.log("체크", checkboxState);
+
   useEffect(() => {
     const getNemoList = async () => {
       const result = await Nemo_SelectAll({ n_num });
+
       const data = result.map((item) => {
         return {
           n_num: item.n_num,
@@ -84,6 +83,7 @@ const GamePage = ({ params }) => {
     const getPlayList = async () => {
       const p_id = "11";
       const result = await nemo_play_select({ p_id, n_num });
+
       const data = result.map((item) => {
         return {
           p_block1: item.p_block1,
@@ -108,7 +108,15 @@ const GamePage = ({ params }) => {
     };
     getPlayList();
   }, []);
+  console.log(play);
 
+  // 시작할때 play 없으면 인서트하기
+  if (play.length < 1) {
+    let p_id = "11";
+    let p_num = Number(params.level);
+    DELETE_PlAY({ p_id, p_num });
+  }
+  console.log(play.length);
   // console.log(play);
   const n_blocks = nemo.map((item) => {
     return {
@@ -129,19 +137,19 @@ const GamePage = ({ params }) => {
       n_block15: item.n_block15,
     };
   });
-
   const viewList = play.map((item, index) => {
     return (
       <form method="POST" action={actionHandler}>
-        <div className="input_box" key={index}>
-          <input name={`p_row_num`} value={index + 1} hidden="hidden" />
-          <input name={"p_num"} value={params.level} hidden="hidden" />
+        <div className="input_box" key={`${index}`}>
+          <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
+          <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
 
           {Object.keys(item).map(
             (blockName) =>
               item[blockName] != null && (
                 <input
                   name={blockName}
+                  key={`${blockName}${index}`}
                   type="checkbox"
                   onChange={(e) => ChangeHandler(e, index, blockName)}
                   checked={checkboxState[index] && checkboxState[index][blockName] === 1}
@@ -160,7 +168,9 @@ const GamePage = ({ params }) => {
       <input hidden="hidden" name="p_num" value={n_num} readOnly />
       <input hidden="hidden" name="p_id" value="11" readOnly />
       <br />
-      <button onClick={OnclickCorrect}>버튼</button>
+      <button className="save" onClick={OnclickCorrect}>
+        정답확인
+      </button>
       {/* {checkboxState.map((item, index) => (
           <div key={index}>
             {Object.keys(item).map((blockName) => (
@@ -177,7 +187,9 @@ const GamePage = ({ params }) => {
             ))}
           </div>
         ))} */}
-      <button onClick={DELETE_EVENT}>삭제</button>
+      <button className="delete" onClick={DELETE_EVENT}>
+        삭제
+      </button>
     </>
   );
 };

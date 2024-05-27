@@ -13,3 +13,8 @@
 input[type="checkbox"]:checked {
   background-color: black;
 }
+button.save,
+button.delete {
+  width: 50%;
+  margin: 5px auto;
+}

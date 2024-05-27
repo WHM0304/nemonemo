@@ -1,6 +1,7 @@
 "use server";
 
 import { PrismaClient } from "@prisma/client";
+import { redirect } from "next/navigation";
 const prisma = new PrismaClient();
 
 export const nemo_play_select = async ({ p_id, n_num }) => {
@@ -53,17 +54,48 @@ export const GameAction = async (formData) => {
 export const DELETE_PlAY = async ({ p_id, p_num }) => {
   console.log(`${p_num}`);
   console.log(p_id);
-  // for (let i = 0; i <= p_num; i++) {
-  await prisma.tbl_nemo_play.delete({
+  let max_row;
+  if (p_num === 1) {
+    max_row = 5;
+  } else if (p_num === 2) {
+    max_row = 7;
+  } else if (p_num === 3) {
+    max_row = 9;
+  } else if (p_num === 4) {
+    max_row = 11;
+  } else if (p_num === 5) {
+    max_row = 15;
+  }
+
+  await prisma.tbl_nemo_play.deleteMany({
     where: {
-      p_id_p_num_p_row_num: {
-        p_id: p_id,
-        p_num: p_num,
-        p_row_num: 1,
-      },
+      p_id: p_id,
+      p_num: p_num,
     },
   });
-  // }
+  for (let i = 1; i <= max_row; i++) {
+    const startData = {
+      p_id: p_id,
+      p_num: p_num,
+      p_row_num: i,
+      p_block1: 0,
+      p_block2: 0,
+      p_block3: 0,
+      p_block4: 0,
+      p_block5: 0,
+      ...(max_row > 5 && { p_block6: 0 }),
+      ...(max_row > 5 && { p_block7: 0 }),
+      ...(max_row > 7 && { p_block8: 0 }),
+      ...(max_row > 7 && { p_block9: 0 }),
+      ...(max_row > 9 && { p_block10: 0 }),
+      ...(max_row > 9 && { p_block11: 0 }),
+      ...(max_row > 11 && { p_block12: 0 }),
+      ...(max_row > 11 && { p_block13: 0 }),
+      ...(max_row > 11 && { p_block14: 0 }),
+      ...(max_row > 11 && { p_block15: 0 }),
+    };
+    await prisma.tbl_nemo_play.create({ data: startData });
+  }
 };
 
 //------------------------------------------------------------
