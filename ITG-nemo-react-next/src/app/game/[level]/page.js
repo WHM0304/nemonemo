@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import "@/css/game_a.css";
 import { DELETE_PlAY, GameAction, nemo_play_select } from "@/app/api/game";
 import { useRouter } from "next/navigation";
+import Hint from "./[comps]/Hint";
+import RowHint from "./[comps]/RowHint";
 
 const GamePage = ({ params }) => {
   const n_num = Number(params.level);
@@ -12,7 +14,7 @@ const GamePage = ({ params }) => {
   const [play, setPlay] = useState([]);
   const [checkboxState, setCheckboxState] = useState("");
 
-  console.log(nemo.length);
+  // console.log(nemo.length);
 
   const actionHandler = async (formData) => {
     // const target =fo;
@@ -43,8 +45,8 @@ const GamePage = ({ params }) => {
     updatedCheckboxState[index][blockName] = newValue;
 
     setCheckboxState(updatedCheckboxState);
-    console.log(`Index: ${index}, ${blockName}: ${newValue}`);
-    console.log(checkboxState);
+    // console.log(`Index: ${index}, ${blockName}: ${newValue}`);
+    // console.log(checkboxState);
   };
   // console.log(nemo);
   // console.log(checkboxState);
@@ -108,15 +110,15 @@ const GamePage = ({ params }) => {
     };
     getPlayList();
   }, []);
-  console.log(play);
+  // console.log(play);
 
   // 시작할때 play 없으면 인서트하기
-  if (play.length < 1) {
-    let p_id = "11";
-    let p_num = Number(params.level);
-    DELETE_PlAY({ p_id, p_num });
-  }
-  console.log(play.length);
+  // if (play.length < 1) {
+  //   let p_id = "11";
+  //   let p_num = Number(params.level);
+  //   DELETE_PlAY({ p_id, p_num });
+  // }
+  // console.log(play.length);
   // console.log(play);
   const n_blocks = nemo.map((item) => {
     return {
@@ -139,58 +141,49 @@ const GamePage = ({ params }) => {
   });
   const viewList = play.map((item, index) => {
     return (
-      <form method="POST" action={actionHandler}>
-        <div className="input_box" key={`${index}`}>
-          <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
-          <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
+      <>
+        <form method="POST" action={actionHandler} className="form">
+          <div className="input_box" key={`${index}`}>
+            <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
+            <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
 
-          {Object.keys(item).map(
-            (blockName) =>
-              item[blockName] != null && (
-                <input
-                  name={blockName}
-                  key={`${blockName}${index}`}
-                  type="checkbox"
-                  onChange={(e) => ChangeHandler(e, index, blockName)}
-                  checked={checkboxState[index] && checkboxState[index][blockName] === 1}
-                />
-              )
-          )}
-          <button>저장</button>
-        </div>
-      </form>
+            {Object.keys(item).map(
+              (blockName) =>
+                item[blockName] != null && (
+                  <input
+                    name={blockName}
+                    key={`${blockName}${index}`}
+                    type="checkbox"
+                    onChange={(e) => ChangeHandler(e, index, blockName)}
+                    checked={checkboxState[index] && checkboxState[index][blockName] === 1}
+                  />
+                )
+            )}
+            <button>저장</button>
+          </div>
+        </form>
+      </>
     );
   });
 
   return (
-    <>
-      {viewList}
+    <div className="all">
+      <Hint p_num={params.level} nemo={n_blocks} />
+      <div className="game">
+        <RowHint p_num={params.level} nemo={n_blocks} />
+        {viewList}
+      </div>
       <input hidden="hidden" name="p_num" value={n_num} readOnly />
       <input hidden="hidden" name="p_id" value="11" readOnly />
       <br />
       <button className="save" onClick={OnclickCorrect}>
         정답확인
       </button>
-      {/* {checkboxState.map((item, index) => (
-          <div key={index}>
-            {Object.keys(item).map((blockName) => (
-              <div key={blockName}>
-                <input
-                  name={blockName}
-                  type="checkbox"
-                  value={item[blockName]}
-                  onChange={(e) => ChangeHandler(e, index, blockName)}
-                  checked={item[blockName] === 1}
-                />
-                <label>{`${blockName} (Index: ${index})`}</label>
-              </div>
-            ))}
-          </div>
-        ))} */}
+
       <button className="delete" onClick={DELETE_EVENT}>
         삭제
       </button>
-    </>
+    </div>
   );
 };
 

@@ -18,3 +18,14 @@ button.delete {
   width: 50%;
   margin: 5px auto;
 }
+.all {
+}
+.game {
+  display: flex;
+}
+
+.input_box {
+  margin-left: auto;
+  display: flex;
+  /* flex-direction: column; */
+}
