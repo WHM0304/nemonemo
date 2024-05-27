@@ -74,12 +74,14 @@ img.YS_picture_c {
 
 h2.YS_diary_row {
   font-weight: 700;
+  height: 30px;
   /* text-align: center; */
   margin-left: 15px;
   margin-right: 15px;
 }
 /* 비어있는 일기 줄 */
 h2.YS_diary_row_n {
+  height: 30px;
   /* height: 1 rem; */
   margin-left: 15px;
   margin-right: 15px;
