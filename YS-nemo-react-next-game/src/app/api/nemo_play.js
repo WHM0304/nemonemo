@@ -41,6 +41,7 @@ export const playDataCheck = async (data) => {
       block_num = 15;
     }
     for (let i = 1; i <= block_num; i++) {
+      // console.log("여긴되나", data.p_id);
       const startData = {
         p_id: data.p_id,
         p_num: data.p_num,
@@ -91,39 +92,3 @@ export const playDataCheck = async (data) => {
     },
   });
 };
-
-// 게임정보 생성용
-// export const createPlayData = async (data) => {
-//   console.log(data);
-//   await prisma.tbl_nemo_play.create({ data: data });
-// };
-// 업데이트
-// export const createPlayData = async (data) => {
-//   console.log(data);
-//   await prisma.tbl_nemo_play.update({
-//     where: {
-//       p_id_p_num_p_row_num: {
-//         p_id: data.p_id,
-//         p_num: data.p_num,
-//         p_row_num: data.p_row_num,
-//       },
-//     },
-//     data: {
-//       p_block1: data.p_block1,
-//       p_block2: data.p_block2,
-//       p_block3: data.p_block3,
-//       p_block4: data.p_block4,
-//       p_block5: data.p_block5,
-//       p_block6: data.p_block6,
-//       p_block7: data.p_block7,
-//       p_block8: data.p_block8,
-//       p_block9: data.p_block9,
-//       p_block10: data.p_block10,
-//       p_block11: data.p_block11,
-//       p_block12: data.p_block12,
-//       p_block13: data.p_block13,
-//       p_block14: data.p_block14,
-//       p_block15: data.p_block15,
-//     },
-//   });
-// };

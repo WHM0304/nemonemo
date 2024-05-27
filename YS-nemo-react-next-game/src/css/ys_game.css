@@ -1,0 +1,100 @@
+/* .main-column-hint {
+  border: 3px solid blue;
+  margin-left: 30px;
+} */
+
+/* .main-form-container {
+  border: 2px solid green;
+} */
+
+/* 왼쪽힌트 */
+div.hint {
+  display: flex;
+  border: 2;
+  /* border: 3px solid red; */
+  /* width: 100px; */
+  height: 43px;
+  margin: 5px;
+  /* span {
+    border: 3px solid blue;
+  } */
+}
+/* 위의힌트 */
+.main-column-hint {
+  display: flex;
+  /* gap: 60px; */
+  gap: 0px;
+  /* align-items: end; */
+  margin-top: 1rem;
+  margin-right: 60px;
+  flex-wrap: wrap;
+
+  div {
+    width: 40px;
+    text-align: center;
+  }
+}
+div.column_hint {
+  display: flex;
+  flex-direction: column;
+  /* border: 3px solid violet; */
+  /* height: 100px; */
+  /* span {
+    border: 2px solid red;
+  } */
+}
+/*  */
+button.done_btn {
+  width: 100px;
+  height: 2rem;
+  border: none;
+  border-radius: 15px;
+  background-color: yellowgreen;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+}
+/* 안내메시지 */
+div.msg_box {
+  border: 3px solid black;
+  border-radius: 15px;
+  height: 3rem;
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+div.msg_box p {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  font-weight: bold;
+}
+/* ------------------ */
+
+section.game-container {
+  margin: auto;
+}
+
+/* --------------- 튜토리얼 */
+div.tuto_img_box {
+  width: 100%;
+  height: 70%;
+  border: 3px solid red;
+  display: flex;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+img.tuto_img {
+  border: 1px solid blue;
+  margin: auto;
+  /* width: 300px; */
+}
+
+/* 우클릭용 */
+.right-clicked {
+  background-color: yellowgreen;
+}

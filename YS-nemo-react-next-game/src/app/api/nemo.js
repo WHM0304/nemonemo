@@ -14,9 +14,6 @@ export const NemoCheck = async (data) => {
 };
 
 export const PlayNemoCheck = async (data) => {
-  // console.log("왜죠", data);
-  // console.log("왜죠", data.get("p_id")); 이제되네..
-
   const result = await prisma.tbl_nemo_play.findMany({
     where: {
       p_id: data.get("p_id"),
@@ -97,6 +94,7 @@ export const compareNemoData = async (data) => {
     answer = "정답입니다";
     // 클리어정보만들기
     await CreateClearData(data);
+    prisma.$disconnect();
   } else {
     answer = "틀렸습니다";
   }
@@ -104,7 +102,7 @@ export const compareNemoData = async (data) => {
   return answer;
 };
 
-export const Nemo_SelectAll = async ({ n_num }) => {
+export const Nemo_SelectAll = async (n_num) => {
   const result = await prisma.tbl_nemo.findMany({
     where: { n_num },
   });
