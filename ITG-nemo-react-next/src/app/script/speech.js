@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import "@/css/speech.css";
 
 const Speech = ({ speeches, currentLevel }) => {

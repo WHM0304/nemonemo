@@ -21,8 +21,6 @@ const Speech2 = () => {
     },
   ];
 
-  const [filteredSpeeches, setFilteredSpeeches] =
-    useState(initialSpeeches);
   const [currentSpeechIndex, setCurrentSpeechIndex] = useState(0);
   const [isSpeechVisible, setIsSpeechVisible] = useState(false); // 처음에는 대화창을 숨기도록 설정
 
@@ -73,46 +71,31 @@ const Speech2 = () => {
           onKeyDown={handleKeyDown}
           ref={speechContainerRef}
         >
-          {filteredSpeeches[currentSpeechIndex]?.s_speaker ===
-            "A" && (
-            <img
-              src="/img/boy.png"
-              className="avatar"
-              alt="A의 아바타"
-              priority={true}
-              style={{
-                opacity:
-                  filteredSpeeches[currentSpeechIndex]?.s_speaker ===
-                  "B"
-                    ? 0.5
-                    : 1,
-              }}
-            />
-          )}
+          <img
+            src="/img/boy.png"
+            className="avatar"
+            alt="A의 아바타"
+            priority={true}
+            style={{ opacity: 1 }}
+          />
           <div id="conversationBox" className="conversation-box">
             <div id="speechContainer" className="speech-container">
-              {filteredSpeeches.length > 0 && (
+              {initialSpeeches.length > 0 && (
                 <div className="speech-part">
                   <span className="num" style={{ display: "none" }}>
-                    {filteredSpeeches[currentSpeechIndex]?.s_num}
+                    {initialSpeeches[currentSpeechIndex]?.s_num}
                   </span>
                   <span
                     className="speaker"
                     style={{ display: "none" }}
                   >
-                    {filteredSpeeches[currentSpeechIndex]?.s_speaker}
+                    {initialSpeeches[currentSpeechIndex]?.s_speaker}
                   </span>
                   <span
                     className="message"
-                    style={{
-                      color:
-                        filteredSpeeches[currentSpeechIndex]
-                          ?.s_speaker === "A"
-                          ? "green"
-                          : "black",
-                    }}
+                    style={{ color: "green" }}
                   >
-                    {filteredSpeeches[currentSpeechIndex]?.s_message}
+                    {initialSpeeches[currentSpeechIndex]?.s_message}
                   </span>
                 </div>
               )}
@@ -121,7 +104,7 @@ const Speech2 = () => {
           <button id="skipButton" onClick={handleSkip}>
             건너뛰기
           </button>
-          {filteredSpeeches.length > 1 && (
+          {initialSpeeches.length > 1 && (
             <button id="nextButton" onClick={handleNextSpeech}>
               &#187;&#187;
             </button>
