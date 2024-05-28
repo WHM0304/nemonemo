@@ -54,27 +54,33 @@ export const GameAction = async (formData) => {
   }
   let new_data = {};
 
-  for (let i = 1; i <= max_row; i++) {
-    const updateData = {
-      p_id: data.p_id,
-      p_num: data.p_num,
-      p_row_num: i,
-      p_block1: data.p_block1 == 1 ? data.p_block1 : 0,
-      p_block2: data.p_block2 == 1 ? data.p_block2 : 0,
-      p_block3: data.p_block3 == 1 ? data.p_block3 : 0,
-      p_block4: data.p_block4 == 1 ? data.p_block4 : 0,
-      p_block5: data.p_block5 == 1 ? data.p_block5 : 0,
-      p_block6: data.p_block6 != null || data.p_block6 == 1 ? data.p_block6 : 0,
-      p_block7: data.p_block7 != null || data.p_block7 == 1 ? data.p_block7 : 0,
-      p_block8: data.p_block8 != null || data.p_block8 == 1 ? data.p_block8 : 0,
-      p_block9: data.p_block9 != null || data.p_block9 == 1 ? data.p_block9 : 0,
-      p_block10: data.p_block10 || data.p_block10 == null ? null : data.p_block10,
-    };
+  const updateData = {
+    p_id: data.p_id,
+    p_num: data.p_num,
+    p_row_num: data.p_row_num,
+    p_block1: data.p_block1 == 1 ? data.p_block1 : 0,
+    p_block2: data.p_block2 == 1 ? data.p_block2 : 0,
+    p_block3: data.p_block3 == 1 ? data.p_block3 : 0,
+    p_block4: data.p_block4 == 1 ? data.p_block4 : 0,
+    p_block5: data.p_block5 == 1 ? data.p_block5 : 0,
+    p_block6:
+      data.p_block6 != null || data.p_block6 == 1 ? data.p_block6 : 0,
+    p_block7:
+      data.p_block7 != null || data.p_block7 == 1 ? data.p_block7 : 0,
+    p_block8:
+      data.p_block8 != null || data.p_block8 == 1 ? data.p_block8 : 0,
+    p_block9:
+      data.p_block9 != null || data.p_block9 == 1 ? data.p_block9 : 0,
+    p_block10:
+      data.p_block10 || data.p_block10 == null
+        ? null
+        : data.p_block10,
+  };
 
-    new_data = updateData;
+  new_data = updateData;
 
-    // console.log("큐큐", new_data);
-  }
+  // console.log("큐큐", new_data);
+
   console.log(data);
   console.log(new_data);
 
@@ -93,7 +99,6 @@ export const GameAction = async (formData) => {
     data: data,
   });
   // console.log(formData.get("p_num"));
-  const p_num = formData.get("p_num");
 };
 
 export const DELETE_PlAY = async ({ p_id, p_num }) => {

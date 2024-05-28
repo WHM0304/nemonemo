@@ -2,7 +2,11 @@
 import { Nemo_SelectAll } from "@/app/api/nemo";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "@/css/game_a.css";
-import { DELETE_PlAY, GameAction, nemo_play_select } from "@/app/api/game";
+import {
+  DELETE_PlAY,
+  GameAction,
+  nemo_play_select,
+} from "@/app/api/game";
 import { useRouter } from "next/navigation";
 import Hint from "./[comps]/Hint";
 import RowHint from "./[comps]/RowHint";
@@ -148,42 +152,61 @@ const GamePage = ({ params }) => {
   const viewList = play.map((item, index) => {
     return (
       <div className="box">
-        {/* <form method="POST" action={actionHandler} className="form"> */}
-        <div className="input_box" key={`${index}`}>
-          <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
-          <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
-          {Object.keys(item).map(
-            (blockName) =>
-              item[blockName] != null && (
-                <div key={`${blockName}${index}`} style={{ display: "inline-block" }}>
-                  <input
-                    id={`${blockName}${index}`}
-                    name={blockName}
-                    type="checkbox"
-                    onChange={(e) => ChangeHandler(e, index, blockName)}
-                    checked={checkboxState[index] && checkboxState[index][blockName] === 1}
-                  />
-                  <label htmlFor={`${blockName}${index}`}></label>
-                </div>
-              )
-          )}
-        </div>
-        {/* </form> */}
+        <form method="POST" action={actionHandler} className="form">
+          <div className="input_box" key={`${index}`}>
+            <input
+              name={`p_row_num`}
+              value={index + 1}
+              hidden="hidden"
+              readOnly
+            />
+            <input
+              name={"p_num"}
+              value={params.level}
+              hidden="hidden"
+              readOnly
+            />
+            {Object.keys(item).map(
+              (blockName) =>
+                item[blockName] != null && (
+                  <div
+                    key={`${blockName}${index}`}
+                    style={{ display: "inline-block" }}
+                  >
+                    <input
+                      id={`${blockName}${index}`}
+                      name={blockName}
+                      type="checkbox"
+                      onChange={(e) =>
+                        ChangeHandler(e, index, blockName)
+                      }
+                      checked={
+                        checkboxState[index] &&
+                        checkboxState[index][blockName] === 1
+                      }
+                    />
+                    <label htmlFor={`${blockName}${index}`}></label>
+                  </div>
+                )
+            )}
+            <button>저장</button>
+          </div>
+        </form>
       </div>
     );
   });
 
   return (
     <div className="all">
-      <Hint p_num={params.level} nemo={n_blocks} arr={checkboxState} ref={childRef} />
+      <Hint
+        p_num={params.level}
+        nemo={n_blocks}
+        arr={checkboxState}
+        ref={childRef}
+      />
       <div className="hint_game">
         <RowHint p_num={params.level} nemo={n_blocks} />
-        <div className="game">
-          <form method="POST" action={actionHandler} className="form">
-            {viewList}
-            <button>저장</button>
-          </form>
-        </div>
+        <div className="game">{viewList}</div>
         <div className="delete">
           <button className="delete" onClick={DELETE_EVENT}></button>
         </div>
