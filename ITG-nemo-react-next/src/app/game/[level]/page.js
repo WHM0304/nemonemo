@@ -1,6 +1,6 @@
 "use client";
 import { Nemo_SelectAll } from "@/app/api/nemo";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "@/css/game_a.css";
 import { DELETE_PlAY, GameAction, nemo_play_select } from "@/app/api/game";
 import { useRouter } from "next/navigation";
@@ -13,9 +13,10 @@ const GamePage = ({ params }) => {
   const [nemo, setNemo] = useState([]);
   const [play, setPlay] = useState([]);
   const [checkboxState, setCheckboxState] = useState("");
+  const childRef = useRef(null);
 
   // console.log(nemo.length);
-
+  // console.log(checkboxState);
   const actionHandler = async (formData) => {
     // const target =fo;
     // console.log(formData);
@@ -29,14 +30,18 @@ const GamePage = ({ params }) => {
     // router.push(`/game/${p_num}`);
     location.reload();
   };
+  // console.log(play);
 
   const OnclickCorrect = () => {
-    if (JSON.stringify(play) === JSON.stringify(nemo)) {
-      alert("정답");
-      navigate("/");
-    } else {
-      alert("정답이아닙니다 다시 풀어주세요");
+    if (childRef.current) {
+      const result = childRef.current.compareArrays();
+      alert(result ? "정답입니다" : "틀렸습니다");
+      if (result) {
+        router.push(`/clear/${n_num}`);
+      }
+      // console.log(result);
     }
+    // alert(childRef.current.compareArrays());
   };
 
   const ChangeHandler = (e, index, blockName) => {
@@ -67,7 +72,7 @@ const GamePage = ({ params }) => {
           n_block5: item.n_block5,
           n_block6: item.n_block6,
           n_block7: item.n_block7,
-          n_block8: item.n_block9,
+          n_block8: item.n_block8,
           n_block9: item.n_block9,
           n_block10: item.n_block10,
           n_block11: item.n_block11,
@@ -129,7 +134,7 @@ const GamePage = ({ params }) => {
       n_block5: item.n_block5,
       n_block6: item.n_block6,
       n_block7: item.n_block7,
-      n_block8: item.n_block9,
+      n_block8: item.n_block8,
       n_block9: item.n_block9,
       n_block10: item.n_block10,
       n_block11: item.n_block11,
@@ -139,14 +144,14 @@ const GamePage = ({ params }) => {
       n_block15: item.n_block15,
     };
   });
+  // console.log(nemo);
   const viewList = play.map((item, index) => {
     return (
-      <>
+      <div className="box">
         <form method="POST" action={actionHandler} className="form">
           <div className="input_box" key={`${index}`}>
             <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
             <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
-
             {Object.keys(item).map(
               (blockName) =>
                 item[blockName] != null && (
@@ -162,26 +167,25 @@ const GamePage = ({ params }) => {
             <button>저장</button>
           </div>
         </form>
-      </>
+      </div>
     );
   });
 
   return (
     <div className="all">
-      <Hint p_num={params.level} nemo={n_blocks} />
-      <div className="game">
+      <Hint p_num={params.level} nemo={n_blocks} arr={checkboxState} ref={childRef} />
+      <div className="hint_game">
         <RowHint p_num={params.level} nemo={n_blocks} />
-        {viewList}
+        <div className="game">{viewList}</div>
+        <button className="delete" onClick={DELETE_EVENT}>
+          삭제
+        </button>
       </div>
       <input hidden="hidden" name="p_num" value={n_num} readOnly />
       <input hidden="hidden" name="p_id" value="11" readOnly />
       <br />
       <button className="save" onClick={OnclickCorrect}>
         정답확인
-      </button>
-
-      <button className="delete" onClick={DELETE_EVENT}>
-        삭제
       </button>
     </div>
   );

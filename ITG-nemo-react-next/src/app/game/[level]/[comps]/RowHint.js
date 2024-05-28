@@ -18,9 +18,6 @@ const RowHint = ({ p_num, nemo }) => {
     row = 15;
   }
 
-  const [play, setPlay] = useState(() => {
-    return Array.from({ length: row }, () => Array(row).fill(0));
-  });
   const [hint, setHint] = useState([]);
 
   useEffect(() => {
@@ -66,7 +63,7 @@ const RowHint = ({ p_num, nemo }) => {
 
   const rowHints = hint.map(calculateRowHints);
 
-  console.log(rowHints);
+  // console.log(rowHints);
 
   return (
     <div className="row_box">

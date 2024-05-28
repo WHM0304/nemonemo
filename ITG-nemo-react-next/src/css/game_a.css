@@ -9,23 +9,25 @@
   input:checked {
     background-color: black;
   }
+  input[type="checkbox"][value="1"] {
+    background-color: black;
+  }
 }
-input[type="checkbox"]:checked {
-  background-color: black;
-}
-button.save,
-button.delete {
-  width: 50%;
-  margin: 5px auto;
-}
-.all {
-}
+
 .game {
   display: flex;
+  flex-direction: column;
 }
 
 .input_box {
-  margin-left: auto;
   display: flex;
-  /* flex-direction: column; */
+}
+.row_box {
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.hint_game {
+  display: flex;
 }

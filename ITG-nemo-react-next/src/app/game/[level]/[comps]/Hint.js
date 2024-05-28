@@ -1,9 +1,9 @@
 "use client";
 import { nemo_select } from "@/app/api/game";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import "@/css/hint.css";
 
-const Hint = ({ p_num, nemo }) => {
+const Hint = forwardRef(({ p_num, nemo, arr }, ref) => {
   let row;
 
   if (p_num == 1) {
@@ -18,11 +18,32 @@ const Hint = ({ p_num, nemo }) => {
     row = 15;
   }
 
+  const [hint, setHint] = useState([]);
+  const [check, setCheck] = useState([]);
   const [play, setPlay] = useState(() => {
     return Array.from({ length: row }, () => Array(row).fill(0));
   });
-  const [hint, setHint] = useState([]);
 
+  // console.log(ref);
+  useImperativeHandle(ref, () => ({
+    compareArrays,
+  }));
+  const compareArrays = () => {
+    if (check.length !== hint.length) return false;
+    for (let i = 0; i < check.length; i++) {
+      if (check[i].length !== hint[i].length) return false;
+      for (let j = 0; j < check[i].length; j++) {
+        if (check[i][j] !== hint[i][j]) return false;
+      }
+    }
+    return true;
+  };
+  // alert(compareArrays());
+  // console.log(hint);
+  // console.log(nemo);
+  // console.log(check);
+
+  // console.log(play);
   useEffect(() => {
     let allKeys = new Set();
     nemo.forEach((obj) => {
@@ -39,30 +60,6 @@ const Hint = ({ p_num, nemo }) => {
 
     setHint(twoDArray);
   }, [nemo]);
-  const calculateRowHints = (row) => {
-    const hints = [];
-    let count = 0;
-
-    row.forEach((cell) => {
-      if (cell !== 0) {
-        // 숫자 '0'을 문자열로 비교하지 않도록 수정
-        count++;
-      } else {
-        if (count !== 0) {
-          hints.push(count);
-          count = 0;
-        }
-      }
-    });
-
-    if (count !== 0) {
-      hints.push(count);
-    } else if (hints.length === 0) {
-      hints.push(0);
-    }
-
-    return hints;
-  };
 
   const calculateColumnHintsByColumn = (columnIndex) => {
     const hints = [];
@@ -99,12 +96,20 @@ const Hint = ({ p_num, nemo }) => {
     return columnHints;
   };
 
-  const rowHints = hint.map(calculateRowHints);
   const columnHints = calculateColumnHints();
 
-  console.log(columnHints);
-  //   console.log(rowHints);
-
+  //
+  useEffect(() => {
+    if (arr.length > 0) {
+      const keys = Object.keys(arr[0]);
+      //allKeys.map((key) => obj[key] ?? null).filter((value) => value !== null)
+      const convertedArray = arr.map((obj) =>
+        keys.map((key) => obj[key] ?? null).filter((value) => value !== null)
+      );
+      setCheck(convertedArray);
+    }
+  }, [arr]);
+  // console.log(check);
   return (
     <div>
       <div className="column">
@@ -118,6 +123,6 @@ const Hint = ({ p_num, nemo }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Hint;
