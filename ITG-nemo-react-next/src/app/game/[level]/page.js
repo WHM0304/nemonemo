@@ -148,27 +148,27 @@ const GamePage = ({ params }) => {
   const viewList = play.map((item, index) => {
     return (
       <div className="box">
-        <form method="POST" action={actionHandler} className="form">
-          <div className="input_box" key={`${index}`}>
-            <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
-            <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
-            {Object.keys(item).map(
-              (blockName) =>
-                item[blockName] != null && (
-                  <>
-                    <input
-                      name={blockName}
-                      key={`${blockName}${index}`}
-                      type="checkbox"
-                      onChange={(e) => ChangeHandler(e, index, blockName)}
-                      checked={checkboxState[index] && checkboxState[index][blockName] === 1}
-                    />
-                  </>
-                )
-            )}
-            <button>저장</button>
-          </div>
-        </form>
+        {/* <form method="POST" action={actionHandler} className="form"> */}
+        <div className="input_box" key={`${index}`}>
+          <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
+          <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
+          {Object.keys(item).map(
+            (blockName) =>
+              item[blockName] != null && (
+                <div key={`${blockName}${index}`} style={{ display: "inline-block" }}>
+                  <input
+                    id={`${blockName}${index}`}
+                    name={blockName}
+                    type="checkbox"
+                    onChange={(e) => ChangeHandler(e, index, blockName)}
+                    checked={checkboxState[index] && checkboxState[index][blockName] === 1}
+                  />
+                  <label htmlFor={`${blockName}${index}`}></label>
+                </div>
+              )
+          )}
+        </div>
+        {/* </form> */}
       </div>
     );
   });
@@ -178,7 +178,12 @@ const GamePage = ({ params }) => {
       <Hint p_num={params.level} nemo={n_blocks} arr={checkboxState} ref={childRef} />
       <div className="hint_game">
         <RowHint p_num={params.level} nemo={n_blocks} />
-        <div className="game">{viewList}</div>
+        <div className="game">
+          <form method="POST" action={actionHandler} className="form">
+            {viewList}
+            <button>저장</button>
+          </form>
+        </div>
         <div className="delete">
           <button className="delete" onClick={DELETE_EVENT}></button>
         </div>
