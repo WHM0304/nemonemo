@@ -109,12 +109,67 @@ const Hint = forwardRef(({ p_num, nemo, arr }, ref) => {
       setCheck(convertedArray);
     }
   }, [arr]);
+  useEffect(() => {
+    let allKeys = new Set();
+    nemo.forEach((obj) => {
+      Object.keys(obj).forEach((key) => {
+        allKeys.add(key);
+      });
+    });
+    allKeys = Array.from(allKeys); // Set을 배열로 변환
+
+    // 2단계: 2차원 배열로 변환
+    const twoDArray = nemo.map((obj) =>
+      allKeys.map((key) => obj[key] ?? null).filter((value) => value !== null)
+    );
+
+    setHint(twoDArray);
+  }, [nemo]);
+  const calculateRowHints = (row) => {
+    const hints = [];
+    let count = 0;
+
+    row.forEach((cell) => {
+      if (cell !== 0) {
+        // 숫자 '0'을 문자열로 비교하지 않도록 수정
+        count++;
+      } else {
+        if (count !== 0) {
+          hints.push(count);
+          count = 0;
+        }
+      }
+    });
+
+    if (count !== 0) {
+      hints.push(count);
+    } else if (hints.length === 0) {
+      hints.push(0);
+    }
+
+    return hints;
+  };
+
+  const rowHints = hint.map(calculateRowHints);
   // console.log(check);
+
+  // 가장긴것만 표기
+
+  const longestArray = rowHints.reduce((prevArray, currArray) => {
+    return currArray.length > prevArray.length ? currArray : prevArray;
+  }, []);
+  console.log(longestArray);
+
   return (
-    <div>
+    <div className="display">
+      <div className="blank">
+        {longestArray.map((item, index) => (
+          <div key={index}>{`${item}`}</div>
+        ))}
+      </div>
       <div className="column">
         {columnHints.map((hints, index) => (
-          <div key={index} className="aa">
+          <div key={index}>
             {hints.map((hint, hintIndex) => (
               <div key={hintIndex}>{hint}</div>
             ))}

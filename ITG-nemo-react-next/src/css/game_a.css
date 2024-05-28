@@ -6,12 +6,6 @@
     width: 30px;
     height: 30px;
   }
-  input:checked {
-    background-color: black;
-  }
-  input[type="checkbox"][value="1"] {
-    background-color: black;
-  }
 }
 
 .game {
@@ -22,12 +16,44 @@
 .input_box {
   display: flex;
 }
-.row_box {
-}
+
 .form {
   display: flex;
   flex-direction: column;
 }
 .hint_game {
   display: flex;
+}
+.all {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.delete {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  button {
+    background-image: url("../../public/img/eraser_icon.png");
+
+    width: 100px;
+    height: 100px;
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+}
+.save_div {
+  width: 50%;
+  margin: 0 auto;
+  button {
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

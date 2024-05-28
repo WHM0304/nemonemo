@@ -155,13 +155,15 @@ const GamePage = ({ params }) => {
             {Object.keys(item).map(
               (blockName) =>
                 item[blockName] != null && (
-                  <input
-                    name={blockName}
-                    key={`${blockName}${index}`}
-                    type="checkbox"
-                    onChange={(e) => ChangeHandler(e, index, blockName)}
-                    checked={checkboxState[index] && checkboxState[index][blockName] === 1}
-                  />
+                  <>
+                    <input
+                      name={blockName}
+                      key={`${blockName}${index}`}
+                      type="checkbox"
+                      onChange={(e) => ChangeHandler(e, index, blockName)}
+                      checked={checkboxState[index] && checkboxState[index][blockName] === 1}
+                    />
+                  </>
                 )
             )}
             <button>저장</button>
@@ -177,16 +179,18 @@ const GamePage = ({ params }) => {
       <div className="hint_game">
         <RowHint p_num={params.level} nemo={n_blocks} />
         <div className="game">{viewList}</div>
-        <button className="delete" onClick={DELETE_EVENT}>
-          삭제
-        </button>
+        <div className="delete">
+          <button className="delete" onClick={DELETE_EVENT}></button>
+        </div>
       </div>
       <input hidden="hidden" name="p_num" value={n_num} readOnly />
       <input hidden="hidden" name="p_id" value="11" readOnly />
       <br />
-      <button className="save" onClick={OnclickCorrect}>
-        정답확인
-      </button>
+      <div className="save_div">
+        <button className="save" onClick={OnclickCorrect}>
+          제출
+        </button>
+      </div>
     </div>
   );
 };

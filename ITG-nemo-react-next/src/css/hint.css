@@ -1,4 +1,39 @@
 .column {
   display: flex;
-  gap: 5px;
+  gap: 11px;
+  align-items: end;
+}
+.column > div {
+  div {
+    width: 29px;
+    height: 30px;
+    text-align: center;
+    background-color: #ddd;
+  }
+}
+.blank {
+  padding: 7px;
+  display: flex;
+  margin-right: 10px;
+  div {
+    padding: 5px;
+    visibility: hidden;
+  }
+}
+
+.row_box > div {
+  display: flex;
+  flex-direction: column;
+  padding: 7px;
+  gap: 10px;
+  margin-right: 10px;
+  div {
+    background-color: #ddd;
+    padding: 5px;
+
+    text-align: right;
+  }
+}
+.display {
+  display: flex;
 }
