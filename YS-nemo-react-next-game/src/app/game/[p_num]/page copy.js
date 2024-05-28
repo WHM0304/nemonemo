@@ -16,8 +16,30 @@ const first = () => {
 
   const user_id = "11";
   // 난이도 확인
-  const p_num = 1;
-  const rows = [1, 2, 3, 4, 5];
+  const p_num = 1; // 주소에서 가져오게 수정할것@@@@@
+
+  // 그림번호에따라 5개 난이도
+  const getBlockCount = (p_num) => {
+    switch (p_num) {
+      case 1:
+        return 5;
+      case 2:
+        return 7;
+      case 3:
+        return 9;
+      case 4:
+        return 11;
+      case 5:
+        return 15;
+      default:
+        return 5;
+    }
+  };
+  // rows 배열 자동생성
+  // const rows = [1, 2, 3, 4, 5];
+  const blockCount = getBlockCount(p_num);
+  const rows = Array.from({ length: blockCount }, (_, i) => i + 1);
+  // ----------------
 
   // 정답테이블 힌트
   useEffect(() => {

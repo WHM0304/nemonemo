@@ -7,7 +7,7 @@ const Tutorial = () => {
       s_num: 0,
       s_speaker: "A",
       s_message:
-        "안녕! 이전에 네모로직을 플레이해봤니?\n지금부터 그림그리는 방법을 알려줄거야\n필요하지않다면 오른쪽 위의 버튼을 눌러 바로 게임을 시작해도 좋아!",
+        "안녕! 이전에 네모로직을 플레이해봤니?\n지금부터 그림그리는 방법을 알려줄거야\n자신있다면 오른쪽 위의 버튼을 눌러 바로 게임을 시작해도 좋아!",
     },
     {
       s_num: 0,
@@ -37,13 +37,25 @@ const Tutorial = () => {
       s_num: 0,
       s_speaker: "A",
       s_message:
-        "하지만 이 경우엔 위의 힌트와 일치하지 않으니 정답이 아니겠지?\n이런식으로 유추해 나가면서 풀면돼!",
+        "하지만 이 경우엔 좌측의 힌트와는 맞지만 위의 힌트와 일치하지 않으니 정답이 아니겠지?\n이런식으로 유추해 나가면서 풀면돼!",
+    },
+    {
+      s_num: 0,
+      s_speaker: "A",
+      s_message:
+        "퍼즐을 틀렸다면 목숨이 하나씩 줄어들거야\n목숨3개를 모두사용하면 현재플레이중인 스테이지가 초기화되니 신중하게 확인해! ",
     },
     {
       s_num: 0,
       s_speaker: "A",
       s_message:
         "지우개 그림을 클릭하면 현재 스테이지의 플레이정보를 초기화할 수 있어! ",
+    },
+    {
+      s_num: 0,
+      s_speaker: "A",
+      s_message:
+        "마우스 우클릭으로 플레이에는 영향을 주지않는 체크표시를 남길수 있어!\n완성된 부분은 힌트 숫자를 클릭하면 마찬가지로 체크해둘 수 있으니 참고해!",
     },
     {
       s_num: 0,
@@ -206,13 +218,29 @@ const Tutorial = () => {
                 width="500px"
               />
             )}
-
             {currentSpeechIndex === 6 && (
+              <img
+                src="/img/life.png"
+                alt="목숨"
+                className="tuto_img"
+                width="300px"
+              />
+            )}
+
+            {currentSpeechIndex === 7 && (
               <img
                 src="/img/eraser_icon.png"
                 alt="지우개그림"
                 className="tuto_img"
                 width="300px"
+              />
+            )}
+            {currentSpeechIndex === 8 && (
+              <img
+                src="/img/right_click.png"
+                alt="가이드"
+                className="tuto_img"
+                width="500px"
               />
             )}
           </div>
