@@ -17,7 +17,8 @@ export default function RootLayout({ children }) {
   const handleLogout = () => {
     localStorage.removeItem("loginId");
     setUserid(null);
-    router.push("/"); // 로그아웃 후 홈 페이지로 이동
+    // router.push("/"); // 로그아웃 후 홈 페이지로 이동 - 홈에서 로그아웃하면 화면남음
+    window.location.reload(); // 새로고침.. 모든게임화면에서 로그인검사 추가
   };
 
   return (
