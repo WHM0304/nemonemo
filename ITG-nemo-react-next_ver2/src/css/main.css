@@ -79,8 +79,7 @@ body.HM-main_container {
 /* 
 이미지 파일
 */
-.HM-image_header {
-}
+
 .HM-main_header {
   padding: 2rem;
   background-image: url("../../public/img/sketch.jpg");
@@ -110,8 +109,6 @@ body.HM-main_container {
   }
 }
 .HM-home_picture {
-  border: 1px solid #ddd;
-  flex: 3;
   height: 100%;
 }
 .HM-home_diary {
