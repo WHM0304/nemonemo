@@ -52,7 +52,6 @@ export const GameAction = async (formData) => {
   if (data.p_num == 5) {
     max_row = 15;
   }
-  let new_data = {};
 
   const updateData = {
     p_id: data.p_id,
@@ -63,26 +62,22 @@ export const GameAction = async (formData) => {
     p_block3: data.p_block3 == 1 ? data.p_block3 : 0,
     p_block4: data.p_block4 == 1 ? data.p_block4 : 0,
     p_block5: data.p_block5 == 1 ? data.p_block5 : 0,
-    p_block6:
-      data.p_block6 != null || data.p_block6 == 1 ? data.p_block6 : 0,
-    p_block7:
-      data.p_block7 != null || data.p_block7 == 1 ? data.p_block7 : 0,
-    p_block8:
-      data.p_block8 != null || data.p_block8 == 1 ? data.p_block8 : 0,
-    p_block9:
-      data.p_block9 != null || data.p_block9 == 1 ? data.p_block9 : 0,
-    p_block10:
-      data.p_block10 || data.p_block10 == null
-        ? null
-        : data.p_block10,
+    ...(max_row > 5 && { p_block6: data.p_block6 == 1 ? data.p_block6 : 0 }),
+    ...(max_row > 5 && { p_block7: data.p_block7 == 1 ? data.p_block7 : 0 }),
+    ...(max_row > 7 && { p_block8: data.p_block8 == 1 ? data.p_block8 : 0 }),
+    ...(max_row > 7 && { p_block9: data.p_block9 == 1 ? data.p_block9 : 0 }),
+    ...(max_row > 9 && { p_block10: data.p_block10 == 1 ? data.p_block10 : 0 }),
+    ...(max_row > 9 && { p_block11: data.p_block11 == 1 ? data.p_block11 : 0 }),
+    ...(max_row > 11 && { p_block12: data.p_block12 == 1 ? data.p_block12 : 0 }),
+    ...(max_row > 11 && { p_block13: data.p_block13 == 1 ? data.p_block13 : 0 }),
+    ...(max_row > 11 && { p_block14: data.p_block14 == 1 ? data.p_block14 : 0 }),
+    ...(max_row > 11 && { p_block15: data.p_block15 == 1 ? data.p_block15 : 0 }),
   };
-
-  new_data = updateData;
 
   // console.log("큐큐", new_data);
 
   console.log(data);
-  console.log(new_data);
+  console.log(updateData);
 
   // console.log(qq);
   // console.log(qq);
@@ -96,7 +91,7 @@ export const GameAction = async (formData) => {
         p_row_num: data.p_row_num,
       },
     },
-    data: data,
+    data: updateData,
   });
   // console.log(formData.get("p_num"));
 };

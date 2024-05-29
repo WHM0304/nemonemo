@@ -86,3 +86,9 @@ input[type="checkbox"]:checked + label::after {
   width: 30px;
   height: 30px;
 }
+button.save {
+  width: 50px;
+  border: none;
+  border-radius: 10px;
+  background-image: url("../../public/img/check_icon.png");
+}

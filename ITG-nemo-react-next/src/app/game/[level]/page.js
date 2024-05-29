@@ -2,11 +2,7 @@
 import { Nemo_SelectAll } from "@/app/api/nemo";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "@/css/game_a.css";
-import {
-  DELETE_PlAY,
-  GameAction,
-  nemo_play_select,
-} from "@/app/api/game";
+import { DELETE_PlAY, GameAction, nemo_play_select } from "@/app/api/game";
 import { useRouter } from "next/navigation";
 import Hint from "./[comps]/Hint";
 import RowHint from "./[comps]/RowHint";
@@ -154,42 +150,24 @@ const GamePage = ({ params }) => {
       <div className="box">
         <form method="POST" action={actionHandler} className="form">
           <div className="input_box" key={`${index}`}>
-            <input
-              name={`p_row_num`}
-              value={index + 1}
-              hidden="hidden"
-              readOnly
-            />
-            <input
-              name={"p_num"}
-              value={params.level}
-              hidden="hidden"
-              readOnly
-            />
+            <input name={`p_row_num`} value={index + 1} hidden="hidden" readOnly />
+            <input name={"p_num"} value={params.level} hidden="hidden" readOnly />
             {Object.keys(item).map(
               (blockName) =>
                 item[blockName] != null && (
-                  <div
-                    key={`${blockName}${index}`}
-                    style={{ display: "inline-block" }}
-                  >
+                  <div key={`${blockName}${index}`} style={{ display: "inline-block" }}>
                     <input
                       id={`${blockName}${index}`}
                       name={blockName}
                       type="checkbox"
-                      onChange={(e) =>
-                        ChangeHandler(e, index, blockName)
-                      }
-                      checked={
-                        checkboxState[index] &&
-                        checkboxState[index][blockName] === 1
-                      }
+                      onChange={(e) => ChangeHandler(e, index, blockName)}
+                      checked={checkboxState[index] && checkboxState[index][blockName] === 1}
                     />
                     <label htmlFor={`${blockName}${index}`}></label>
                   </div>
                 )
             )}
-            <button>저장</button>
+            <button className="save">저장</button>
           </div>
         </form>
       </div>
@@ -198,12 +176,7 @@ const GamePage = ({ params }) => {
 
   return (
     <div className="all">
-      <Hint
-        p_num={params.level}
-        nemo={n_blocks}
-        arr={checkboxState}
-        ref={childRef}
-      />
+      <Hint p_num={params.level} nemo={n_blocks} arr={checkboxState} ref={childRef} />
       <div className="hint_game">
         <RowHint p_num={params.level} nemo={n_blocks} />
         <div className="game">{viewList}</div>
@@ -215,8 +188,8 @@ const GamePage = ({ params }) => {
       <input hidden="hidden" name="p_id" value="11" readOnly />
       <br />
       <div className="save_div">
-        <button className="save" onClick={OnclickCorrect}>
-          제출
+        <button className="check" onClick={OnclickCorrect}>
+          정답확인
         </button>
       </div>
     </div>
