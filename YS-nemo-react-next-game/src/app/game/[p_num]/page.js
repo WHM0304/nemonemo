@@ -9,6 +9,14 @@ import Tutorial from "@/app/script/tutorial";
 import { Message } from "@/app/script/message";
 
 const first = ({ params }) => {
+  useEffect(() => {
+    const userid = localStorage.getItem("loginId");
+    // 로그인안했으면 로그인페이지로
+    if (!userid) {
+      window.location.href = "/user/login";
+    }
+  });
+  // -----------------
   const [message, setMessage] = useState(""); // 안내메시지
   const [hint, setHint] = useState([]); // 힌트숫자
   // 우클릭 체크용
@@ -118,19 +126,17 @@ const first = ({ params }) => {
       // window.location.href = `/clear/${p_num}`;
       window.location.href = "/clear";
     } else if (result === "틀렸습니다") {
-      setLife(async (allLife) => {
-        // 목숨 하나씩까다가
-        if (allLife.length > 1) {
-          return allLife.slice(0, -1);
+      setLife((prevLife) => {
+        if (prevLife.length > 1) {
+          return prevLife.slice(0, -1);
         } else {
-          // 목숨 다 쓰면 초기화 하고 하트 다시 3개
           localStorage.setItem(
             "gameMessage",
-            "목숨을 다써서 현재 레벨이 초기화 됐어! 다시 그려보자!"
+            "목숨을 다 써서 현재 레벨이 초기화 됐어! 다시 그려보자!"
           );
-          deleteaction(); // 초기화버튼 눌렀을때 함수
-          window.location.reload(); // 새로고침해서 화면 리셋
-          // return ["♥", "♥", "♥"];
+          deleteaction();
+          window.location.reload();
+          return prevLife;
         }
       });
       // -----

@@ -4,6 +4,15 @@ import { useRouter } from "next/navigation";
 import { findClearData } from "@/app/api/clear";
 
 const clearpage = () => {
+  useEffect(() => {
+    const userid = localStorage.getItem("loginId");
+    // 로그인안했으면 로그인페이지로
+    if (!userid) {
+      window.location.href = "/user/login";
+    }
+  });
+  // ----------------------------
+
   const router = useRouter();
   const [clearData, setClearData] = useState([]);
   const [isImageLoading, setIsImageLoading] = useState(true); // 로딩
