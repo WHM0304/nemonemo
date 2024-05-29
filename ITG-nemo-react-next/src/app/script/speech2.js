@@ -86,12 +86,6 @@ const Speech2 = () => {
                     {initialSpeeches[currentSpeechIndex]?.s_num}
                   </span>
                   <span
-                    className="speaker"
-                    style={{ display: "none" }}
-                  >
-                    {initialSpeeches[currentSpeechIndex]?.s_speaker}
-                  </span>
-                  <span
                     className="message"
                     style={{ color: "green" }}
                   >
