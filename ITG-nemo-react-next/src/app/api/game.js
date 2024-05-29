@@ -76,7 +76,7 @@ export const GameAction = async (formData) => {
 
   // console.log("큐큐", new_data);
 
-  console.log(data);
+  console.log(data.p_num);
   console.log(updateData);
 
   // console.log(qq);
