@@ -53,7 +53,7 @@ body.HM-main_container {
 }
 
 .HM-main_nav {
-  display: none;
+  /* display: none; */
   /* visibility: visible; */
   ul {
     flex: 1;

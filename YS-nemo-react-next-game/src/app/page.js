@@ -8,6 +8,14 @@ import Speech2 from "./script/speech2";
 import { speech_SelectAll } from "./api/speeches";
 
 export default function Main() {
+  // 로그인 여부 확인
+  useEffect(() => {
+    const userid = localStorage.getItem("loginId");
+    // 로그인안했으면 로그인페이지로
+    if (!userid) {
+      window.location.href = "/user/login";
+    }
+  });
   //------------------스피치
   const [currentLevel, setCurrentLevel] = useState(null); // 현재 레벨을 상태로 유지합니다.
   const [speeches, setSpeeches] = useState([]);
@@ -21,24 +29,6 @@ export default function Main() {
   }, []);
 
   //--------------------------------------------
-  // 레벨별 게임 이동용
-  // const router = useRouter();
-  // const level1game = () => {
-  //   router.push("/game/first");
-  // };
-  // const level2game = () => {
-  //   router.push("/game/second");
-  // };
-  // const level3game = () => {
-  //   router.push("/game/third");
-  // };
-  // const level4game = () => {
-  //   router.push("/game/fourth");
-  // };
-  // const level5game = () => {
-  //   router.push("/game/last");
-  // };
-  // ---------------------
 
   const speechclick = (e) => {
     console.log("?");
@@ -68,19 +58,6 @@ export default function Main() {
   const [currentYear, setCurrentYear] = useState("");
   const [currentMonth, setCurrentMonth] = useState("");
   const [currentDay, setCurrentDay] = useState("");
-  // const [speech, setSpeech] = useState([]);
-
-  // useEffect(() => {
-  //   const spFetch = async () => {
-  //     try {
-  //       const result = await selectAll();
-  //       setSpeech(result);
-  //     } catch (error) {
-  //       console.error("Error fetching speech data:", error);
-  //     }
-  //   };
-  //   spFetch();
-  // }, []);
 
   // 화면뜰때 처리할것들
   useEffect(() => {
@@ -105,7 +82,8 @@ export default function Main() {
     const clearData = [];
     for (let i = 1; i <= 5; i++) {
       try {
-        const data = await findClearData("11", i);
+        const userid = localStorage.getItem("loginId");
+        const data = await findClearData(userid, i);
         if (data) clearData.push(data);
       } catch (error) {
         console.error(

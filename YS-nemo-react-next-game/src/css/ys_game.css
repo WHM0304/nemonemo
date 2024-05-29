@@ -9,13 +9,15 @@ div.game_block {
   display: flex;
   /* flex-direction: column; */
   /* border: 1px solid chartreuse; */
+  margin: auto;
 }
 div.sort {
   display: flex;
   flex-direction: column;
-  width: 715px;
+  /* width: 715px; */
   /* border: 1px solid rgb(255, 116, 23); */
-  margin: auto 20px;
+  margin: auto 70px auto 0;
+  /* margin: auto; */
 }
 
 .main-form-container {
@@ -36,7 +38,6 @@ div.hint {
   /* border: 1px solid red; */
   background-color: #ddd;
 
-  /* width: 100px; */
   height: 40px;
   margin: 3px;
   span {
@@ -153,6 +154,7 @@ div.msg_box {
   height: 3rem;
   width: 80%;
   margin: auto;
+  margin-bottom: 20px;
   display: flex;
 }
 

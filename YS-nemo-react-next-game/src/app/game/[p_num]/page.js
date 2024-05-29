@@ -18,7 +18,15 @@ const first = ({ params }) => {
   // 목숨
   const [life, setLife] = useState(["♥", "♥", "♥"]);
 
-  const user_id = "11";
+  const [user_id, setUser_id] = useState("");
+
+  // const userid = localStorage.getItem("loginId");
+  // const user_id = userid;
+  useEffect(() => {
+    const userid = localStorage.getItem("loginId");
+    const user_id = userid;
+    setUser_id(user_id);
+  }, []);
   // 난이도 확인
   // 주소에서 p_num
   const p_num = Number(params.p_num);
@@ -43,8 +51,25 @@ const first = ({ params }) => {
 
   // rows 배열 자동생성
   const blockCount = getBlockCount(p_num);
-  const rows = Array.from({ length: blockCount }, (_, i) => i + 1);
+  // Array.from : 배열로 변환
+  // {length : (Ex)5)} -> [, , , , ,] 초기값이 없는 배열 5의배열
+  const rows = Array.from({ length: blockCount }, (_, i) => i + 1); // i에 1더한 값을 반환 ex)0~4 ->1~5
+  // rows = [1,2,3~~~ p_num 의 return 값에 따라]
+
   // ----------------
+
+  // 게임 패널티 메시지
+  useEffect(() => {
+    const savedMessage = localStorage.getItem("gameMessage");
+    if (savedMessage) {
+      setMessage(savedMessage);
+      setTimeout(() => {
+        setMessage("");
+        localStorage.removeItem("gameMessage");
+      }, 5000);
+    }
+  }, []);
+  // --------------------------------
 
   // 정답테이블 힌트
   useEffect(() => {
@@ -90,29 +115,29 @@ const first = ({ params }) => {
     console.log(result);
 
     if (result === "정답입니다") {
-      window.location.href = `/clear/${p_num}`;
+      // window.location.href = `/clear/${p_num}`;
+      window.location.href = "/clear";
     } else if (result === "틀렸습니다") {
-      setLife((allLife) => {
+      setLife(async (allLife) => {
         // 목숨 하나씩까다가
         if (allLife.length > 1) {
           return allLife.slice(0, -1);
         } else {
-          // 목숨다쓰면 초기화 하고 하트 다시 3개
-          // 왜 두번뜨지
-          // alert("목숨을 모두 소진하여 현재 레벨이 초기화되었습니다!");
-          setMessage("목숨을 다써서 현재 레벨이 초기화 됐어!");
-          setTimeout(() => {
-            setMessage("");
-          }, 5000);
+          // 목숨 다 쓰면 초기화 하고 하트 다시 3개
+          localStorage.setItem(
+            "gameMessage",
+            "목숨을 다써서 현재 레벨이 초기화 됐어! 다시 그려보자!"
+          );
           deleteaction(); // 초기화버튼 눌렀을때 함수
-          return ["♥", "♥", "♥"];
+          window.location.reload(); // 새로고침해서 화면 리셋
+          // return ["♥", "♥", "♥"];
         }
       });
       // -----
       setMessage("틀렸어! 다시 잘생각해봐!");
       setTimeout(() => {
         setMessage("");
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -153,6 +178,7 @@ const first = ({ params }) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     await gameaction(formData);
+
     setMessage("다그렸구나 이제 정답확인을 눌러봐!");
     setTimeout(() => {
       setMessage("");
@@ -165,10 +191,15 @@ const first = ({ params }) => {
       await deleteaction();
       setRightClickedInputs([]);
       setCheckedSpans([]); // Clear the checked spans
-      setMessage("다 지웠어! 다시 잘 그려봐!");
-      setTimeout(() => {
-        setMessage("");
-      }, 3000); // 3초 후 삭제
+      localStorage.setItem(
+        "gameMessage",
+        "다 지웠어! 다시 잘 그려봐!"
+      );
+      window.location.reload();
+      // setMessage("다 지웠어! 다시 잘 그려봐!");
+      // setTimeout(() => {
+      //   setMessage("");
+      // }, 3000); // 3초 후 삭제
     }
   };
 

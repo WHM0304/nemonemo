@@ -1,8 +1,25 @@
+"use client";
+import { useEffect, useState } from "react";
 import "@/css/main.css";
 import "@/css/main_screen.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function RootLayout({ children }) {
+  const [userid, setUserid] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const storedUserid = localStorage.getItem("loginId");
+    setUserid(storedUserid);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("loginId");
+    setUserid(null);
+    router.push("/"); // 로그아웃 후 홈 페이지로 이동
+  };
+
   return (
     <html lang="ko">
       <head>
@@ -10,7 +27,7 @@ export default function RootLayout({ children }) {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossorigin
+          crossOrigin="true"
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap"
@@ -26,19 +43,27 @@ export default function RootLayout({ children }) {
           <div className="HM-main_sketch"></div>
         </header>
         <div className="HM-main_body">{children}</div>
-        <div className="HM-main_hover_box"></div>
         <nav className="HM-main_nav">
           <ul>
-            <li>홈</li>
             <li>
-              <Link href="/user/join">회원가입</Link>
+              <Link href="/">홈</Link>
             </li>
-            <li>
-              <Link href="/user/login">로그인</Link>
-            </li>
-            <li>
-              <Link href="">로그아웃</Link>
-            </li>
+            {!userid ? (
+              <>
+                <li>
+                  <Link href="/user/join">회원가입</Link>
+                </li>
+                <li>
+                  <Link href="/user/login">로그인</Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <a href="#" onClick={handleLogout}>
+                  로그아웃
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
       </body>
